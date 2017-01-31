@@ -1,0 +1,160 @@
+﻿@model dica.Models.InvestmentViewModel
+
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+
+
+<div class="panel panel-default panel-table">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col col-xs-6">
+                <h3 class="panel-title">Investment Details</h3>
+            </div>
+            @*<div class="col col-xs-6 text-right">
+                    <button type="button" class="btn btn-sm btn-primary btn-create" onclick="location.href='@Url.Action("Create", "Investment")'">Create New</button>
+                </div>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div>
+            
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvestorName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvestorName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Citizenship)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Citizenship)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrganizationName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrganizationName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IncorporationPlace)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IncorporationPlace)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BusinessType)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BusinessType)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AmountofForeignCapital)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AmountofForeignCapital)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PeriodforForeignCapitalBroughtin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PeriodforForeignCapitalBroughtin)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TotalAmountofCapitalInKyat)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TotalAmountofCapitalInKyat)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ConstructionPeriod)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ConstructionPeriod)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ValidityofInvestmentPermit)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ValidityofInvestmentPermit)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FormofInvestment)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FormofInvestment)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CompanyNameinMyanmar)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CompanyNameinMyanmar)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PermitNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PermitNo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PermitDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PermitDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sector)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Sector)
+                </dd>
+
+            </dl>
+        </div>
+
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Index", "Investment")'">Back to List</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Investment")'">Edit</button>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

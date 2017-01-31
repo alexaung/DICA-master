@@ -1,0 +1,138 @@
+﻿@model dica.Models.InvestmentViewModel
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>InvestmentViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InvestorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvestorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Citizenship)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizenship)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncorporationPlace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncorporationPlace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BusinessType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusinessType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountofForeignCapital)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountofForeignCapital)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PeriodforForeignCapitalBroughtin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeriodforForeignCapitalBroughtin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmountofCapitalInKyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmountofCapitalInKyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConstructionPeriod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConstructionPeriod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValidityofInvestmentPermit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValidityofInvestmentPermit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FormofInvestment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FormofInvestment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyNameinMyanmar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyNameinMyanmar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PermitNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PermitNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PermitDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PermitDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sector)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sector)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
