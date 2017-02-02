@@ -38,11 +38,87 @@
                 </dd>
 
                 <dt>
+                    @Html.DisplayNameFor(model => model.InvestorAddress.Line1Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvestorAddress.Line1Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvestorAddress.Line2Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvestorAddress.Line2Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvestorAddress.City)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvestorAddress.City)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvestorAddress.State)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvestorAddress.State)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvestorAddress.Country)
+                </dd>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvestorAddress.Country)
+                </dd>
+
+                <dt>
                     @Html.DisplayNameFor(model => model.OrganizationName)
                 </dt>
 
                 <dd>
                     @Html.DisplayFor(model => model.OrganizationName)
+                </dd>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrganizationAddress.Line1Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrganizationAddress.Line2Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrganizationAddress.Line2Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrganizationAddress.City)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrganizationAddress.City)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrganizationAddress.State)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrganizationAddress.State)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrganizationAddress.Country)
+                </dd>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrganizationAddress.Country)
                 </dd>
 
                 <dt>
@@ -59,6 +135,42 @@
 
                 <dd>
                     @Html.DisplayFor(model => model.BusinessType)
+                </dd>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvestmentPermittedAddress.Line1Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvestmentPermittedAddress.Line2Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvestmentPermittedAddress.Line2Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvestmentPermittedAddress.City)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvestmentPermittedAddress.City)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvestmentPermittedAddress.State)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvestmentPermittedAddress.State)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvestmentPermittedAddress.Country)
+                </dd>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvestmentPermittedAddress.Country)
                 </dd>
 
                 <dt>
@@ -150,7 +262,7 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Index", "Investment")'">Back to List</button>
-                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Investment")'">Edit</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Investment", new { id = Model.UID })'">Edit</button>
                     
                 </div>
             </div>
