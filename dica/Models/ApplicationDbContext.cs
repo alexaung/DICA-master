@@ -30,5 +30,7 @@ namespace dica.Models
         public DbSet<Address> Addresses { get; set; }
 
         public DbSet<Status> Statuses { get; set; }
+
+        public DbSet<Attachment> Attachments { get; set; }
     }
 }

@@ -156,7 +156,7 @@
 {
                     <tr>
                         <td align="center" style="width: 200px;">
-                            <a class="btn btn-primary" title="Add Attachment" href="#" onclick="location.href='@Url.Action("Attachment", "Investment", new { id=item.UID })'"><em class="fa fa-paperclip"></em></a>
+                            <a class="btn btn-primary" title="Add Attachment" href="#" onclick="location.href='@Url.Action("Index", "Attachment", new { id=item.UID })'"><em class="fa fa-paperclip"></em></a>
                             <a class="btn btn-info" title="Investment Details" href="#" onclick="location.href='@Url.Action("Details", "Investment", new { id=item.UID })'"><em class="fa fa-list"></em></a>
                             <a class="btn btn-default" title="Edit Investment" href="#" onclick="location.href='@Url.Action("Edit", "Investment", new { id=item.UID })'"><em class="fa fa-pencil"></em></a>
                             <a class="btn btn-danger" title="Delete Investment" href="#" onclick="location.href='@Url.Action("Delete", "Investment", new { id=item.UID })'"><em class="fa fa-trash"></em></a>

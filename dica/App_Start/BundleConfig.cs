@@ -26,6 +26,10 @@ namespace dica
                       "~/Scripts/bootstrap-datetimepicker.js",
                       "~/Scripts/bootstrap-formhelpers.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/formvalidation").Include(
+                        "~/Scripts/FormValidation/formValidation.js",
+                        "~/Scripts/FormValidation/framework/bootstrap.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",                      
                       "~/Content/site.css",

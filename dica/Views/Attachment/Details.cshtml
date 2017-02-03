@@ -1,0 +1,52 @@
+﻿@model dica.Models.Attachment
+
+<div>
+    <h4>Attachment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InvestmentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvestmentId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContentLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContentLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

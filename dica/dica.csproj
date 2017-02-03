@@ -211,6 +211,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Attributes\LocalizationAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AttachmentController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvestmentController.cs" />
@@ -223,6 +224,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Attachment.cs" />
+    <Compile Include="Models\AttachmentViewModel.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\InvestmentViewModel.cs" />
     <Compile Include="Models\Status.cs" />
@@ -235,6 +238,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\AttachmentRepository.cs" />
     <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\DropDownListRepository.cs" />
     <Compile Include="Repositories\InvestmentRepository.cs" />
@@ -1306,6 +1310,20 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\FormValidation\formValidation.js" />
+    <Content Include="Scripts\FormValidation\formValidation.min.js" />
+    <Content Include="Scripts\FormValidation\formValidation.popular.js" />
+    <Content Include="Scripts\FormValidation\formValidation.popular.min.js" />
+    <Content Include="Scripts\FormValidation\framework\bootstrap.js" />
+    <Content Include="Scripts\FormValidation\framework\bootstrap.min.js" />
+    <Content Include="Scripts\FormValidation\framework\foundation.js" />
+    <Content Include="Scripts\FormValidation\framework\foundation.min.js" />
+    <Content Include="Scripts\FormValidation\framework\pure.js" />
+    <Content Include="Scripts\FormValidation\framework\pure.min.js" />
+    <Content Include="Scripts\FormValidation\framework\semantic.js" />
+    <Content Include="Scripts\FormValidation\framework\semantic.min.js" />
+    <Content Include="Scripts\FormValidation\framework\uikit.js" />
+    <Content Include="Scripts\FormValidation\framework\uikit.min.js" />
     <Content Include="Scripts\img\bootstrap-formhelpers-countries.flags-LICENSE.txt" />
     <Content Include="Scripts\img\bootstrap-formhelpers-countries.flags.png" />
     <Content Include="Scripts\img\bootstrap-formhelpers-currencies.flags.png" />
@@ -1327,6 +1345,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Sql\iso_country_list.sql" />
+    <Content Include="Sql\statuses.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1371,6 +1390,10 @@
     <Content Include="Views\Investment\Create.cshtml" />
     <Content Include="Views\Investment\Edit.cshtml" />
     <Content Include="Views\Investment\Delete.cshtml" />
+    <Content Include="Views\Attachment\Index.cshtml" />
+    <Content Include="Views\Attachment\AttachFormPartial.cshtml" />
+    <Content Include="Views\Attachment\Details.cshtml" />
+    <Content Include="Views\Attachment\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

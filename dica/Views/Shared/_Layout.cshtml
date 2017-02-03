@@ -12,7 +12,7 @@
     <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -20,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("DICA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("DICA", "Index", "Investment", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -28,19 +28,37 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                              
+
                 @Html.Partial("_LoginPartial")
-                
+
             </div>
-            
-            
+            @*<div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                    <div class="bfh-selectbox bfh-languages" data-language="en_US" data-available="en_US,my_MM" data-flags="true">
+                        <input type="hidden" value="">
+                        <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+                            <span class="bfh-selectbox-option input-medium" data-option=""></span>
+                            <b class="caret"></b>
+                        </a>
+                        <div class="bfh-selectbox-options">
+                            <div role="listbox">
+                                <ul role="option"></ul>
+                            </div>
+                        </div>
+                    </div>
+                        </li>
+                    </ul>
+                </div>*@
+            </div>
         </div>
-    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - DICA Application</p>
+            <div class="container text-center">
+                <p>&copy; COPYRIGHT DICA @DateTime.Now.Year. ALL RIGHTS RESERVED.</p>
+                </div>
         </footer>
     </div>
 
