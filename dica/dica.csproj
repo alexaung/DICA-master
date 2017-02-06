@@ -1346,6 +1346,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Sql\iso_country_list.sql" />
     <Content Include="Sql\statuses.sql" />
+    <Content Include="Views\Attachment\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1390,7 +1391,6 @@
     <Content Include="Views\Investment\Create.cshtml" />
     <Content Include="Views\Investment\Edit.cshtml" />
     <Content Include="Views\Investment\Delete.cshtml" />
-    <Content Include="Views\Attachment\Index.cshtml" />
     <Content Include="Views\Attachment\AttachFormPartial.cshtml" />
     <Content Include="Views\Attachment\Details.cshtml" />
     <Content Include="Views\Attachment\Delete.cshtml" />
