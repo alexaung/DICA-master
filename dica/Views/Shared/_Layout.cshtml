@@ -9,7 +9,6 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css" rel="stylesheet" type='text/css'>
-    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -32,26 +31,8 @@
                 @Html.Partial("_LoginPartial")
 
             </div>
-            @*<div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                    <div class="bfh-selectbox bfh-languages" data-language="en_US" data-available="en_US,my_MM" data-flags="true">
-                        <input type="hidden" value="">
-                        <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
-                            <span class="bfh-selectbox-option input-medium" data-option=""></span>
-                            <b class="caret"></b>
-                        </a>
-                        <div class="bfh-selectbox-options">
-                            <div role="listbox">
-                                <ul role="option"></ul>
-                            </div>
-                        </div>
-                    </div>
-                        </li>
-                    </ul>
-                </div>*@
-            </div>
         </div>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -65,5 +46,17 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.bfh-languages').on('change.bfhselectbox', function () {
+                var $this = $(this);
+                var $input = $this.children("input");
+                var route = ($input.val() == "my_MM") ? $this.data('mm-route') : $this.data('en-route');
+                window.location.href = route;
+            });
+        });
+    </script>
 </body>
 </html>
