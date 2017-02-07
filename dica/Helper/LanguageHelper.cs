@@ -30,6 +30,13 @@ namespace dica.Helper
             liTagBuilder.InnerHtml = aTagBuilder.ToString();
             return new MvcHtmlString(liTagBuilder.ToString());
         }
-        
+
+        public static string LangRoute(this UrlHelper url, RouteData routeData, string lang)
+        {
+            var routeValueDictionary = new RouteValueDictionary(routeData.Values);
+            routeValueDictionary["lang"] = lang;
+
+            return url.RouteUrl(routeValueDictionary);
+        }
     }
 }
