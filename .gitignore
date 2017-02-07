@@ -49,3 +49,6 @@ Temporary Items
 # obj, bin
 obj/
 bin/
+
+# .vs
+.vs/
