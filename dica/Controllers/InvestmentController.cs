@@ -28,6 +28,7 @@ namespace dica.Controllers
         public ActionResult Create()
         {
             var investment = new InvestmentViewModel();
+            investment.JointVenturePercentages = new List<JointVenturePercentage>();
             return View(investment);
         }
 
@@ -63,8 +64,9 @@ namespace dica.Controllers
                 InvestmentRepository.UpdateInvestment(investment,User.Identity.Name);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return View(investment);
             }
         }
@@ -90,6 +92,14 @@ namespace dica.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult JointVenturePercentageList()
+        {
+            List<JointVenturePercentage> jointVenturePercentages = new List<JointVenturePercentage>();
+            jointVenturePercentages.Add(new JointVenturePercentage {CompanyName = "AA", Country = "MM",Percentage = 10});
+            jointVenturePercentages.Add(new JointVenturePercentage { CompanyName = "BB", Country = "MM", Percentage = 90 });
+            return PartialView("JointVenturePercentageList", jointVenturePercentages);
         }
     }
 }

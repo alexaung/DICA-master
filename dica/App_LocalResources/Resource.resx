@@ -127,7 +127,10 @@
     <value>Citizenship</value>
   </data>
   <data name="City" xml:space="preserve">
-    <value>City</value>
+    <value>Township</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company Name</value>
   </data>
   <data name="CompanyNameinMyanmar" xml:space="preserve">
     <value>Name of Company incorporated in Myanmar</value>
@@ -160,13 +163,16 @@
     <value>မြန်မာဘာသာ</value>
   </data>
   <data name="Line1Address" xml:space="preserve">
-    <value>Line 1 Address</value>
+    <value>Address</value>
   </data>
   <data name="Line2Address" xml:space="preserve">
     <value>Line 2 Address</value>
   </data>
   <data name="OrganizationName" xml:space="preserve">
     <value>Name of Principal Organization</value>
+  </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>%</value>
   </data>
   <data name="PeriodforForeignCapitalBroughtin" xml:space="preserve">
     <value>Period for Foreign Capital brought in</value>
@@ -181,7 +187,7 @@
     <value>Sector</value>
   </data>
   <data name="State" xml:space="preserve">
-    <value>State</value>
+    <value>State / Region</value>
   </data>
   <data name="TotalAmountofCapitalInKyat" xml:space="preserve">
     <value>Total Amount of Capital (Kyat)</value>

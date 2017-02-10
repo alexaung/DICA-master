@@ -11,6 +11,7 @@ namespace dica.Repositories
             using (var db = new ApplicationDbContext())
             {
                 var query = from status in db.Statuses
+                            where status.Group == groupName
                             select status;
                 var statues = query.OrderBy(s=> s.Order).ToList();
                 return statues;

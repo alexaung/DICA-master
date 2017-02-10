@@ -23,10 +23,34 @@ namespace dica.Repositories
         {
             using (var db = new ApplicationDbContext())
             {
-                var query = from investment in db.Investments
-                            select investment;
-                var investments = query.ToList().Select(i => Mapper.Map<Investment, InvestmentViewModel>(i)).ToList();
-                return investments;
+                var query = (from investment in db.Investments
+                    join sector in db.Statuses on investment.Sector equals sector.Value
+                    join formofinvestment in db.Statuses on investment.FormofInvestment equals formofinvestment.Value
+                    select new InvestmentViewModel
+                    {
+                        UID = investment.UID,
+                        InvestorName = investment.InvestorName,
+                        Citizenship = investment.Citizenship,
+                        //InvestorAddress = investorAddress,
+                        OrganizationName = investment.OrganizationName,
+                        //OrganizationAddress = organizationAddress,
+                        IncorporationPlace = investment.IncorporationPlace,
+                        BusinessType = investment.BusinessType,
+                        //InvestmentPermittedAddress = investmentPermittedAddress,
+                        AmountofForeignCapital = investment.AmountofForeignCapital,
+                        PeriodforForeignCapitalBroughtin = investment.PeriodforForeignCapitalBroughtin,
+                        TotalAmountofCapitalInKyat = investment.TotalAmountofCapitalInKyat,
+                        ConstructionPeriod = investment.ConstructionPeriod,
+                        ValidityofInvestmentPermit = investment.ValidityofInvestmentPermit,
+                        FormofInvestment = formofinvestment.Name,
+                        CompanyNameinMyanmar = investment.CompanyNameinMyanmar,
+                        PermitNo = investment.PermitNo,
+                        PermitDate = investment.PermitDate,
+                        Sector = sector.Name
+
+                    });
+                
+                return query.ToList();
             }
         }
 

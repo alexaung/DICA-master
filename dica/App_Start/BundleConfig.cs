@@ -24,7 +24,8 @@ namespace dica
                       "~/Scripts/moment.js",
                       "~/Scripts/respond.js", 
                       "~/Scripts/bootstrap-datetimepicker.js",
-                      "~/Scripts/bootstrap-formhelpers.js"));
+                      "~/Scripts/bootstrap-formhelpers.js",
+                      "~/Scripts/bootstrap-select.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/formvalidation").Include(
                         "~/Scripts/FormValidation/formValidation.js",
@@ -35,6 +36,7 @@ namespace dica
                       "~/Content/site.css",
                       "~/Content/bootstrap-datetimepicker.css",
                       "~/Content/bootstrap-formhelpers.css",
+                      "~/Content/bootstrap-select.css",
                       "~/Content/flag-icon.css"
                       ));
         }

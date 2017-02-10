@@ -80,5 +80,7 @@ namespace dica.Models
         [Required]
         [Display(ResourceType = typeof(Resource), Name = "Sector")]
         public string Sector { get; set; }
+
+        public List<JointVenturePercentage> JointVenturePercentages { get; set; }
     }
 }

@@ -93,11 +93,14 @@ textarea {
     max-width: 280px;
 }
 
+.bootstrap-select.form-control {
+    max-width: 280px;
+}
+
 fieldset 
 	{
 		border: 1px solid #ddd !important;
 		margin: 0;
-		xmin-width: 0;
 		padding: 10px;       
 		position: relative;
 		border-radius:4px;

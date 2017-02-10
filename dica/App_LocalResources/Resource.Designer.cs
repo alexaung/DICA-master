@@ -88,11 +88,20 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to City.
+        ///   Looks up a localized string similar to Township.
         /// </summary>
         public static string City {
             get {
                 return ResourceManager.GetString("City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Name.
+        /// </summary>
+        public static string CompanyName {
+            get {
+                return ResourceManager.GetString("CompanyName", resourceCulture);
             }
         }
         
@@ -187,7 +196,7 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Line 1 Address.
+        ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string Line1Address {
             get {
@@ -210,6 +219,15 @@ namespace dica.App_LocalResources {
         public static string OrganizationName {
             get {
                 return ResourceManager.GetString("OrganizationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to %.
+        /// </summary>
+        public static string Percentage {
+            get {
+                return ResourceManager.GetString("Percentage", resourceCulture);
             }
         }
         
@@ -250,7 +268,7 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to State.
+        ///   Looks up a localized string similar to State / Region.
         /// </summary>
         public static string State {
             get {

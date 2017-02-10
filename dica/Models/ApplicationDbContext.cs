@@ -32,5 +32,7 @@ namespace dica.Models
         public DbSet<Status> Statuses { get; set; }
 
         public DbSet<Attachment> Attachments { get; set; }
+
+        public DbSet<JointVenturePercentage> JointVenturePercentages { get; set; }
     }
 }
