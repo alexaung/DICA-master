@@ -273,9 +273,28 @@
 
 
     </fieldset>
+    <button id="createJVPercentage">Create</button>
     <fieldset>
         <legend>Investment Details</legend>
-        @Html.Partial("JointVenturePercentageList", Model.JointVenturePercentages)
+        <table>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody id="jvPercentage">>
+                <tr>
+                    <td><input name="investment.JointVenturePercentages[0].CompanyName" /></td>
+                    <td><input name="investment.JointVenturePercentages[0].Country" /></td>
+                </tr>
+                <tr>
+                    <td><input name="investment.JointVenturePercentages[1].CompanyName" /></td>
+                    <td><input name="investment.JointVenturePercentages[1].Country" /></td>
+                </tr>
+            </tbody>
+        </table>
+@*        @Html.Partial("JointVenturePercentageList", Model.JointVenturePercentages)*@
     </fieldset>
 
 </div>
@@ -314,6 +333,11 @@
                 $('.selectpicker').selectpicker({
                     //style: 'btn-info',
                     size: 5
+                });
+
+                $('#createJVPercentage').click(function() {
+                    var $tbody = $('#jvPercentage');
+                    var $tr = $('<tr><td></td><td></td></tr>');
                 });
 
             });
