@@ -28,7 +28,6 @@ namespace dica.Controllers
         public ActionResult Create()
         {
             var investment = new InvestmentViewModel();
-            investment.JointVenturePercentages = new List<JointVenturePercentage>();
             return View(investment);
         }
 
