@@ -149,7 +149,9 @@ width: auto;
 border-bottom: 0px;
 }
 
-
+legend.panel{
+    margin-left:100px;
+}
 ///////
 .panel-table .panel-body{
   padding:0;
