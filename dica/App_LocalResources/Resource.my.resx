@@ -118,28 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AmountofForeignCapital" xml:space="preserve">
-    <value>Amount of Foreign Capital</value>
+    <value>နိုင်ငံခြားမတည်ေငွရင်းပမာ</value>
   </data>
   <data name="BusinessType" xml:space="preserve">
     <value>Type of Investment Business</value>
   </data>
   <data name="Citizenship" xml:space="preserve">
-    <value>Citizenship</value>
+    <value>နိုင်ငံသား</value>
   </data>
   <data name="City" xml:space="preserve">
-    <value>City</value>
+    <value>မြို့</value>
   </data>
   <data name="CompanyNameinMyanmar" xml:space="preserve">
-    <value>Name of Company incorporated in Myanmar</value>
+    <value>မြန်မာနိုင်ငံတွင်ဖွဲ့စည်းမည့်ကုမဏီအမည်</value>
   </data>
   <data name="ConstructionPeriod" xml:space="preserve">
-    <value>Construction Period</value>
+    <value>တည်ေဆာက်မှုကာလ</value>
   </data>
   <data name="Country" xml:space="preserve">
-    <value>Country</value>
+    <value>နိုင်ငံ</value>
   </data>
   <data name="FormofInvestment" xml:space="preserve">
-    <value>Form of Investment</value>
+    <value>ရင်းနှီးမြှုတ်နှံမူပုံစံ</value>
   </data>
   <data name="FormofInvestmentPermit" xml:space="preserve">
     <value>Form of Investment </value>
@@ -151,7 +151,7 @@
     <value>Place(s) at which investment is permitted</value>
   </data>
   <data name="InvestorName" xml:space="preserve">
-    <value>မြန်မာဘာသာ</value>
+    <value>ရင်းနှီးမြှုတ်နှံသူ</value>
   </data>
   <data name="LangEnglish" xml:space="preserve">
     <value>English</value>
@@ -160,33 +160,33 @@
     <value>မြန်မာဘာသာ</value>
   </data>
   <data name="Line1Address" xml:space="preserve">
-    <value>Line 1 Address</value>
+    <value>နေရပ်လိပ်စာ Line 1</value>
   </data>
   <data name="Line2Address" xml:space="preserve">
-    <value>Line 2 Address</value>
+    <value>နေရပ်လိပ်စာ Line 2</value>
   </data>
   <data name="OrganizationName" xml:space="preserve">
-    <value>Name of Principal Organization</value>
+    <value>ပင်မအဖွဲ့အစည်းအမည်နှင့်လိပ်စာ</value>
   </data>
   <data name="PeriodforForeignCapitalBroughtin" xml:space="preserve">
-    <value>Period for Foreign Capital brought in</value>
+    <value>နိုင်ငံခြားမတည်ေငွရင်းယူေဆာင်လာရမည့်ကာလ</value>
   </data>
   <data name="PermitDate" xml:space="preserve">
-    <value>Permit Date</value>
+    <value>ခွင့်ပြုနေ့ဆွဲ</value>
   </data>
   <data name="PermitNo" xml:space="preserve">
-    <value>Permit No</value>
+    <value>ခွင့်ပြုအမှတ်</value>
   </data>
   <data name="Sector" xml:space="preserve">
     <value>Sector</value>
   </data>
   <data name="State" xml:space="preserve">
-    <value>State</value>
+    <value>တိုင်းဒေသကြီး/ ပြည်နယ်</value>
   </data>
   <data name="TotalAmountofCapitalInKyat" xml:space="preserve">
     <value>Total Amount of Capital (Kyat)</value>
   </data>
   <data name="ValidityofInvestmentPermit" xml:space="preserve">
-    <value>Validity of Investment Permit</value>
+    <value>ရင်းနှီးမြှုတ်နှံမှုခွင့်ပြုသည့်သက်တမ်း</value>
   </data>
 </root>
