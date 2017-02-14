@@ -59,10 +59,11 @@ namespace dica.Repositories
             using (var db = new ApplicationDbContext())
             {
                 var investmentDto = (from investment in db.Investments
-                            join investorAddress in db.Addresses on investment.InvestorAddressId equals investorAddress.UID
-                            join organizationAddress in db.Addresses on investment.OrganizationAddressId equals organizationAddress.UID
-                            join investmentPermittedAddress in db.Addresses on investment.InvestmentPermittedAddressId equals investmentPermittedAddress.UID
-                            where investment.UID == uid
+                                     join investorAddress in db.Addresses on investment.InvestorAddressId equals investorAddress.UID
+                                     join organizationAddress in db.Addresses on investment.OrganizationAddressId equals organizationAddress.UID
+                                     join investmentPermittedAddress in db.Addresses on investment.InvestmentPermittedAddressId equals investmentPermittedAddress.UID
+                                     //join jointVenturePercentage in db.JointVenturePercentages on investment.UID equals jointVenturePercentage.InvestmentId
+                                     where investment.UID == uid
                             select new InvestmentViewModel {
                                 UID = investment.UID,
                                 InvestorName = investment.InvestorName,
@@ -82,10 +83,16 @@ namespace dica.Repositories
                                 CompanyNameinMyanmar = investment.CompanyNameinMyanmar,
                                 PermitNo = investment.PermitNo,
                                 PermitDate = investment.PermitDate,
-                                Sector = investment.Sector                              
+                                Sector = investment.Sector             
 
                             }).FirstOrDefault();
-                //var investmentDb = query.FirstOrDefault();
+
+                var jointVenturePercentages = db.JointVenturePercentages.Where(jv => jv.InvestmentId == investmentDto.UID).ToList();
+                if (jointVenturePercentages != null && jointVenturePercentages.Count > 0)
+                {
+                    investmentDto.JointVenturePercentages = new List<JointVenturePercentage>();
+                    investmentDto.JointVenturePercentages.AddRange(jointVenturePercentages);
+                }                //var investmentDb = query.FirstOrDefault();
                 //var investmentDto = Mapper.Map<Investment, InvestmentViewModel>(investmentDb);
                 return investmentDto;
             }

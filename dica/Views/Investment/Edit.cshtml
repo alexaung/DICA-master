@@ -280,8 +280,9 @@
                             @Html.ValidationMessageFor(model => model.FormofInvestment, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
-                    <div id="JointVenturePercentage" style="display:none;width:60%" class="panel panel-default">
+@if (Model.FormofInvestment == "JV")
+{
+                    <div id="JointVenturePercentage" style="width:60%" class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col col-xs-6">
@@ -303,13 +304,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @if (Model.JointVenturePercentages != null) { 
-                                    foreach (var item in Model.JointVenturePercentages)
+                                @if (Model.JointVenturePercentages != null)
+                                {
+                                    for(int i = 0; i<Model.JointVenturePercentages.Count; i++)
                                     {
                                         <tr>
-                                            <td>@Html.TextBoxFor(modelItem => item.CompanyName, new { @class = "form-control" })</td>
-                                            <td>@Html.TextBoxFor(modelItem => item.Country, new { @class = "form-control" })</td>
-                                            <td>@Html.TextBoxFor(modelItem => item.Percentage, new { @class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].CompanyName, new { @class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].Country, new { @class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].Percentage, new { @class = "form-control" })</td>
                                             <td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
                                         </tr>
                                     }
@@ -318,6 +320,37 @@
                             </table>
                         </div>
                     </div>
+}
+else
+{
+    <div id="JointVenturePercentage" style="display:none;width:60%" class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col col-xs-6">
+                    <h3 class="panel-title">Joint Venture Percentage</h3>
+                </div>
+                <div class="col col-xs-6 text-right">
+                    <button id="btnAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <table id="tblData" class="table table-striped table-bordered table-list">
+                <thead>
+                    <tr>
+                        <td>Company</td>
+                        <td>Country</td>
+                        <td>%</td>
+                        <th><em class="fa fa-cog"></em></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
 
                 </fieldset>
 
@@ -347,21 +380,14 @@
     @Scripts.Render("~/bundles/jqueryval")
 <script type="text/javascript">
             $(function () {
-                //$('#datetimepicker').datetimepicker({
-                //    showTodayButton: true,
-                //    format: 'lll',
-                //    showClose: true,
-                //    showClear: true,
-                //    toolbarPlacement: 'top',
-                //    stepping: 15
-                //});
+                $('#datetimepicker').datetimepicker();
 
                 $('.selectpicker').selectpicker({
                     //style: 'btn-info',
                     size: 5
                 });
 
-                $(".btnEdit").bind("click", Edit);
+                //$(".btnEdit").bind("click", Edit);
                 $(".btnDelete").bind("click", Delete);
                 $("#btnAdd").bind("click", Add);
 
@@ -378,11 +404,11 @@
 
             function Add() {
                 var rowCount = $('#tblData tr').length;
-                alert(rowCount);
+                //alert(rowCount);
                 $("#tblData tbody").append("<tr>" +
-                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages["+ rowCount +"].CompanyName'/></td>" +
-                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages[" + rowCount + "].Country'/></td>" +
-                    "<td><input class = 'form-control' type='text'name='investment.JointVenturePercentages[" + rowCount + "].Percentage'/></td>" +
+                    "<td><input class = 'form-control' type='text' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].CompanyName'/></td>" +
+                    "<td><input class = 'form-control' type='text' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].Country'/></td>" +
+                    "<td><input class = 'form-control' type='text'name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].Percentage'/></td>" +
                     "<td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>" +
                     "</tr>");
                 //<a class='btnSave btn btn-primary' title='Save' href='#'><em class='fa fa-floppy-o'></em></a>
