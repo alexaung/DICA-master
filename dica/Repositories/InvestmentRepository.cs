@@ -116,6 +116,22 @@ namespace dica.Repositories
                 db.Addresses.Add(organizationAddress);
                 db.Addresses.Add(investmentPermittedAddress);
                 db.Investments.Add(investment);
+
+                if (investmentViewModel.FormofInvestment.Equals("JV"))
+                {
+                    if(investmentViewModel.JointVenturePercentages != null && investmentViewModel.JointVenturePercentages.Count > 0)
+                    {
+                        foreach(JointVenturePercentage jv in investmentViewModel.JointVenturePercentages)
+                        {
+                            if (!string.IsNullOrEmpty(jv.CompanyName))
+                            {
+                                jv.UID = Guid.NewGuid();
+                                jv.InvestmentId = investment.UID;
+                                db.JointVenturePercentages.Add(jv);
+                            }
+                        }
+                    }
+                }
                 db.SaveChanges();
             }
         }
@@ -157,7 +173,25 @@ namespace dica.Repositories
                 db.Entry(investmentViewModel.InvestmentPermittedAddress).State = EntityState.Modified;
 
                 db.Investments.Attach(investment);
-                db.Entry(investment).State = EntityState.Modified;
+                db.Entry(investment).State = EntityState.Modified;                
+                
+                db.JointVenturePercentages.RemoveRange(db.JointVenturePercentages.Where(x => x.InvestmentId == investment.UID));
+                if (investmentViewModel.FormofInvestment.Equals("JV"))
+                {
+                    if (investmentViewModel.JointVenturePercentages != null && investmentViewModel.JointVenturePercentages.Count > 0)
+                    {
+                        foreach (JointVenturePercentage jv in investmentViewModel.JointVenturePercentages)
+                        {
+                            if (!string.IsNullOrEmpty(jv.CompanyName))
+                            {
+                                jv.UID = Guid.NewGuid();
+                                jv.InvestmentId = investment.UID;
+                                db.JointVenturePercentages.Add(jv);
+                            }
+                        }
+                    }
+                }
+
                 db.SaveChanges();
             }
         }

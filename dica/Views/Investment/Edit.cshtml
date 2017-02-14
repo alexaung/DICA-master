@@ -347,14 +347,14 @@
     @Scripts.Render("~/bundles/jqueryval")
 <script type="text/javascript">
             $(function () {
-                $('#datetimepicker').datetimepicker({
-                    showTodayButton: true,
-                    format: 'lll',
-                    showClose: true,
-                    showClear: true,
-                    toolbarPlacement: 'top',
-                    stepping: 15
-                });
+                //$('#datetimepicker').datetimepicker({
+                //    showTodayButton: true,
+                //    format: 'lll',
+                //    showClose: true,
+                //    showClear: true,
+                //    toolbarPlacement: 'top',
+                //    stepping: 15
+                //});
 
                 $('.selectpicker').selectpicker({
                     //style: 'btn-info',
@@ -377,11 +377,12 @@
             });
 
             function Add() {
-
+                var rowCount = $('#tblData tr').length;
+                alert(rowCount);
                 $("#tblData tbody").append("<tr>" +
-                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages[0].CompanyName'/></td>" +
-                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages[0].Country'/></td>" +
-                    "<td><input class = 'form-control' type='text'name='investment.JointVenturePercentages[0].Percentage'/></td>" +
+                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages["+ rowCount +"].CompanyName'/></td>" +
+                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages[" + rowCount + "].Country'/></td>" +
+                    "<td><input class = 'form-control' type='text'name='investment.JointVenturePercentages[" + rowCount + "].Percentage'/></td>" +
                     "<td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>" +
                     "</tr>");
                 //<a class='btnSave btn btn-primary' title='Save' href='#'><em class='fa fa-floppy-o'></em></a>

@@ -353,10 +353,12 @@
 
             function Add() {
 
+                var rowCount = parseInt($('#tblData tr').length);
+                alert(rowCount);
                 $("#tblData tbody").append("<tr>" +
-                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages[0].CompanyName'/></td>" +
-                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages[0].Country'/></td>" +
-                    "<td><input class = 'form-control' type='text'name='investment.JointVenturePercentages[0].Percentage'/></td>" +
+                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages[" + parseInt(rowCount - 1) + "].CompanyName'/></td>" +
+                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages[" + parseInt(rowCount - 1) + "].Country'/></td>" +
+                    "<td><input class = 'form-control' type='text'name='investment.JointVenturePercentages[" + parseInt(rowCount - 1) + "].Percentage'/></td>" +
                     "<td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>" +
                     "</tr>");
                 //<a class='btnSave btn btn-primary' title='Save' href='#'><em class='fa fa-floppy-o'></em></a>
