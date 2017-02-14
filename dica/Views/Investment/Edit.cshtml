@@ -26,7 +26,7 @@
                 <hr />*@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.UID)
-
+                
                 <fieldset class="fsStyle">
                     <legend class="legendStyle">Investor/Promoter</legend>
                     <div class="form-group">
@@ -281,6 +281,43 @@
                         </div>
                     </div>
 
+                    <div id="JointVenturePercentage" style="display:none;width:60%" class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col col-xs-6">
+                                    <h3 class="panel-title">Joint Venture Percentage</h3>
+                                </div>
+                                <div class="col col-xs-6 text-right">
+                                    <button id="btnAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table id="tblData" class="table table-striped table-bordered table-list">
+                                <thead>
+                                    <tr>
+                                        <td>Company</td>
+                                        <td>Country</td>
+                                        <td>%</td>
+                                        <th><em class="fa fa-cog"></em></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @if (Model.JointVenturePercentages != null) { 
+                                    foreach (var item in Model.JointVenturePercentages)
+                                    {
+                                        <tr>
+                                            <td>@Html.TextBoxFor(modelItem => item.CompanyName, new { @class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => item.Country, new { @class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => item.Percentage, new { @class = "form-control" })</td>
+                                            <td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
+                                        </tr>
+                                    }
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                 </fieldset>
 
@@ -308,4 +345,88 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker').datetimepicker({
+                    showTodayButton: true,
+                    format: 'lll',
+                    showClose: true,
+                    showClear: true,
+                    toolbarPlacement: 'top',
+                    stepping: 15
+                });
+
+                $('.selectpicker').selectpicker({
+                    //style: 'btn-info',
+                    size: 5
+                });
+
+                $(".btnEdit").bind("click", Edit);
+                $(".btnDelete").bind("click", Delete);
+                $("#btnAdd").bind("click", Add);
+
+                $('#FormofInvestment').change(function () {
+                    var value = $(this).val();
+                    if (value == 'JV') {
+                        $('#JointVenturePercentage').show();
+                    } else {
+                        $('#JointVenturePercentage').hide();
+                    }
+                });
+
+            });
+
+            function Add() {
+
+                $("#tblData tbody").append("<tr>" +
+                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages[0].CompanyName'/></td>" +
+                    "<td><input class = 'form-control' type='text' name='investment.JointVenturePercentages[0].Country'/></td>" +
+                    "<td><input class = 'form-control' type='text'name='investment.JointVenturePercentages[0].Percentage'/></td>" +
+                    "<td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>" +
+                    "</tr>");
+                //<a class='btnSave btn btn-primary' title='Save' href='#'><em class='fa fa-floppy-o'></em></a>
+                //$(".btnSave").bind("click", Save);
+                $(".btnDelete").bind("click", Delete);
+            };
+
+            function Save() {
+                var par = $(this).parent().parent(); //tr
+                var tdCompanyName = par.children("td:nth-child(1)");
+                var tdCountry = par.children("td:nth-child(2)");
+                var tdPercentage = par.children("td:nth-child(3)");
+                var tdButtons = par.children("td:nth-child(4)");
+                tdCompanyName.html(tdCompanyName.children("input[type=text]").val());
+                tdCountry.html(tdCountry.children("input[type=text]").val());
+                tdPercentage.html(tdPercentage.children("input[type=text]").val());
+                tdButtons.html("<a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a>");
+
+                //<a class='btnEdit btn btn-default' title='Edit' href='#'><em class='fa fa-pencil'></em></a>
+                //$(".btnEdit").bind("click", Edit);
+                $(".btnDelete").bind("click", Delete);
+                return false; s
+            };
+
+            function Edit() {
+                var par = $(this).parent().parent(); //tr
+                var tdCompanyName = par.children("td:nth-child(1)");
+                var tdCountry = par.children("td:nth-child(2)");
+                var tdPercentage = par.children("td:nth-child(3)");
+                var tdButtons = par.children("td:nth-child(4)");
+                tdCompanyName.html("<input class = 'form-control' type='text' id='txtName' value='" + tdCompanyName.html() + "'/>");
+                tdCountry.html("<input class = 'form-control' type='text' id='txtPhone' value='" + tdCountry.html() + "'/>");
+                tdPercentage.html("<input class = 'form-control' type='text' id='txtEmail' value='" + tdPercentage.html() + "'/>");
+                tdButtons.html("<a class='btnSave btn btn-primary' title='Save' href='#'><em class='fa fa-floppy-o'></em></a>");
+
+                $(".btnSave").bind("click", Save);
+                $(".btnEdit").bind("click", Edit);
+                $(".btnDelete").bind("click", Delete);
+                return false;
+            };
+
+            function Delete() {
+                var par = $(this).parent().parent(); //tr
+                par.remove();
+                return false;
+            };
+</script>
 }
