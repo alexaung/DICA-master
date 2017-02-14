@@ -380,7 +380,9 @@ else
     @Scripts.Render("~/bundles/jqueryval")
 <script type="text/javascript">
             $(function () {
-                $('#datetimepicker').datetimepicker();
+                $('#datetimepicker').datetimepicker({
+                    format: 'MM/DD/YYYY'
+                });
 
                 $('.selectpicker').selectpicker({
                     //style: 'btn-info',
