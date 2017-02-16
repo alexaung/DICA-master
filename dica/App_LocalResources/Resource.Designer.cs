@@ -79,6 +79,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Capital Currency.
+        /// </summary>
+        public static string CapitalCurrency {
+            get {
+                return ResourceManager.GetString("CapitalCurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Citizenship.
         /// </summary>
         public static string Citizenship {
@@ -156,6 +165,15 @@ namespace dica.App_LocalResources {
         public static string IncorporationPlace {
             get {
                 return ResourceManager.GetString("IncorporationPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Investing Country.
+        /// </summary>
+        public static string InvestingCountry {
+            get {
+                return ResourceManager.GetString("InvestingCountry", resourceCulture);
             }
         }
         
@@ -277,11 +295,11 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Amount of Capital (Kyat).
+        ///   Looks up a localized string similar to Total Amount of Capital .
         /// </summary>
-        public static string TotalAmountofCapitalInKyat {
+        public static string TotalAmountofCapital {
             get {
-                return ResourceManager.GetString("TotalAmountofCapitalInKyat", resourceCulture);
+                return ResourceManager.GetString("TotalAmountofCapital", resourceCulture);
             }
         }
         

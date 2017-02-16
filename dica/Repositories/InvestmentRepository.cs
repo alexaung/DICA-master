@@ -25,7 +25,9 @@ namespace dica.Repositories
             {
                 var query = (from investment in db.Investments
                     join sector in db.Statuses on investment.Sector equals sector.Value
-                    join formofinvestment in db.Statuses on investment.FormofInvestment equals formofinvestment.Value
+                             join investmentPermittedAddress in db.Addresses on investment.InvestmentPermittedAddressId equals investmentPermittedAddress.UID
+                             join formofinvestment in db.Statuses on investment.FormofInvestment equals formofinvestment.Value
+                             join investingCountry in db.Countries on investment.InvestingCountry equals investingCountry.ISO
                     select new InvestmentViewModel
                     {
                         UID = investment.UID,
@@ -36,17 +38,19 @@ namespace dica.Repositories
                         //OrganizationAddress = organizationAddress,
                         IncorporationPlace = investment.IncorporationPlace,
                         BusinessType = investment.BusinessType,
-                        //InvestmentPermittedAddress = investmentPermittedAddress,
+                        InvestmentPermittedAddress = investmentPermittedAddress,
                         AmountofForeignCapital = investment.AmountofForeignCapital,
                         PeriodforForeignCapitalBroughtin = investment.PeriodforForeignCapitalBroughtin,
-                        TotalAmountofCapitalInKyat = investment.TotalAmountofCapitalInKyat,
+                        TotalAmountofCapital = investment.TotalAmountofCapital,
+                        CapitalCurrency = investment.CapitalCurrency,
                         ConstructionPeriod = investment.ConstructionPeriod,
                         ValidityofInvestmentPermit = investment.ValidityofInvestmentPermit,
                         FormofInvestment = formofinvestment.Name,
                         CompanyNameinMyanmar = investment.CompanyNameinMyanmar,
                         PermitNo = investment.PermitNo,
                         PermitDate = investment.PermitDate,
-                        Sector = sector.Name
+                        Sector = sector.Name,
+                        InvestingCountry = investingCountry.Name
 
                     });
                 
@@ -76,14 +80,16 @@ namespace dica.Repositories
                                 InvestmentPermittedAddress = investmentPermittedAddress,
                                 AmountofForeignCapital = investment.AmountofForeignCapital,
                                 PeriodforForeignCapitalBroughtin = investment.PeriodforForeignCapitalBroughtin,
-                                TotalAmountofCapitalInKyat = investment.TotalAmountofCapitalInKyat,
+                                TotalAmountofCapital = investment.TotalAmountofCapital,
+                                CapitalCurrency = investment.CapitalCurrency,
                                 ConstructionPeriod = investment.ConstructionPeriod,
                                 ValidityofInvestmentPermit = investment.ValidityofInvestmentPermit,
                                 FormofInvestment = investment.FormofInvestment,
                                 CompanyNameinMyanmar = investment.CompanyNameinMyanmar,
                                 PermitNo = investment.PermitNo,
                                 PermitDate = investment.PermitDate,
-                                Sector = investment.Sector             
+                                Sector = investment.Sector,
+                                InvestingCountry = investment.InvestingCountry           
 
                             }).FirstOrDefault();
 
@@ -92,8 +98,8 @@ namespace dica.Repositories
                 {
                     investmentDto.JointVenturePercentages = new List<JointVenturePercentage>();
                     investmentDto.JointVenturePercentages.AddRange(jointVenturePercentages);
-                }                //var investmentDb = query.FirstOrDefault();
-                //var investmentDto = Mapper.Map<Investment, InvestmentViewModel>(investmentDb);
+                }                
+                
                 return investmentDto;
             }
         }
@@ -159,7 +165,8 @@ namespace dica.Repositories
                 investment.InvestmentPermittedAddressId = investmentViewModel.InvestmentPermittedAddress.UID;
                 investment.AmountofForeignCapital = investmentViewModel.AmountofForeignCapital;
                 investment.PeriodforForeignCapitalBroughtin = investmentViewModel.PeriodforForeignCapitalBroughtin;
-                investment.TotalAmountofCapitalInKyat = investmentViewModel.TotalAmountofCapitalInKyat;
+                investment.TotalAmountofCapital = investmentViewModel.TotalAmountofCapital;
+                investment.CapitalCurrency = investment.CapitalCurrency;
                 investment.ConstructionPeriod = investmentViewModel.ConstructionPeriod;
                 investment.ValidityofInvestmentPermit = investmentViewModel.ValidityofInvestmentPermit;
                 investment.FormofInvestment = investmentViewModel.FormofInvestment;
@@ -167,6 +174,7 @@ namespace dica.Repositories
                 investment.PermitNo = investmentViewModel.PermitNo;
                 investment.PermitDate = investmentViewModel.PermitDate;
                 investment.Sector = investmentViewModel.Sector;
+                investment.InvestingCountry = investment.InvestingCountry;
                 investment.ModifiedBy = userName;
                 investment.ModifiedOn = DateTime.Now;
 

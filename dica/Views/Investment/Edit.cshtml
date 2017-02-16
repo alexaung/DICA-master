@@ -306,14 +306,18 @@
                                 <tbody>
                                 @if (Model.JointVenturePercentages != null)
                                 {
-                                    for(int i = 0; i<Model.JointVenturePercentages.Count; i++)
-                                    {
+                                    int i = 0;
+                                    foreach (var item in Model.JointVenturePercentages)
+                                    {//for(int i = 0; i<Model.JointVenturePercentages.Count; i++)
+                                        {
                                         <tr>
-                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].CompanyName, new { @class = "form-control" })</td>
-                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].Country, new { @class = "form-control" })</td>
-                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].Percentage, new { @class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => item.CompanyName, new { @class = "form-control" })</td>
+                                            <td>@Html.DropDownListFor(modelItem => item.Country, new SelectList(CountryRepository.GetCountries(), "ISO", "Name", item.Country), "Please select Country", new { @class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => item.Percentage, new { @class = "form-control" })</td>
                                             <td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
                                         </tr>
+                                            i++;
+                                        }
                                     }
                                 }
                                 </tbody>
@@ -409,13 +413,25 @@ else
                 //alert(rowCount);
                 $("#tblData tbody").append("<tr>" +
                     "<td><input class = 'form-control' type='text' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].CompanyName'/></td>" +
-                    "<td><input class = 'form-control' type='text' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].Country'/></td>" +
+                    "<td><select class = 'form-control' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].Country' id='JointVenturePercentages_" + parseInt(rowCount - 1) + "__Country'></select></td>" +
                     "<td><input class = 'form-control' type='text'name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].Percentage'/></td>" +
                     "<td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>" +
                     "</tr>");
                 //<a class='btnSave btn btn-primary' title='Save' href='#'><em class='fa fa-floppy-o'></em></a>
                 //$(".btnSave").bind("click", Save);
                 $(".btnDelete").bind("click", Delete);
+
+                $.ajax({
+                    url: "/Investment/GetCountries",
+                    type: 'Post',
+                    success: function (data) {
+                        var items = "";
+                        $.each(data, function (i, val) {
+                            items += "<option value='" + val.ISO + "'>" + val.Name + "</option>";
+                        });
+                        $("#JointVenturePercentages_" + parseInt(rowCount - 1) + "__Country").empty().html(items);
+                    }
+                });
             };
 
             function Save() {

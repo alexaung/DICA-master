@@ -129,25 +129,25 @@
                     <tr>
                         <th><em class="fa fa-cog"></em></th>
                         <th>
+                            @Html.DisplayNameFor(model => model.CompanyNameinMyanmar)
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.InvestorName)
                         </th>
-                        @*<th>
-                            @Html.DisplayNameFor(model => model.Citizenship)
-                        </th>*@
                         <th>
-                            @Html.DisplayNameFor(model => model.OrganizationName)
+                            @Html.DisplayNameFor(model => model.InvestingCountry)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.IncorporationPlace)
+                            @Html.DisplayNameFor(model => model.Sector)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.BusinessType)
-                        </th>
+                            @Html.DisplayNameFor(model => model.InvestmentPermittedAddress.State)
+                        </th>                        
                         <th>
                             @Html.DisplayNameFor(model => model.FormofInvestment)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.CompanyNameinMyanmar)
+                            @Html.DisplayNameFor(model => model.TotalAmountofCapital)
                         </th>
                     </tr>
                 </thead>
@@ -164,25 +164,25 @@
                                 </div>
 </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.CompanyNameinMyanmar)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.InvestorName)
                         </td>
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.Citizenship)
-                        </td>*@
                         <td>
-                            @Html.DisplayFor(modelItem => item.OrganizationName)
+                            @Html.DisplayFor(modelItem => item.InvestingCountry)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IncorporationPlace)
+                            @Html.DisplayFor(modelItem => item.Sector)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.BusinessType)
+                            @Html.DisplayFor(modelItem => item.InvestmentPermittedAddress.State)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.FormofInvestment)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.CompanyNameinMyanmar)
+                            @Html.DisplayFor(modelItem => item.TotalAmountofCapital + "(" + item.CapitalCurrency + ")")
                         </td>
                     </tr>
 }

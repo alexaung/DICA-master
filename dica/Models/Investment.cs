@@ -34,7 +34,9 @@ namespace dica.Models
 
         public int PeriodforForeignCapitalBroughtin { get; set; }
 
-        public decimal TotalAmountofCapitalInKyat { get; set; }
+        public decimal TotalAmountofCapital { get; set; }
+
+        public string CapitalCurrency { get; set; }
 
         public int ConstructionPeriod { get; set; }
 
@@ -48,7 +50,9 @@ namespace dica.Models
 
         public DateTime PermitDate { get; set; }        
 
-        public string Sector { get; set; }        
+        public string Sector { get; set; }
+        
+        public string InvestingCountry { get; set; }
 
         public string CreatedBy { get; set; }
 

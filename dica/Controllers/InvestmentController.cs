@@ -42,7 +42,7 @@ namespace dica.Controllers
             }
             catch(Exception ex)
             {
-                throw ex;
+                //throw ex;
                 return View(investment);
             }
         }
@@ -100,6 +100,12 @@ namespace dica.Controllers
             jointVenturePercentages.Add(new JointVenturePercentage {CompanyName = "AA", Country = "MM",Percentage = 10});
             jointVenturePercentages.Add(new JointVenturePercentage { CompanyName = "BB", Country = "MM", Percentage = 90 });
             return PartialView("JointVenturePercentageList", jointVenturePercentages);
+        }
+
+        public ActionResult GetCountries()
+        {
+            var countries = CountryRepository.GetCountries();
+            return Json(countries, JsonRequestBehavior.AllowGet);
         }
     }
 }

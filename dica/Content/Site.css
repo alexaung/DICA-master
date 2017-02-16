@@ -210,3 +210,7 @@ used to vertically center elements, may need modification if you're not using de
 .panel-title {
   color: #24a15a;
 }
+
+.currency-group .form-control{
+    width:10%;
+}

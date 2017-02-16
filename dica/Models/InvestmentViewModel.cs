@@ -49,8 +49,12 @@ namespace dica.Models
         public int PeriodforForeignCapitalBroughtin { get; set; }
 
         [Required]
-        [Display(ResourceType = typeof(Resource), Name = "TotalAmountofCapitalInKyat")]
-        public decimal TotalAmountofCapitalInKyat { get; set; }
+        [Display(ResourceType = typeof(Resource), Name = "TotalAmountofCapital")]
+        public decimal TotalAmountofCapital { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "CapitalCurrency")]
+        public string CapitalCurrency { get; set; }
 
         [Required]
         [Display(ResourceType = typeof(Resource), Name = "ConstructionPeriod")]
@@ -80,6 +84,10 @@ namespace dica.Models
         [Required]
         [Display(ResourceType = typeof(Resource), Name = "Sector")]
         public string Sector { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "InvestingCountry")]
+        public string InvestingCountry { get; set; }
 
         public List<JointVenturePercentage> JointVenturePercentages { get; set; }
     }

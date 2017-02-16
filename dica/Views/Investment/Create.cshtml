@@ -191,14 +191,6 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-                        @Html.LabelFor(model => model.InvestmentPermittedAddress.Line2Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.InvestmentPermittedAddress.Line2Address, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.InvestmentPermittedAddress.Line2Address, "", new { @class = "text-danger" })
-                        </div>
-                    </div>*@
-
         <div class="form-group">
             @Html.LabelFor(model => model.InvestmentPermittedAddress.City, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
@@ -232,71 +224,90 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TotalAmountofCapitalInKyat, new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.TotalAmountofCapital, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TotalAmountofCapitalInKyat, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.TotalAmountofCapitalInKyat, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PeriodforForeignCapitalBroughtin, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PeriodforForeignCapitalBroughtin, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.PeriodforForeignCapitalBroughtin, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConstructionPeriod, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ConstructionPeriod, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.ConstructionPeriod, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ValidityofInvestmentPermit, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ValidityofInvestmentPermit, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.ValidityofInvestmentPermit, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FormofInvestment, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.FormofInvestment, new SelectList(StatusRepository.GetStatusByGroup("FormOfInvestment"), "Value", "Name"), "Please select Form of Investment", new {@class = "form-control"})
-                @Html.ValidationMessageFor(model => model.FormofInvestment, "", new {@class = "text-danger"})
-            </div>
-        </div>        
+                <div class="input-group">
+                    @Html.EditorFor(model => model.TotalAmountofCapital, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                    @Html.ValidationMessageFor(model => model.TotalAmountofCapital, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(model => model.CapitalCurrency, new SelectList(StatusRepository.GetStatusByGroup("Currency"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                    @Html.ValidationMessageFor(model => model.CapitalCurrency, "", new { @class = "text-danger" })
+                </div>
+            </div> 
             
-        <div id="JointVenturePercentage" style="display:none;width:60%" class="panel panel-default">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col col-xs-6">
-                        <h3 class="panel-title">Joint Venture Percentage</h3>
-                    </div>
-                    <div class="col col-xs-6 text-right">
-                        <button id="btnAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
-                    </div>
+        </div>
+        
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PeriodforForeignCapitalBroughtin, new { @class = "control-label col-md-2" })
+                <div class="input-group col-md-2">
+                    @Html.EditorFor(model => model.PeriodforForeignCapitalBroughtin, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="input-group-addon">Years&nbsp;</span>
+                    @Html.ValidationMessageFor(model => model.PeriodforForeignCapitalBroughtin, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <div class="panel-body">
-                <table id="tblData" class="table table-striped table-bordered table-list">
-                    <thead>
-                        <tr>
-                            <td>Company</td>
-                            <td>Country</td>
-                            <td>%</td>
-                            <th><em class="fa fa-cog"></em></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+            
+        <div class="form-group">
+            @Html.LabelFor(model => model.ValidityofInvestmentPermit, new { @class = "control-label col-md-2" })
+            <div class="input-group col-md-2">
+                @Html.EditorFor(model => model.ValidityofInvestmentPermit, new { htmlAttributes = new { @class = "form-control" } })
+                <span class="input-group-addon">Years&nbsp;</span>
+                @Html.ValidationMessageFor(model => model.ValidityofInvestmentPermit, "", new { @class = "text-danger" })
             </div>
         </div>
-                    
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ConstructionPeriod, new { @class = "control-label col-md-2" })
+                <div class="input-group col-md-2">
+                    @Html.EditorFor(model => model.ConstructionPeriod, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="input-group-addon">Months</span>
+                    @Html.ValidationMessageFor(model => model.ConstructionPeriod, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.InvestingCountry, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.InvestingCountry, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Please select Investing Country", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                    @Html.ValidationMessageFor(model => model.InvestingCountry, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FormofInvestment, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.FormofInvestment, new SelectList(StatusRepository.GetStatusByGroup("FormOfInvestment"), "Value", "Name"), "Please select Form of Investment", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormofInvestment, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div id="JointVenturePercentage" style="display:none;width:60%" class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Joint Venture Percentage</h3>
+                        </div>
+                        <div class="col col-xs-6 text-right">
+                            <button id="btnAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table id="tblData" class="table table-striped table-bordered table-list">
+                        <thead>
+                            <tr>
+                                <td>Company</td>
+                                <td>Country</td>
+                                <td>%</td>
+                                <th><em class="fa fa-cog"></em></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
 </fieldset>     
 </div>
     </div>
@@ -357,13 +368,25 @@
                 //alert(rowCount);
                 $("#tblData tbody").append("<tr>" +
                     "<td><input class = 'form-control' type='text' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].CompanyName'/></td>" +
-                    "<td><input class = 'form-control' type='text' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].Country'/></td>" +
+                    "<td><select class = 'form-control' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].Country' id='JointVenturePercentages_" + parseInt(rowCount - 1) + "__Country'></select></td>" +
                     "<td><input class = 'form-control' type='text' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].Percentage'/></td>" +
                     "<td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>" +
                     "</tr>");
                 //<a class='btnSave btn btn-primary' title='Save' href='#'><em class='fa fa-floppy-o'></em></a>
                 //$(".btnSave").bind("click", Save);
                 $(".btnDelete").bind("click", Delete);
+
+                $.ajax({
+                    url: "/Investment/GetCountries",
+                    type: 'Post',                    
+                    success: function (data) {
+                        var items = "";
+                        $.each(data, function (i, val) {
+                            items += "<option value='" + val.ISO + "'>" + val.Name + "</option>";
+                        });
+                        $("#JointVenturePercentages_" + parseInt(rowCount - 1) + "__Country").empty().html(items);
+                    }
+                });
             };
 
             function Save(){

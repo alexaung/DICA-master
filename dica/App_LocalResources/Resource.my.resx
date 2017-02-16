@@ -123,6 +123,9 @@
   <data name="BusinessType" xml:space="preserve">
     <value>Type of Investment Business</value>
   </data>
+  <data name="CapitalCurrency" xml:space="preserve">
+    <value>Capital Currency</value>
+  </data>
   <data name="Citizenship" xml:space="preserve">
     <value>နိုင်ငံသား</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="IncorporationPlace" xml:space="preserve">
     <value>Place of incorporation</value>
+  </data>
+  <data name="InvestingCountry" xml:space="preserve">
+    <value>Investing Country</value>
   </data>
   <data name="InvestmentPermittedPlace" xml:space="preserve">
     <value>Place(s) at which investment is permitted</value>
@@ -183,8 +189,8 @@
   <data name="State" xml:space="preserve">
     <value>တိုင်းဒေသကြီး/ ပြည်နယ်</value>
   </data>
-  <data name="TotalAmountofCapitalInKyat" xml:space="preserve">
-    <value>Total Amount of Capital (Kyat)</value>
+  <data name="TotalAmountofCapital" xml:space="preserve">
+    <value>Total Amount of Capital </value>
   </data>
   <data name="ValidityofInvestmentPermit" xml:space="preserve">
     <value>ရင်းနှီးမြှုတ်နှံမှုခွင့်ပြုသည့်သက်တမ်း</value>
