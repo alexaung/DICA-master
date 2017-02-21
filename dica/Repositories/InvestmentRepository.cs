@@ -33,9 +33,7 @@ namespace dica.Repositories
                         UID = investment.UID,
                         InvestorName = investment.InvestorName,
                         Citizenship = investment.Citizenship,
-                        //InvestorAddress = investorAddress,
                         OrganizationName = investment.OrganizationName,
-                        //OrganizationAddress = organizationAddress,
                         IncorporationPlace = investment.IncorporationPlace,
                         BusinessType = investment.BusinessType,
                         InvestmentPermittedAddress = investmentPermittedAddress,
@@ -51,7 +49,6 @@ namespace dica.Repositories
                         PermitDate = investment.PermitDate,
                         Sector = sector.Name,
                         InvestingCountry = investingCountry.Name
-
                     });
                 
                 return query.ToList();
@@ -65,8 +62,7 @@ namespace dica.Repositories
                 var investmentDto = (from investment in db.Investments
                                      join investorAddress in db.Addresses on investment.InvestorAddressId equals investorAddress.UID
                                      join organizationAddress in db.Addresses on investment.OrganizationAddressId equals organizationAddress.UID
-                                     join investmentPermittedAddress in db.Addresses on investment.InvestmentPermittedAddressId equals investmentPermittedAddress.UID
-                                     //join jointVenturePercentage in db.JointVenturePercentages on investment.UID equals jointVenturePercentage.InvestmentId
+                                     join investmentPermittedAddress in db.Addresses on investment.InvestmentPermittedAddressId equals investmentPermittedAddress.UID                                     
                                      where investment.UID == uid
                             select new InvestmentViewModel {
                                 UID = investment.UID,
@@ -89,11 +85,19 @@ namespace dica.Repositories
                                 PermitNo = investment.PermitNo,
                                 PermitDate = investment.PermitDate,
                                 Sector = investment.Sector,
-                                InvestingCountry = investment.InvestingCountry           
+                                InvestingCountry = investment.InvestingCountry,
+                                Landowner = investment.Landowner,
+                                LandArea = investment.LandArea,
+                                LandAreaUnit = investment.LandAreaUnit,
+                                LeaseTerm = investment.LeaseTerm,
+                                ExtendedLeaseTerm = investment.ExtendedLeaseTerm,
+                                AnnualLeaseFee = investment.AnnualLeaseFee,
+                                TotalNoofForeignEmployee = investment.TotalNoofForeignEmployee,
+                                TotalNoofLocalEmployee = investment.TotalNoofLocalEmployee        
 
                             }).FirstOrDefault();
 
-                var jointVenturePercentages = db.JointVenturePercentages.Where(jv => jv.InvestmentId == investmentDto.UID).ToList();
+                var jointVenturePercentages = db.JointVenturePercentages.Where(jv => jv.InvestmentId == investmentDto.UID).OrderBy(jv=>jv.Percentage).ToList();
                 if (jointVenturePercentages != null && jointVenturePercentages.Count > 0)
                 {
                     investmentDto.JointVenturePercentages = new List<JointVenturePercentage>();
@@ -191,6 +195,14 @@ namespace dica.Repositories
                 investment.PermitDate = investmentViewModel.PermitDate;
                 investment.Sector = investmentViewModel.Sector;
                 investment.InvestingCountry = investment.InvestingCountry;
+                investment.Landowner = investment.Landowner;
+                investment.LandArea = investment.LandArea;
+                investment.LandAreaUnit = investment.LandAreaUnit;
+                investment.LeaseTerm = investment.LeaseTerm;
+                investment.ExtendedLeaseTerm = investment.ExtendedLeaseTerm;
+                investment.AnnualLeaseFee = investment.AnnualLeaseFee;
+                investment.TotalNoofForeignEmployee = investment.TotalNoofForeignEmployee;
+                investment.TotalNoofLocalEmployee = investment.TotalNoofLocalEmployee;
                 investment.ModifiedBy = userName;
                 investment.ModifiedOn = DateTime.Now;
 

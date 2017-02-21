@@ -35,6 +35,8 @@ namespace dica.Controllers
             investment.CapitalDetails.Add(new CapitalDetail { Description = "Utilities & Infrastructure" });
             investment.CapitalDetails.Add(new CapitalDetail { Description = "Building" });
             investment.CapitalDetails.Add(new CapitalDetail { Description = "Raw Material" });
+
+            investment.CapitalDetails = investment.CapitalDetails.OrderBy(cd => cd.Description).ToList();
             return View(investment);
         }
 
@@ -68,6 +70,8 @@ namespace dica.Controllers
                 investment.CapitalDetails.Add(new CapitalDetail { Description = "Building" });
                 investment.CapitalDetails.Add(new CapitalDetail { Description = "Raw Material" });
             }
+            investment.CapitalDetails = investment.CapitalDetails.OrderBy(cd => cd.Description).ToList();
+            
             return View(investment);
         }
 

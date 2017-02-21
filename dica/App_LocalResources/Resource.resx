@@ -120,6 +120,9 @@
   <data name="AmountofForeignCapital" xml:space="preserve">
     <value>Amount of Foreign Capital</value>
   </data>
+  <data name="AnnualLeaseFee" xml:space="preserve">
+    <value>Annual Lease Fee</value>
+  </data>
   <data name="BusinessType" xml:space="preserve">
     <value>Type of Investment Business</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="Country" xml:space="preserve">
     <value>Country</value>
   </data>
+  <data name="ExtendedLeaseTerm" xml:space="preserve">
+    <value>Extended Lease Term</value>
+  </data>
   <data name="FormofInvestment" xml:space="preserve">
     <value>Form of Investment</value>
   </data>
@@ -162,11 +168,23 @@
   <data name="InvestorName" xml:space="preserve">
     <value>Name of Investor/Promoter</value>
   </data>
+  <data name="LandArea" xml:space="preserve">
+    <value>Land Area</value>
+  </data>
+  <data name="LandAreaUnit" xml:space="preserve">
+    <value>Land Area Unit</value>
+  </data>
+  <data name="Landowner" xml:space="preserve">
+    <value>Landowner</value>
+  </data>
   <data name="LangEnglish" xml:space="preserve">
     <value>English</value>
   </data>
   <data name="LangMyanmar" xml:space="preserve">
     <value>မြန်မာဘာသာ</value>
+  </data>
+  <data name="LeaseTerm" xml:space="preserve">
+    <value>Lease Term</value>
   </data>
   <data name="Line1Address" xml:space="preserve">
     <value>Address</value>
@@ -197,6 +215,12 @@
   </data>
   <data name="TotalAmountofCapital" xml:space="preserve">
     <value>Total Amount of Capital </value>
+  </data>
+  <data name="TotalNoofForeignEmployee" xml:space="preserve">
+    <value>Total No. of Employee (Foreign)</value>
+  </data>
+  <data name="TotalNoofLocalEmployee" xml:space="preserve">
+    <value>Total No. of Employee (Local)</value>
   </data>
   <data name="ValidityofInvestmentPermit" xml:space="preserve">
     <value>Validity of Investment Permit</value>

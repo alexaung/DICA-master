@@ -70,6 +70,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Annual Lease Fee.
+        /// </summary>
+        public static string AnnualLeaseFee {
+            get {
+                return ResourceManager.GetString("AnnualLeaseFee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type of Investment Business.
         /// </summary>
         public static string BusinessType {
@@ -142,6 +151,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extended Lease Term.
+        /// </summary>
+        public static string ExtendedLeaseTerm {
+            get {
+                return ResourceManager.GetString("ExtendedLeaseTerm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Form of Investment.
         /// </summary>
         public static string FormofInvestment {
@@ -196,6 +214,33 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Land Area.
+        /// </summary>
+        public static string LandArea {
+            get {
+                return ResourceManager.GetString("LandArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land Area Unit.
+        /// </summary>
+        public static string LandAreaUnit {
+            get {
+                return ResourceManager.GetString("LandAreaUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Landowner.
+        /// </summary>
+        public static string Landowner {
+            get {
+                return ResourceManager.GetString("Landowner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         public static string LangEnglish {
@@ -210,6 +255,15 @@ namespace dica.App_LocalResources {
         public static string LangMyanmar {
             get {
                 return ResourceManager.GetString("LangMyanmar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lease Term.
+        /// </summary>
+        public static string LeaseTerm {
+            get {
+                return ResourceManager.GetString("LeaseTerm", resourceCulture);
             }
         }
         
@@ -300,6 +354,24 @@ namespace dica.App_LocalResources {
         public static string TotalAmountofCapital {
             get {
                 return ResourceManager.GetString("TotalAmountofCapital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total No. of Employee (Foreign).
+        /// </summary>
+        public static string TotalNoofForeignEmployee {
+            get {
+                return ResourceManager.GetString("TotalNoofForeignEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total No. of Employee (Local).
+        /// </summary>
+        public static string TotalNoofLocalEmployee {
+            get {
+                return ResourceManager.GetString("TotalNoofLocalEmployee", resourceCulture);
             }
         }
         

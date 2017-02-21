@@ -54,6 +54,22 @@ namespace dica.Models
         
         public string InvestingCountry { get; set; }
 
+        public string Landowner { get; set; }
+
+        public decimal LandArea { get; set; }
+
+        public string LandAreaUnit { get; set; }
+
+        public int LeaseTerm { get; set; }
+
+        public int ExtendedLeaseTerm { get; set; }
+
+        public string AnnualLeaseFee { get; set; }
+
+        public int TotalNoofLocalEmployee { get; set; }
+
+        public int TotalNoofForeignEmployee { get; set; }
+
         public string CreatedBy { get; set; }
 
         public DateTime CreatedOn { get; set; }

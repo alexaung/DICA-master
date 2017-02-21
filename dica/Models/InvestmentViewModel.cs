@@ -91,6 +91,39 @@ namespace dica.Models
 
         public List<JointVenturePercentage> JointVenturePercentages { get; set; }
 
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "Landowner")]
+        public string Landowner { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "LandArea")]
+        public decimal LandArea { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "LandAreaUnit")]
+        public string LandAreaUnit { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "LeaseTerm")]
+        public int LeaseTerm { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "ExtendedLeaseTerm")]
+        public int ExtendedLeaseTerm { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "AnnualLeaseFee")]
+        public string AnnualLeaseFee { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "TotalNoofLocalEmployee")]
+        public int TotalNoofLocalEmployee { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "TotalNoofForeignEmployee")]
+        public int TotalNoofForeignEmployee { get; set; }
+
+
         public List<CapitalDetail> CapitalDetails { get; set; }
     }
 }

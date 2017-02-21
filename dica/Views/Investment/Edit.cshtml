@@ -14,16 +14,11 @@
             <div class="row">
                 <div class="col col-xs-6">
                     <h3 class="panel-title">Edit Investment</h3>
-                </div>
-                @*<div class="col col-xs-6 text-right">
-                    <button type="button" class="btn btn-sm btn-primary btn-create" onclick="location.href='@Url.Action("Create", "Investment")'">Create New</button>
-                </div>*@
+                </div>                
             </div>
         </div>
         <div class="panel-body">
             <div class="form-horizontal">
-                @*<h3>Edit Investment</h3>
-                <hr />*@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.UID)
                 
@@ -373,6 +368,73 @@ else
 }
 
                 </fieldset>
+
+                <fieldset>
+                    <legend>Lease Terms</legend>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Landowner, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Landowner, new { @class = "form-control", cols = 60, rows = 4 })
+                            @Html.ValidationMessageFor(model => model.Landowner, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LandArea, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                @Html.EditorFor(model => model.LandArea, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                @Html.ValidationMessageFor(model => model.LandArea, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(model => model.LandAreaUnit, new SelectList(StatusRepository.GetStatusByGroup("LandAreaUnit"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                @Html.ValidationMessageFor(model => model.LandAreaUnit, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LeaseTerm, new { @class = "control-label col-md-2" })
+                        <div class="input-group col-md-2">
+                            @Html.EditorFor(model => model.LeaseTerm, new { htmlAttributes = new { @class = "form-control" } })
+                            <span class="input-group-addon">Years&nbsp;</span>
+                            @Html.ValidationMessageFor(model => model.LeaseTerm, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ExtendedLeaseTerm, new { @class = "control-label col-md-2" })
+                        <div class="input-group col-md-2">
+                            @Html.EditorFor(model => model.ExtendedLeaseTerm, new { htmlAttributes = new { @class = "form-control" } })
+                            <span class="input-group-addon">Years&nbsp;</span>
+                            @Html.ValidationMessageFor(model => model.ExtendedLeaseTerm, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AnnualLeaseFee, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.AnnualLeaseFee, new { @class = "form-control", cols = 60, rows = 4 })
+                            @Html.ValidationMessageFor(model => model.AnnualLeaseFee, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TotalNoofLocalEmployee, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TotalNoofLocalEmployee, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TotalNoofLocalEmployee, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TotalNoofForeignEmployee, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TotalNoofForeignEmployee, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TotalNoofForeignEmployee, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </fieldset>
+
                 <fieldset>
                     <legend>Total Amt of Capital</legend>
                     <div class="printer-type">
@@ -425,12 +487,7 @@ else
                         </table>
                     </div>
                 </fieldset>
-
-                @*<div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
-                    </div>
-                </div>*@
+                
             </div>
 
         </div>
@@ -461,7 +518,6 @@ else
                     size: 5
                 });
 
-                //$(".btnEdit").bind("click", Edit);
                 $(".btnDelete").bind("click", Delete);
                 $("#btnAdd").bind("click", Add);
 
