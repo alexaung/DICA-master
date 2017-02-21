@@ -21,7 +21,7 @@
     @Html.ValidationSummary(true, "", new {@class = "text-danger"})
 
         <fieldset class="fsStyle">
-            <legend class="legendStyle">Investor/Promoter</legend>
+            <legend>Investor/Promoter</legend>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.InvestorName, new {@class = "control-label col-md-2"})
@@ -72,7 +72,7 @@
             </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset class="fsStyle">
             <legend>Principal Organization</legend>
             <div class="form-group">
                 @Html.LabelFor(model => model.OrganizationName, new {@class = "control-label col-md-2"})
@@ -124,7 +124,7 @@
 
         </fieldset>
 
-        <fieldset>
+        <fieldset class="fsStyle">
             <legend>Investment Details</legend>
             <div class="form-group">
                 @Html.LabelFor(model => model.CompanyNameinMyanmar, new {@class = "control-label col-md-2"})
@@ -294,7 +294,7 @@
 
         </fieldset> 
         
-        <fieldset>
+        <fieldset class="fsStyle">
             <legend>Lease Terms</legend>
             <div class="form-group">
                 @Html.LabelFor(model => model.Landowner, new { @class = "control-label col-md-2" })
@@ -360,7 +360,7 @@
 
         </fieldset>
 
-        <fieldset>
+        <fieldset class="fsStyle">
                 <legend>Total Amt of Capital</legend>
                 <div class="printer-type">
                     <table id="tblCapital" class="table table-striped table-bordered table-list">

@@ -220,6 +220,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\LanguageHelper.cs" />
+    <Compile Include="Migrations\201702211116080_InitialCreate.cs" />
+    <Compile Include="Migrations\201702211116080_InitialCreate.Designer.cs">
+      <DependentUpon>201702211116080_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -1483,6 +1488,9 @@
     <EmbeddedResource Include="App_LocalResources\Resource.my.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.my.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702211116080_InitialCreate.resx">
+      <DependentUpon>201702211116080_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

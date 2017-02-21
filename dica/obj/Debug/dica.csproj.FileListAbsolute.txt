@@ -170,7 +170,6 @@ C:\My App\DICA-master\dica\bin\Microsoft.Owin.Security.OAuth.xml
 C:\My App\DICA-master\dica\bin\Microsoft.Owin.Security.Google.xml
 C:\My App\DICA-master\dica\bin\Microsoft.Owin.Security.Twitter.xml
 C:\My App\DICA-master\dica\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\My App\DICA-master\dica\obj\Debug\dica.csprojResolveAssemblyReference.cache
 C:\My App\DICA-master\dica\obj\Debug\dica.App_LocalResources.Resource.resources
 C:\My App\DICA-master\dica\obj\Debug\dica.Properties.Resources.resources
 C:\My App\DICA-master\dica\obj\Debug\dica.App_LocalResources.Resource.my.resources
@@ -268,3 +267,4 @@ C:\Users\soemoe\code\DICA-master\dica\obj\Debug\dica.csproj.GenerateResource.Cac
 C:\Users\soemoe\code\DICA-master\dica\obj\Debug\my\dica.resources.dll
 C:\Users\soemoe\code\DICA-master\dica\obj\Debug\dica.dll
 C:\Users\soemoe\code\DICA-master\dica\obj\Debug\dica.pdb
+C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.InitialCreate.resources
