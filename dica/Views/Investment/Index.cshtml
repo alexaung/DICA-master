@@ -182,7 +182,7 @@
                             @Html.DisplayFor(modelItem => item.FormofInvestment)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TotalAmountofCapital + "(" + item.CapitalCurrency + ")")
+                            @Html.DisplayFor(modelItem => item.TotalAmountofCapital) (@Html.DisplayFor(modelItem => item.CapitalCurrency))
                         </td>
                     </tr>
 }

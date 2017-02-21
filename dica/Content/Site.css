@@ -214,3 +214,10 @@ used to vertically center elements, may need modification if you're not using de
 .currency-group .form-control{
     width:10%;
 }
+
+/*.txtfld{ width:100%;}*/
+
+th {
+  font-weight: bold;
+  text-align: center;
+}

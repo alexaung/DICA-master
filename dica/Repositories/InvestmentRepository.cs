@@ -98,8 +98,14 @@ namespace dica.Repositories
                 {
                     investmentDto.JointVenturePercentages = new List<JointVenturePercentage>();
                     investmentDto.JointVenturePercentages.AddRange(jointVenturePercentages);
-                }                
-                
+                }
+                var capitalDetails = db.CapitalDetails.Where(jv => jv.InvestmentId == investmentDto.UID).ToList();
+                if (capitalDetails != null && capitalDetails.Count > 0)
+                {
+                    investmentDto.CapitalDetails = new List<CapitalDetail>();
+                    investmentDto.CapitalDetails.AddRange(capitalDetails);
+                }
+
                 return investmentDto;
             }
         }
@@ -143,6 +149,16 @@ namespace dica.Repositories
                                 db.JointVenturePercentages.Add(jv);
                             }
                         }
+                    }
+                }
+
+                if (investmentViewModel.CapitalDetails != null && investmentViewModel.CapitalDetails.Count > 0)
+                {
+                    foreach (CapitalDetail cd in investmentViewModel.CapitalDetails)
+                    {                        
+                        cd.UID = Guid.NewGuid();
+                        cd.InvestmentId = investment.UID;
+                        db.CapitalDetails.Add(cd);                        
                     }
                 }
                 db.SaveChanges();
@@ -204,6 +220,17 @@ namespace dica.Repositories
                                 db.JointVenturePercentages.Add(jv);
                             }
                         }
+                    }
+                }
+
+                db.CapitalDetails.RemoveRange(db.CapitalDetails.Where(x => x.InvestmentId == investment.UID));
+                if (investmentViewModel.CapitalDetails != null && investmentViewModel.CapitalDetails.Count > 0)
+                {
+                    foreach (CapitalDetail cd in investmentViewModel.CapitalDetails)
+                    {                        
+                        cd.UID = Guid.NewGuid();
+                        cd.InvestmentId = investment.UID;
+                        db.CapitalDetails.Add(cd);                        
                     }
                 }
 

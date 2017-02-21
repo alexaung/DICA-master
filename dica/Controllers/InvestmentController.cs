@@ -28,6 +28,13 @@ namespace dica.Controllers
         public ActionResult Create()
         {
             var investment = new InvestmentViewModel();
+            investment.CapitalDetails = new List<CapitalDetail>();
+            investment.CapitalDetails.Add(new CapitalDetail { Description = "Cash" });
+            investment.CapitalDetails.Add(new CapitalDetail { Description = "Machinery" });
+            investment.CapitalDetails.Add(new CapitalDetail { Description = "Land Rental" });
+            investment.CapitalDetails.Add(new CapitalDetail { Description = "Utilities & Infrastructure" });
+            investment.CapitalDetails.Add(new CapitalDetail { Description = "Building" });
+            investment.CapitalDetails.Add(new CapitalDetail { Description = "Raw Material" });
             return View(investment);
         }
 
@@ -51,6 +58,16 @@ namespace dica.Controllers
         public ActionResult Edit(Guid id)
         {
             var investment = InvestmentRepository.GetInvestment(id);
+            if(investment.CapitalDetails == null || investment.CapitalDetails.Count == 0)
+            {
+                investment.CapitalDetails = new List<CapitalDetail>();
+                investment.CapitalDetails.Add(new CapitalDetail { Description = "Cash" });
+                investment.CapitalDetails.Add(new CapitalDetail { Description = "Machinery" });
+                investment.CapitalDetails.Add(new CapitalDetail { Description = "Land Rental" });
+                investment.CapitalDetails.Add(new CapitalDetail { Description = "Utilities & Infrastructure" });
+                investment.CapitalDetails.Add(new CapitalDetail { Description = "Building" });
+                investment.CapitalDetails.Add(new CapitalDetail { Description = "Raw Material" });
+            }
             return View(investment);
         }
 

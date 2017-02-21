@@ -90,5 +90,7 @@ namespace dica.Models
         public string InvestingCountry { get; set; }
 
         public List<JointVenturePercentage> JointVenturePercentages { get; set; }
+
+        public List<CapitalDetail> CapitalDetails { get; set; }
     }
 }

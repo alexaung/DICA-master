@@ -21,5 +21,7 @@ namespace dica.Models
 
         public int NumCode { get; set; }
 
+        public string Nationality { get; set; }
+
     }
 }

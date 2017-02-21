@@ -39,7 +39,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.Citizenship, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.Citizenship, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Please select Citizenship", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                            @Html.DropDownListFor(model => model.Citizenship, new SelectList(CountryRepository.GetCountries(), "ISO", "Nationality"), "Please select Citizenship", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
                             @Html.ValidationMessageFor(model => model.Citizenship, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -220,7 +220,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.InvestmentPermittedAddress.State, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.InvestmentPermittedAddress.State, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.DropDownListFor(model => model.InvestmentPermittedAddress.State, new SelectList(DropDownListRepository.GetRegions(), "Value", "Text", "MM"), "Please select state", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
                             @Html.ValidationMessageFor(model => model.InvestmentPermittedAddress.State, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -240,36 +240,52 @@
                             @Html.ValidationMessageFor(model => model.AmountofForeignCapital, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
+                    
                     <div class="form-group">
-                        @Html.LabelFor(model => model.TotalAmountofCapitalInKyat, new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.TotalAmountofCapital, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.TotalAmountofCapitalInKyat, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.TotalAmountofCapitalInKyat, "", new { @class = "text-danger" })
+                            <div class="input-group">
+                                @Html.EditorFor(model => model.TotalAmountofCapital, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                @Html.ValidationMessageFor(model => model.TotalAmountofCapital, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(model => model.CapitalCurrency, new SelectList(StatusRepository.GetStatusByGroup("Currency"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                @Html.ValidationMessageFor(model => model.CapitalCurrency, "", new { @class = "text-danger" })
+                            </div>
                         </div>
+
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.PeriodforForeignCapitalBroughtin, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
+                        <div class="input-group col-md-2">
                             @Html.EditorFor(model => model.PeriodforForeignCapitalBroughtin, new { htmlAttributes = new { @class = "form-control" } })
+                            <span class="input-group-addon">Years&nbsp;</span>
                             @Html.ValidationMessageFor(model => model.PeriodforForeignCapitalBroughtin, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
+                        @Html.LabelFor(model => model.ValidityofInvestmentPermit, new { @class = "control-label col-md-2" })
+                        <div class="input-group col-md-2">
+                            @Html.EditorFor(model => model.ValidityofInvestmentPermit, new { htmlAttributes = new { @class = "form-control" } })
+                            <span class="input-group-addon">Years&nbsp;</span>
+                            @Html.ValidationMessageFor(model => model.ValidityofInvestmentPermit, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         @Html.LabelFor(model => model.ConstructionPeriod, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
+                        <div class="input-group col-md-2">
                             @Html.EditorFor(model => model.ConstructionPeriod, new { htmlAttributes = new { @class = "form-control" } })
+                            <span class="input-group-addon">Months</span>
                             @Html.ValidationMessageFor(model => model.ConstructionPeriod, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.ValidityofInvestmentPermit, new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.InvestingCountry, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.ValidityofInvestmentPermit, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ValidityofInvestmentPermit, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(model => model.InvestingCountry, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Please select Investing Country", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                            @Html.ValidationMessageFor(model => model.InvestingCountry, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -308,12 +324,12 @@
                                 {
                                     int i = 0;
                                     foreach (var item in Model.JointVenturePercentages)
-                                    {//for(int i = 0; i<Model.JointVenturePercentages.Count; i++)
+                                    {
                                         {
                                         <tr>
-                                            <td>@Html.TextBoxFor(modelItem => item.CompanyName, new { @class = "form-control" })</td>
-                                            <td>@Html.DropDownListFor(modelItem => item.Country, new SelectList(CountryRepository.GetCountries(), "ISO", "Name", item.Country), "Please select Country", new { @class = "form-control" })</td>
-                                            <td>@Html.TextBoxFor(modelItem => item.Percentage, new { @class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].CompanyName, new { @class = "form-control" })</td>
+                                            <td>@Html.DropDownListFor(modelItem => Model.JointVenturePercentages[i].Country, new SelectList(CountryRepository.GetCountries(), "ISO", "Name", item.Country), "Please select Country", new { @class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].Percentage, new { @class = "form-control" })</td>
                                             <td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
                                         </tr>
                                             i++;
@@ -356,6 +372,58 @@ else
     </div>
 }
 
+                </fieldset>
+                <fieldset>
+                    <legend>Total Amt of Capital</legend>
+                    <div class="printer-type">
+                        <table id="tblCapital" class="table table-striped table-bordered table-list">
+                            <thead align="center">
+                                <tr>
+                                    <th rowspan="2" width="25%">Description</th>
+                                    <th colspan="2">Local</th>
+                                    <th colspan="2">Foregin</th>
+                                    <th rowspan="2" width="15%">Total</th>
+                                </tr>
+                                <tr>
+                                    @*<td>Description</td>*@
+                                    <th width="15%">Equity</th>
+                                    <th width="15%">Loan</th>
+                                    <th width="15%">Equity</th>
+                                    <th width="15%">Loan</th>
+                                    @*<td width="15%">Total</td>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.CapitalDetails != null)
+                                {
+                                    int i = 0;
+                                    foreach (var item in Model.CapitalDetails)
+                                    {
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(model => Model.CapitalDetails[i].Description, new { htmlAttributes = new { @class = "form-control" } })@Html.HiddenFor(model => Model.CapitalDetails[i].Description)</td>
+                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
+                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
+                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
+                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
+                                                <td style="font-weight:bold">&nbsp;</td>
+                                            </tr>
+                                        }
+                                        i++;
+                                    }
+                                }
+                                
+                                <tr style="font-weight:bold">
+                                    <td>Total</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </fieldset>
 
                 @*<div class="form-group">
@@ -406,19 +474,79 @@ else
                     }
                 });
 
+                $(".printer-type tr:not(:lt(2), last) td:last-child").text(function () 
+                {
+                    var totalVal = 0;
+                    $(this).prevAll().each(function () {
+                        totalVal += parseFloat($(this).children('.txtfld').val()) || 0;
+                        //totalVal += parseInt( );
+                    });
+                    return parseFloat(totalVal).toFixed(2);
+                });
+
+                $(".printer-type tr:last td").text(function (i) {
+                    var totalVal = 0;
+                    $(this).parent().prevAll().find("td:nth-child(" + (++i) + ")").each(function () {
+                        totalVal += parseFloat($(this).children('.txtfld').val()) || 0;
+                        $(".printer-type tr:last td:first").text('Total');
+                    });
+                    return parseFloat(totalVal).toFixed(2)
+
+                });
+
+                $(".printer-type tr:last td:last").text(function (i) {
+                    var count = 0
+                    for (i = 3; i < $('tr').length; i++) {
+                        var trs = parseFloat($('tr:eq(' + i + ')').find('td:last').text())
+                        count += trs
+                    }
+                    return parseFloat(count).toFixed(2);
+                });
+                
+                $('.txtfld').bind({
+                    keyup: function () {
+                        //total calculation
+                        $(".printer-type tr:not(:lt(2), last) td:last-child").text(function () {
+                            var totalVal = 0;
+                            $(this).prevAll().each(function () {
+                                totalVal += parseFloat($(this).children('.txtfld').val()) || 0;
+                                //totalVal += parseInt( );
+                            });
+                            return parseFloat(totalVal).toFixed(2);
+                        });
+
+                        $(".printer-type tr:last td").text(function (i) {
+                            var totalVal = 0;
+                            $(this).parent().prevAll().find("td:nth-child(" + (++i) + ")").each(function () {
+                                totalVal += parseFloat($(this).children('.txtfld').val()) || 0;
+                                $(".printer-type tr:last td:first").text('Total');
+                            });
+                            return parseFloat(totalVal).toFixed(2)
+
+                        });
+
+                        var count = 0
+                        for (i = 3; i < $('tr').length; i++) {
+                            var trs = parseFloat($('tr:eq(' + i + ')').find('td:last').text())
+                            count += trs
+                        }
+                        $(".printer-type tr:last td:last").text(parseFloat(count).toFixed(2));
+
+                    }
+                });
+
             });
 
             function Add() {
-                var rowCount = $('#tblData tr').length;
-                //alert(rowCount);
+
+                var rowCount = parseInt($('#tblData tr').length);
                 $("#tblData tbody").append("<tr>" +
                     "<td><input class = 'form-control' type='text' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].CompanyName'/></td>" +
                     "<td><select class = 'form-control' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].Country' id='JointVenturePercentages_" + parseInt(rowCount - 1) + "__Country'></select></td>" +
-                    "<td><input class = 'form-control' type='text'name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].Percentage'/></td>" +
+                    "<td><input class = 'form-control' type='text' name='JointVenturePercentages[" + parseInt(rowCount - 1) + "].Percentage'/></td>" +
                     "<td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>" +
                     "</tr>");
-                //<a class='btnSave btn btn-primary' title='Save' href='#'><em class='fa fa-floppy-o'></em></a>
-                //$(".btnSave").bind("click", Save);
+
                 $(".btnDelete").bind("click", Delete);
 
                 $.ajax({
@@ -432,40 +560,6 @@ else
                         $("#JointVenturePercentages_" + parseInt(rowCount - 1) + "__Country").empty().html(items);
                     }
                 });
-            };
-
-            function Save() {
-                var par = $(this).parent().parent(); //tr
-                var tdCompanyName = par.children("td:nth-child(1)");
-                var tdCountry = par.children("td:nth-child(2)");
-                var tdPercentage = par.children("td:nth-child(3)");
-                var tdButtons = par.children("td:nth-child(4)");
-                tdCompanyName.html(tdCompanyName.children("input[type=text]").val());
-                tdCountry.html(tdCountry.children("input[type=text]").val());
-                tdPercentage.html(tdPercentage.children("input[type=text]").val());
-                tdButtons.html("<a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a>");
-
-                //<a class='btnEdit btn btn-default' title='Edit' href='#'><em class='fa fa-pencil'></em></a>
-                //$(".btnEdit").bind("click", Edit);
-                $(".btnDelete").bind("click", Delete);
-                return false; s
-            };
-
-            function Edit() {
-                var par = $(this).parent().parent(); //tr
-                var tdCompanyName = par.children("td:nth-child(1)");
-                var tdCountry = par.children("td:nth-child(2)");
-                var tdPercentage = par.children("td:nth-child(3)");
-                var tdButtons = par.children("td:nth-child(4)");
-                tdCompanyName.html("<input class = 'form-control' type='text' id='txtName' value='" + tdCompanyName.html() + "'/>");
-                tdCountry.html("<input class = 'form-control' type='text' id='txtPhone' value='" + tdCountry.html() + "'/>");
-                tdPercentage.html("<input class = 'form-control' type='text' id='txtEmail' value='" + tdPercentage.html() + "'/>");
-                tdButtons.html("<a class='btnSave btn btn-primary' title='Save' href='#'><em class='fa fa-floppy-o'></em></a>");
-
-                $(".btnSave").bind("click", Save);
-                $(".btnEdit").bind("click", Edit);
-                $(".btnDelete").bind("click", Delete);
-                return false;
             };
 
             function Delete() {

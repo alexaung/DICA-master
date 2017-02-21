@@ -226,6 +226,7 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Attachment.cs" />
     <Compile Include="Models\AttachmentViewModel.cs" />
+    <Compile Include="Models\CapitalDetail.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\InvestmentViewModel.cs" />
     <Compile Include="Models\JointVenturePercentage.cs" />

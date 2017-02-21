@@ -34,5 +34,7 @@ namespace dica.Models
         public DbSet<Attachment> Attachments { get; set; }
 
         public DbSet<JointVenturePercentage> JointVenturePercentages { get; set; }
+
+        public DbSet<CapitalDetail> CapitalDetails { get; set; }
     }
 }
