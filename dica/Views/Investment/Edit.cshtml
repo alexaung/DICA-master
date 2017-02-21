@@ -385,7 +385,7 @@ else
                             <div class="input-group">
                                 @Html.EditorFor(model => model.LandArea, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
                                 @Html.ValidationMessageFor(model => model.LandArea, "", new { @class = "text-danger" })
-                                @Html.DropDownListFor(model => model.LandAreaUnit, new SelectList(StatusRepository.GetStatusByGroup("LandAreaUnit"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                @Html.DropDownListFor(model => model.LandAreaUnit, new SelectList(StatusRepository.GetStatusByGroup("LandAreaUnit"), "Value", "Name"), "", new { @class = "form-control", style = "width: 132px;" })
                                 @Html.ValidationMessageFor(model => model.LandAreaUnit, "", new { @class = "text-danger" })
                             </div>
                         </div>
