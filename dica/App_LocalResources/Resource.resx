@@ -210,6 +210,9 @@
   <data name="Sector" xml:space="preserve">
     <value>Sector</value>
   </data>
+  <data name="SectorCategory" xml:space="preserve">
+    <value>Sector Category</value>
+  </data>
   <data name="State" xml:space="preserve">
     <value>State / Region</value>
   </data>

@@ -47,6 +47,8 @@ namespace dica.Models
         public DateTime PermitDate { get; set; }        
 
         public string Sector { get; set; }
+
+        public string SectorCategory { get; set; }
         
         public string InvestingCountry { get; set; }
 

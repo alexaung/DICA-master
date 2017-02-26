@@ -82,6 +82,9 @@ namespace dica.Models
         [Display(ResourceType = typeof(Resource), Name = "Sector")]
         public string Sector { get; set; }
 
+        [Display(ResourceType = typeof(Resource), Name = "SectorCategory")]
+        public string SectorCategory { get; set; }
+
         [Required]
         [Display(ResourceType = typeof(Resource), Name = "InvestingCountry")]
         public string InvestingCountry { get; set; }

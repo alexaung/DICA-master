@@ -340,6 +340,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sector Category.
+        /// </summary>
+        public static string SectorCategory {
+            get {
+                return ResourceManager.GetString("SectorCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to State / Region.
         /// </summary>
         public static string State {

@@ -85,6 +85,7 @@ namespace dica.Repositories
                                 PermitNo = investment.PermitNo,
                                 PermitDate = investment.PermitDate,
                                 Sector = investment.Sector,
+                                SectorCategory = investment.SectorCategory,
                                 InvestingCountry = investment.InvestingCountry,
                                 Landowner = investment.Landowner,
                                 LandArea = investment.LandArea,
@@ -173,7 +174,7 @@ namespace dica.Repositories
         {
             using (var db = new ApplicationDbContext())
             {
-                var investment = db.Investments.Where(i => i.UID == investmentViewModel.UID).FirstOrDefault();
+                var investment = db.Investments.FirstOrDefault(i => i.UID == investmentViewModel.UID);
 
                 investment.InvestorName = investmentViewModel.InvestorName;
                 investment.Citizenship = investmentViewModel.Citizenship;
@@ -194,6 +195,7 @@ namespace dica.Repositories
                 investment.PermitNo = investmentViewModel.PermitNo;
                 investment.PermitDate = investmentViewModel.PermitDate;
                 investment.Sector = investmentViewModel.Sector;
+                investment.SectorCategory = investmentViewModel.SectorCategory;
                 investment.InvestingCountry = investment.InvestingCountry;
                 investment.Landowner = investment.Landowner;
                 investment.LandArea = investment.LandArea;

@@ -224,6 +224,10 @@
     <Compile Include="Migrations\201702211116080_InitialCreate.Designer.cs">
       <DependentUpon>201702211116080_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702230929308_AddSectorCategory.cs" />
+    <Compile Include="Migrations\201702230929308_AddSectorCategory.Designer.cs">
+      <DependentUpon>201702230929308_AddSectorCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -1321,6 +1325,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Content\bootstrap-select.css.map" />
+    <None Include="Properties\PublishProfiles\CustomBuild.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\FormValidation\formValidation.js" />
     <Content Include="Scripts\FormValidation\formValidation.min.js" />
@@ -1491,6 +1496,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702211116080_InitialCreate.resx">
       <DependentUpon>201702211116080_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702230929308_AddSectorCategory.resx">
+      <DependentUpon>201702230929308_AddSectorCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
