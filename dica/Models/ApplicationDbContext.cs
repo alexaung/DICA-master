@@ -28,5 +28,7 @@ namespace dica.Models
         public DbSet<JointVenturePercentage> JointVenturePercentages { get; set; }
 
         public DbSet<CapitalDetail> CapitalDetails { get; set; }
+
+        public DbSet<Tax> Taxes { get; set; }
     }
 }

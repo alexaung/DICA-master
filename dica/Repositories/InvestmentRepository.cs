@@ -116,6 +116,14 @@ namespace dica.Repositories
                     investmentDto.JointVenturePercentages = new List<JointVenturePercentage>();
                     investmentDto.JointVenturePercentages.AddRange(jointVenturePercentages);
                 }
+
+                var taxes = db.Taxes.Where(tax=> tax.InvestmentId == investmentDto.UID).OrderBy(tax=>tax.Amount).ToList();
+                if(taxes != null && taxes.Count > 0)
+                {
+                    investmentDto.Taxes = new List<Tax>();
+                    investmentDto.Taxes.AddRange(taxes);
+                }
+
                 var capitalDetails = db.CapitalDetails.Where(jv => jv.InvestmentId == investmentDto.UID).ToList();
                 if (capitalDetails != null && capitalDetails.Count > 0)
                 {
@@ -167,6 +175,16 @@ namespace dica.Repositories
                                 db.JointVenturePercentages.Add(jv);
                             }
                         }
+                    }
+                }
+
+                if (investmentViewModel.Taxes != null && investmentViewModel.Taxes.Count > 0)
+                {
+                    foreach (Tax tax in investmentViewModel.Taxes)
+                    {
+                        tax.UID = Guid.NewGuid();
+                        tax.InvestmentId = investment.UID;
+                        db.Taxes.Add(tax);
                     }
                 }
 
@@ -253,6 +271,17 @@ namespace dica.Repositories
                                 db.JointVenturePercentages.Add(jv);
                             }
                         }
+                    }
+                }
+
+                db.Taxes.RemoveRange(db.Taxes.Where(x => x.InvestmentId == investment.UID));
+                if (investmentViewModel.Taxes != null && investmentViewModel.Taxes.Count > 0)
+                {
+                    foreach (Tax tax in investmentViewModel.Taxes)
+                    {
+                        tax.UID = Guid.NewGuid();
+                        tax.InvestmentId = investment.UID;
+                        db.Taxes.Add(tax);
                     }
                 }
 

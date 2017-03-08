@@ -485,6 +485,52 @@ else
 
                 </fieldset>
 
+                <fieldset>
+                    <legend>Taxes</legend>
+                    <div id="Taxes" style="width:60%" class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col col-xs-6">
+                                    <h3 class="panel-title">Taxes</h3>
+                                </div>
+                                <div class="col col-xs-6 text-right">
+                                    <button id="btnTaxAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table id="tblTaxData" class="table table-striped table-bordered table-list">
+                                <thead>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>Amount</td>
+                                        <td>Currency</td>
+                                        <th><em class="fa fa-cog"></em></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.Taxes != null)
+                                    {
+                                        int i = 0;
+                                        foreach (var item in Model.Taxes)
+                                        {
+                                            {
+                                                <tr>
+                                                    <td>@Html.TextBoxFor(modelItem => Model.Taxes[i].Name, new { @class = "form-control" })</td>
+                                                    <td>@Html.TextBoxFor(modelItem => Model.Taxes[i].Amount, new { @class = "form-control" })</td>
+                                                    <td>@Html.DropDownListFor(modelItem => Model.Taxes[i].Currency, new SelectList(StatusRepository.GetStatusByGroup("Currency"), "Value", "Name", item.Currency), "Please select Currency", new { @class = "form-control" })</td>
+                                                    <td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
+                                                </tr>
+                                                i++;
+                                            }
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </fieldset>
+
                 <fieldset class="fsStyle">
                     <legend>Total Amt of Capital</legend>
                     <div class="printer-type">
@@ -587,6 +633,9 @@ else
                 $(".btnDelete").bind("click", Delete);
                 $("#btnAdd").bind("click", Add);
 
+                $(".btnTaxDelete").bind("click", DeleteTax);
+                $("#btnTaxAdd").bind("click", AddTax);
+
                 $('#FormofInvestment').change(function () {
                     var value = $(this).val();
                     if (value == 'JV') {
@@ -685,6 +734,37 @@ else
             };
 
             function Delete() {
+                var par = $(this).parent().parent(); //tr
+                par.remove();
+                return false;
+            };
+
+            function AddTax() {
+
+                var rowCount = parseInt($('#tblTaxData tr').length);
+                $("#tblTaxData tbody").append("<tr>" +
+                    "<td><input class = 'form-control' type='text' name='Taxes[" + parseInt(rowCount - 1) + "].Name'/></td>" +
+                    "<td><input class = 'form-control' type='text' name='Taxes[" + parseInt(rowCount - 1) + "].Amount'/></td>" +
+                    "<td><select class = 'form-control' name='Taxes[" + parseInt(rowCount - 1) + "].Currency' id='Taxes" + parseInt(rowCount - 1) + "__Currency'></select></td>" +
+                    "<td><a class='btnTaxDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>" +
+                    "</tr>");
+
+                $(".btnTaxDelete").bind("click", DeleteTax);
+
+                $.ajax({
+                    url: "/Investment/GetCurrencies",
+                    type: 'Post',
+                    success: function (data) {
+                        var items = "";
+                        $.each(data, function (i, val) {
+                            items += "<option value='" + val.Value + "'>" + val.Name + "</option>";
+                        });
+                        $("#Taxes" + parseInt(rowCount - 1) + "__Currency").empty().html(items);
+                    }
+                });
+            };
+
+            function DeleteTax() {
                 var par = $(this).parent().parent(); //tr
                 par.remove();
                 return false;

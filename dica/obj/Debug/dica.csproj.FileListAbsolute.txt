@@ -274,3 +274,6 @@ C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddTypeOfInvestment.resourc
 C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddDateType.resources
 C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddEnvironmentandSocialImpactAssessment.resources
 C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddCorporateSocialResponsibility.resources
+C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddTaxes.resources
+C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddCombineKeyIntoStatus.resources
+C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.ModifiedTaxTable.resources

@@ -127,5 +127,11 @@ namespace dica.Controllers
             var countries = CountryRepository.GetCountries();
             return Json(countries, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetCurrencies()
+        {
+            var currencies = StatusRepository.GetStatusByGroup("Currency");
+            return Json(currencies, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -146,8 +146,10 @@ namespace dica.Models
         [Required]
         [Display(ResourceType = typeof(Resource), Name = "EnvironmentandSocialImpactAssessment")]
         public string[] EnvironmentandSocialImpactAssessment { get; set; }
-
+        
         public string EnvironmentandSocialImpactAssessmentSelected { get; set; }
+
+        public List<Tax> Taxes { get; set; }
 
         public List<CapitalDetail> CapitalDetails { get; set; }
     }

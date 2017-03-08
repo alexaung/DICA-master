@@ -244,6 +244,18 @@
     <Compile Include="Migrations\201703081547461_AddCorporateSocialResponsibility.Designer.cs">
       <DependentUpon>201703081547461_AddCorporateSocialResponsibility.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703081638508_AddTaxes.cs" />
+    <Compile Include="Migrations\201703081638508_AddTaxes.Designer.cs">
+      <DependentUpon>201703081638508_AddTaxes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703081722551_AddCombineKeyIntoStatus.cs" />
+    <Compile Include="Migrations\201703081722551_AddCombineKeyIntoStatus.Designer.cs">
+      <DependentUpon>201703081722551_AddCombineKeyIntoStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703081733304_ModifiedTaxTable.cs" />
+    <Compile Include="Migrations\201703081733304_ModifiedTaxTable.Designer.cs">
+      <DependentUpon>201703081733304_ModifiedTaxTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -258,6 +270,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Investment.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Tax.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1533,6 +1546,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703081547461_AddCorporateSocialResponsibility.resx">
       <DependentUpon>201703081547461_AddCorporateSocialResponsibility.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703081638508_AddTaxes.resx">
+      <DependentUpon>201703081638508_AddTaxes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703081722551_AddCombineKeyIntoStatus.resx">
+      <DependentUpon>201703081722551_AddCombineKeyIntoStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703081733304_ModifiedTaxTable.resx">
+      <DependentUpon>201703081733304_ModifiedTaxTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
