@@ -140,6 +140,10 @@ namespace dica.Models
         public int TotalNoofForeignEmployee { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Resource), Name = "CorporateSocialResponsibility")]
+        public int CorporateSocialResponsibility { get; set; }
+
+        [Required]
         [Display(ResourceType = typeof(Resource), Name = "EnvironmentandSocialImpactAssessment")]
         public string[] EnvironmentandSocialImpactAssessment { get; set; }
 

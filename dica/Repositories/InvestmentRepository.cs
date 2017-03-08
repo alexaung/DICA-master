@@ -102,6 +102,7 @@ namespace dica.Repositories
                                 AnnualLeaseFee = investment.AnnualLeaseFee,
                                 TotalNoofForeignEmployee = investment.TotalNoofForeignEmployee,
                                 TotalNoofLocalEmployee = investment.TotalNoofLocalEmployee,
+                                CorporateSocialResponsibility = investment.CorporateSocialResponsibility,
                                 EnvironmentandSocialImpactAssessmentSelected = investment.EnvironmentandSocialImpactAssessment       
 
                             }).FirstOrDefault();
@@ -221,6 +222,7 @@ namespace dica.Repositories
                 investment.AnnualLeaseFee = investmentViewModel.AnnualLeaseFee;
                 investment.TotalNoofForeignEmployee = investmentViewModel.TotalNoofForeignEmployee;
                 investment.TotalNoofLocalEmployee = investmentViewModel.TotalNoofLocalEmployee;
+                investment.CorporateSocialResponsibility = investmentViewModel.CorporateSocialResponsibility;
                 investment.EnvironmentandSocialImpactAssessment = string.Join(",", investmentViewModel.EnvironmentandSocialImpactAssessment); 
                 investment.ModifiedBy = userName;
                 investment.ModifiedOn = DateTime.Now;

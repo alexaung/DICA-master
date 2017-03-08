@@ -147,6 +147,9 @@
   <data name="ConstructionPeriodType" xml:space="preserve">
     <value>Construction Period Type</value>
   </data>
+  <data name="CorporateSocialResponsibility" xml:space="preserve">
+    <value>Corporate Social Responsibility</value>
+  </data>
   <data name="Country" xml:space="preserve">
     <value>Country</value>
   </data>

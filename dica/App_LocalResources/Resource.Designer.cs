@@ -151,6 +151,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Corporate Social Responsibility.
+        /// </summary>
+        public static string CorporateSocialResponsibility {
+            get {
+                return ResourceManager.GetString("CorporateSocialResponsibility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string Country {

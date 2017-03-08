@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201703081400572_AddEnvironmentandSocialImpactAssessment.Designer.cs">
       <DependentUpon>201703081400572_AddEnvironmentandSocialImpactAssessment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703081547461_AddCorporateSocialResponsibility.cs" />
+    <Compile Include="Migrations\201703081547461_AddCorporateSocialResponsibility.Designer.cs">
+      <DependentUpon>201703081547461_AddCorporateSocialResponsibility.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -1526,6 +1530,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703081400572_AddEnvironmentandSocialImpactAssessment.resx">
       <DependentUpon>201703081400572_AddEnvironmentandSocialImpactAssessment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703081547461_AddCorporateSocialResponsibility.resx">
+      <DependentUpon>201703081547461_AddCorporateSocialResponsibility.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
