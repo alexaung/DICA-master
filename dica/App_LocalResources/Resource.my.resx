@@ -138,6 +138,9 @@
   <data name="ConstructionPeriod" xml:space="preserve">
     <value>တည်ေဆာက်မှုကာလ</value>
   </data>
+  <data name="ConstructionPeriodType" xml:space="preserve">
+    <value>ConstructionPeriodType</value>
+  </data>
   <data name="Country" xml:space="preserve">
     <value>နိုင်ငံ</value>
   </data>
@@ -177,6 +180,9 @@
   <data name="PeriodforForeignCapitalBroughtin" xml:space="preserve">
     <value>နိုင်ငံခြားမတည်ေငွရင်းယူေဆာင်လာရမည့်ကာလ</value>
   </data>
+  <data name="PeriodforForeignCapitalBroughtinType" xml:space="preserve">
+    <value>PeriodforForeignCapitalBroughtinType</value>
+  </data>
   <data name="PermitDate" xml:space="preserve">
     <value>ခွင့်ပြုနေ့ဆွဲ</value>
   </data>
@@ -200,5 +206,8 @@
   </data>
   <data name="ValidityofInvestmentPermit" xml:space="preserve">
     <value>ရင်းနှီးမြှုတ်နှံမှုခွင့်ပြုသည့်သက်တမ်း</value>
+  </data>
+  <data name="ValidityofInvestmentPermitPeriodType" xml:space="preserve">
+    <value>ValidityofInvestmentPermitPeriodType</value>
   </data>
 </root>

@@ -271,3 +271,4 @@ C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.InitialCreate.resources
 C:\My App\DICA-master\dica\obj\Debug\dica.csprojResolveAssemblyReference.cache
 C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddSectorCategory.resources
 C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddTypeOfInvestment.resources
+C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddDateType.resources

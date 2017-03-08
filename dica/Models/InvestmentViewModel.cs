@@ -50,6 +50,10 @@ namespace dica.Models
         public int PeriodforForeignCapitalBroughtin { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Resource), Name = "PeriodforForeignCapitalBroughtinType")]
+        public string PeriodforForeignCapitalBroughtinType { get; set; }
+
+        [Required]
         [Display(ResourceType = typeof(Resource), Name = "TotalAmountofCapital")]
         public decimal TotalAmountofCapital { get; set; }
 
@@ -62,8 +66,16 @@ namespace dica.Models
         public int ConstructionPeriod { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Resource), Name = "ConstructionPeriodType")]
+        public string ConstructionPeriodType { get; set; }
+
+        [Required]
         [Display(ResourceType = typeof(Resource), Name = "ValidityofInvestmentPermit")]
         public int ValidityofInvestmentPermit { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "ValidityofInvestmentPermitPeriodType")]
+        public string ValidityofInvestmentPermitPeriodType { get; set; }
 
         [Required]
         [Display(ResourceType = typeof(Resource), Name = "FormofInvestment")]

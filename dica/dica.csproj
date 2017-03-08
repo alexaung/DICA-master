@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201703080750141_AddTypeOfInvestment.Designer.cs">
       <DependentUpon>201703080750141_AddTypeOfInvestment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703081150349_AddDateType.cs" />
+    <Compile Include="Migrations\201703081150349_AddDateType.Designer.cs">
+      <DependentUpon>201703081150349_AddDateType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -1510,6 +1514,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703080750141_AddTypeOfInvestment.resx">
       <DependentUpon>201703080750141_AddTypeOfInvestment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703081150349_AddDateType.resx">
+      <DependentUpon>201703081150349_AddDateType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

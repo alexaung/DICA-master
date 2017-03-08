@@ -32,13 +32,19 @@ namespace dica.Models
 
         public int PeriodforForeignCapitalBroughtin { get; set; }
 
+        public string PeriodforForeignCapitalBroughtinType { get; set; }
+
         public decimal TotalAmountofCapital { get; set; }
 
         public string CapitalCurrency { get; set; }
 
         public int ConstructionPeriod { get; set; }
 
+        public string ConstructionPeriodType { get; set; }
+
         public int ValidityofInvestmentPermit { get; set; }
+
+        public string ValidityofInvestmentPermitPeriodType { get; set; }
 
         public string FormofInvestment { get; set; }
                 

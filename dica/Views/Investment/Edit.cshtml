@@ -268,30 +268,39 @@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.PeriodforForeignCapitalBroughtin, new { @class = "control-label col-md-2" })
-                        <div class="input-group col-md-2">
-                            @Html.EditorFor(model => model.PeriodforForeignCapitalBroughtin, new { htmlAttributes = new { @class = "form-control" } })
-                            <span class="input-group-addon">Years&nbsp;</span>
-                            @Html.ValidationMessageFor(model => model.PeriodforForeignCapitalBroughtin, "", new { @class = "text-danger" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                @Html.EditorFor(model => model.PeriodforForeignCapitalBroughtin, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                @Html.ValidationMessageFor(model => model.PeriodforForeignCapitalBroughtin, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(model => model.PeriodforForeignCapitalBroughtinType, new SelectList(StatusRepository.GetStatusByGroup("DateType"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                @Html.ValidationMessageFor(model => model.PeriodforForeignCapitalBroughtinType, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.ValidityofInvestmentPermit, new { @class = "control-label col-md-2" })
-                        <div class="input-group col-md-2">
-                            @Html.EditorFor(model => model.ValidityofInvestmentPermit, new { htmlAttributes = new { @class = "form-control" } })
-                            <span class="input-group-addon">Years&nbsp;</span>
-                            @Html.ValidationMessageFor(model => model.ValidityofInvestmentPermit, "", new { @class = "text-danger" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                @Html.EditorFor(model => model.ValidityofInvestmentPermit, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                @Html.ValidationMessageFor(model => model.ValidityofInvestmentPermit, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(model => model.ValidityofInvestmentPermitPeriodType, new SelectList(StatusRepository.GetStatusByGroup("DateType"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                @Html.ValidationMessageFor(model => model.ValidityofInvestmentPermitPeriodType, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.ConstructionPeriod, new { @class = "control-label col-md-2" })
-                        <div class="input-group col-md-2">
-                            @Html.EditorFor(model => model.ConstructionPeriod, new { htmlAttributes = new { @class = "form-control" } })
-                            <span class="input-group-addon">Months</span>
-                            @Html.ValidationMessageFor(model => model.ConstructionPeriod, "", new { @class = "text-danger" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                @Html.EditorFor(model => model.ConstructionPeriod, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                @Html.ValidationMessageFor(model => model.ConstructionPeriod, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(model => model.ConstructionPeriodType, new SelectList(StatusRepository.GetStatusByGroup("DateType"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                @Html.ValidationMessageFor(model => model.ConstructionPeriodType, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </div>
+                    </div>  
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.InvestingCountry, new { @class = "control-label col-md-2" })

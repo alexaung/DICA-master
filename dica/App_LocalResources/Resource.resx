@@ -144,6 +144,9 @@
   <data name="ConstructionPeriod" xml:space="preserve">
     <value>Construction Period</value>
   </data>
+  <data name="ConstructionPeriodType" xml:space="preserve">
+    <value>Construction Period Type</value>
+  </data>
   <data name="Country" xml:space="preserve">
     <value>Country</value>
   </data>
@@ -201,6 +204,9 @@
   <data name="PeriodforForeignCapitalBroughtin" xml:space="preserve">
     <value>Period for Foreign Capital brought in</value>
   </data>
+  <data name="PeriodforForeignCapitalBroughtinType" xml:space="preserve">
+    <value>Period for Foreign Capital Brought in Type</value>
+  </data>
   <data name="PermitDate" xml:space="preserve">
     <value>Permit Date</value>
   </data>
@@ -230,5 +236,8 @@
   </data>
   <data name="ValidityofInvestmentPermit" xml:space="preserve">
     <value>Validity of Investment Permit</value>
+  </data>
+  <data name="ValidityofInvestmentPermitPeriodType" xml:space="preserve">
+    <value>Validity of Investment Permit Period Type</value>
   </data>
 </root>

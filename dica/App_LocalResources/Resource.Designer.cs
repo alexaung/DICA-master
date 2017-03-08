@@ -142,6 +142,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Construction Period Type.
+        /// </summary>
+        public static string ConstructionPeriodType {
+            get {
+                return ResourceManager.GetString("ConstructionPeriodType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string Country {
@@ -313,6 +322,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Period for Foreign Capital Brought in Type.
+        /// </summary>
+        public static string PeriodforForeignCapitalBroughtinType {
+            get {
+                return ResourceManager.GetString("PeriodforForeignCapitalBroughtinType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permit Date.
         /// </summary>
         public static string PermitDate {
@@ -399,6 +417,15 @@ namespace dica.App_LocalResources {
         public static string ValidityofInvestmentPermit {
             get {
                 return ResourceManager.GetString("ValidityofInvestmentPermit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validity of Investment Permit Period Type.
+        /// </summary>
+        public static string ValidityofInvestmentPermitPeriodType {
+            get {
+                return ResourceManager.GetString("ValidityofInvestmentPermitPeriodType", resourceCulture);
             }
         }
     }
