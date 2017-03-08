@@ -10,6 +10,8 @@ namespace dica.Models
         [Key]
         public Guid UID { get; set; }
 
+        public string TypeOfInvestment { get; set; }
+
         public string InvestorName { get; set; }
 
         public string Citizenship { get; set; }

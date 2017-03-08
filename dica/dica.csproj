@@ -228,6 +228,10 @@
     <Compile Include="Migrations\201702230929308_AddSectorCategory.Designer.cs">
       <DependentUpon>201702230929308_AddSectorCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703080750141_AddTypeOfInvestment.cs" />
+    <Compile Include="Migrations\201703080750141_AddTypeOfInvestment.Designer.cs">
+      <DependentUpon>201703080750141_AddTypeOfInvestment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -1428,14 +1432,18 @@
     <Content Include="Sql\iso_country_list.sql" />
     <Content Include="Sql\statuses.sql" />
     <Content Include="Views\Attachment\Index.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -1499,6 +1507,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702230929308_AddSectorCategory.resx">
       <DependentUpon>201702230929308_AddSectorCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703080750141_AddTypeOfInvestment.resx">
+      <DependentUpon>201703080750141_AddTypeOfInvestment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

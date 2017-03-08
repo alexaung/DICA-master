@@ -66,6 +66,7 @@ namespace dica.Repositories
                                      where investment.UID == uid
                             select new InvestmentViewModel {
                                 UID = investment.UID,
+                                TypeOfInvestment = investment.TypeOfInvestment,
                                 InvestorName = investment.InvestorName,
                                 Citizenship = investment.Citizenship,
                                 InvestorAddress = investorAddress,
@@ -176,6 +177,7 @@ namespace dica.Repositories
             {
                 var investment = db.Investments.FirstOrDefault(i => i.UID == investmentViewModel.UID);
 
+                investment.TypeOfInvestment = investmentViewModel.TypeOfInvestment;
                 investment.InvestorName = investmentViewModel.InvestorName;
                 investment.Citizenship = investmentViewModel.Citizenship;
                 investment.InvestorAddressId = investmentViewModel.InvestorAddress.UID;

@@ -385,6 +385,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type Of Investment.
+        /// </summary>
+        public static string TypeOfInvestment {
+            get {
+                return ResourceManager.GetString("TypeOfInvestment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Validity of Investment Permit.
         /// </summary>
         public static string ValidityofInvestmentPermit {

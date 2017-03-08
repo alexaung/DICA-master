@@ -195,6 +195,9 @@
   <data name="TotalAmountofCapital" xml:space="preserve">
     <value>Total Amount of Capital </value>
   </data>
+  <data name="TypeOfInvestment" xml:space="preserve">
+    <value>Type Of Investment</value>
+  </data>
   <data name="ValidityofInvestmentPermit" xml:space="preserve">
     <value>ရင်းနှီးမြှုတ်နှံမှုခွင့်ပြုသည့်သက်တမ်း</value>
   </data>

@@ -11,6 +11,10 @@ namespace dica.Models
         public Guid UID { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Resource), Name = "TypeOfInvestment")]
+        public string TypeOfInvestment { get; set; }
+
+        [Required]
         [Display(ResourceType = typeof(Resource), Name = "InvestorName")]
         public string InvestorName { get; set; }
 
