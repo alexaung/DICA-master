@@ -236,6 +236,10 @@
     <Compile Include="Migrations\201703081150349_AddDateType.Designer.cs">
       <DependentUpon>201703081150349_AddDateType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703081400572_AddEnvironmentandSocialImpactAssessment.cs" />
+    <Compile Include="Migrations\201703081400572_AddEnvironmentandSocialImpactAssessment.Designer.cs">
+      <DependentUpon>201703081400572_AddEnvironmentandSocialImpactAssessment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -270,6 +274,7 @@
     <Content Include="BootstrapFormHelpers\img\bootstrap-formhelpers-countries.flags.png" />
     <Content Include="BootstrapFormHelpers\img\bootstrap-formhelpers-currencies.flags.png" />
     <Content Include="BootstrapFormHelpers\img\bootstrap-formhelpers-googlefonts.png" />
+    <Content Include="Content\bootstrap-multiselect.css" />
     <Content Include="Content\bootstrap-select.css" />
     <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\flag-icon-css\css\flag-icon.css" />
@@ -1322,6 +1327,7 @@
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1517,6 +1523,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703081150349_AddDateType.resx">
       <DependentUpon>201703081150349_AddDateType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703081400572_AddEnvironmentandSocialImpactAssessment.resx">
+      <DependentUpon>201703081400572_AddEnvironmentandSocialImpactAssessment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

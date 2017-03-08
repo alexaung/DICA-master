@@ -76,6 +76,8 @@ namespace dica.Models
 
         public int TotalNoofForeignEmployee { get; set; }
 
+        public string EnvironmentandSocialImpactAssessment { get; set; }
+
         public string CreatedBy { get; set; }
 
         public DateTime CreatedOn { get; set; }

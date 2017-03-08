@@ -160,6 +160,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Environment and Social Impact Assessment.
+        /// </summary>
+        public static string EnvironmentandSocialImpactAssessment {
+            get {
+                return ResourceManager.GetString("EnvironmentandSocialImpactAssessment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Extended Lease Term.
         /// </summary>
         public static string ExtendedLeaseTerm {

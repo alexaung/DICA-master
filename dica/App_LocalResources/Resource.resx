@@ -150,6 +150,9 @@
   <data name="Country" xml:space="preserve">
     <value>Country</value>
   </data>
+  <data name="EnvironmentandSocialImpactAssessment" xml:space="preserve">
+    <value>Environment and Social Impact Assessment</value>
+  </data>
   <data name="ExtendedLeaseTerm" xml:space="preserve">
     <value>Extended Lease Term</value>
   </data>

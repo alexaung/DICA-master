@@ -144,6 +144,9 @@
   <data name="Country" xml:space="preserve">
     <value>နိုင်ငံ</value>
   </data>
+  <data name="EnvironmentandSocialImpactAssessment" xml:space="preserve">
+    <value>Environment and Social Impact Assessment</value>
+  </data>
   <data name="FormofInvestment" xml:space="preserve">
     <value>ရင်းနှီးမြှုတ်နှံမူပုံစံ</value>
   </data>

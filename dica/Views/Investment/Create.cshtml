@@ -383,6 +383,15 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                @Html.LabelFor(model => model.EnvironmentandSocialImpactAssessment, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.EnvironmentandSocialImpactAssessmentSelected)
+                    @Html.ListBoxFor(model => model.EnvironmentandSocialImpactAssessment, new SelectList(StatusRepository.GetStatusByGroup("EnvironmentandSocialImpactAssessment"), "Value", "Name"), new { @class = "form-control", @multiple = "multiple" })
+                    @Html.ValidationMessageFor(model => model.EnvironmentandSocialImpactAssessment, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
         </fieldset>
 
         <fieldset class="fsStyle">
@@ -454,7 +463,14 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
-            $(function () {
+        $(function () {
+            $('#EnvironmentandSocialImpactAssessment').multiselect({
+                nonSelectedText: 'Select',
+                includeSelectAllOption: true,
+                //buttonClass: 'btn-primary btn-lg',
+                buttonWidth: 'auto',
+                numberDisplayed: 3
+            });
                 $('#datetimepicker').datetimepicker({
                     showTodayButton: true,
                     format: 'MM/DD/YYYY',

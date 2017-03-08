@@ -101,9 +101,13 @@ namespace dica.Repositories
                                 ExtendedLeaseTerm = investment.ExtendedLeaseTerm,
                                 AnnualLeaseFee = investment.AnnualLeaseFee,
                                 TotalNoofForeignEmployee = investment.TotalNoofForeignEmployee,
-                                TotalNoofLocalEmployee = investment.TotalNoofLocalEmployee        
+                                TotalNoofLocalEmployee = investment.TotalNoofLocalEmployee,
+                                EnvironmentandSocialImpactAssessmentSelected = investment.EnvironmentandSocialImpactAssessment       
 
                             }).FirstOrDefault();
+
+                if(!string.IsNullOrEmpty(investmentDto.EnvironmentandSocialImpactAssessmentSelected))
+                    investmentDto.EnvironmentandSocialImpactAssessment = investmentDto.EnvironmentandSocialImpactAssessmentSelected.Split(',');
 
                 var jointVenturePercentages = db.JointVenturePercentages.Where(jv => jv.InvestmentId == investmentDto.UID).OrderBy(jv=>jv.Percentage).ToList();
                 if (jointVenturePercentages != null && jointVenturePercentages.Count > 0)
@@ -142,6 +146,7 @@ namespace dica.Repositories
                 investment.InvestorAddressId = investorAddress.UID;
                 investment.OrganizationAddressId = organizationAddress.UID;
                 investment.InvestmentPermittedAddressId = investmentPermittedAddress.UID;
+                investment.EnvironmentandSocialImpactAssessment = string.Join(",", investmentViewModel.EnvironmentandSocialImpactAssessment); 
 
                 db.Addresses.Add(investorAddress);
                 db.Addresses.Add(organizationAddress);
@@ -196,7 +201,7 @@ namespace dica.Repositories
                 investment.PeriodforForeignCapitalBroughtin = investmentViewModel.PeriodforForeignCapitalBroughtin;
                 investment.PeriodforForeignCapitalBroughtinType = investmentViewModel.PeriodforForeignCapitalBroughtinType;
                 investment.TotalAmountofCapital = investmentViewModel.TotalAmountofCapital;
-                investment.CapitalCurrency = investment.CapitalCurrency;
+                investment.CapitalCurrency = investmentViewModel.CapitalCurrency;
                 investment.ConstructionPeriod = investmentViewModel.ConstructionPeriod;
                 investment.ConstructionPeriodType = investmentViewModel.ConstructionPeriodType;
                 investment.ValidityofInvestmentPermit = investmentViewModel.ValidityofInvestmentPermit;
@@ -207,15 +212,16 @@ namespace dica.Repositories
                 investment.PermitDate = investmentViewModel.PermitDate;
                 investment.Sector = investmentViewModel.Sector;
                 investment.SectorCategory = investmentViewModel.SectorCategory;
-                investment.InvestingCountry = investment.InvestingCountry;
-                investment.Landowner = investment.Landowner;
-                investment.LandArea = investment.LandArea;
-                investment.LandAreaUnit = investment.LandAreaUnit;
-                investment.LeaseTerm = investment.LeaseTerm;
-                investment.ExtendedLeaseTerm = investment.ExtendedLeaseTerm;
-                investment.AnnualLeaseFee = investment.AnnualLeaseFee;
-                investment.TotalNoofForeignEmployee = investment.TotalNoofForeignEmployee;
-                investment.TotalNoofLocalEmployee = investment.TotalNoofLocalEmployee;
+                investment.InvestingCountry = investmentViewModel.InvestingCountry;
+                investment.Landowner = investmentViewModel.Landowner;
+                investment.LandArea = investmentViewModel.LandArea;
+                investment.LandAreaUnit = investmentViewModel.LandAreaUnit;
+                investment.LeaseTerm = investmentViewModel.LeaseTerm;
+                investment.ExtendedLeaseTerm = investmentViewModel.ExtendedLeaseTerm;
+                investment.AnnualLeaseFee = investmentViewModel.AnnualLeaseFee;
+                investment.TotalNoofForeignEmployee = investmentViewModel.TotalNoofForeignEmployee;
+                investment.TotalNoofLocalEmployee = investmentViewModel.TotalNoofLocalEmployee;
+                investment.EnvironmentandSocialImpactAssessment = string.Join(",", investmentViewModel.EnvironmentandSocialImpactAssessment); 
                 investment.ModifiedBy = userName;
                 investment.ModifiedOn = DateTime.Now;
 

@@ -97,6 +97,12 @@ textarea {
     max-width: 280px;
 }
 
+.multiselect dropdown-toggle {
+        max-width: 280px !important;
+    }
+.multiselect-container {
+        width: 280px !important;
+    }
 fieldset 
 	{
 		border: 1px solid #ddd !important;

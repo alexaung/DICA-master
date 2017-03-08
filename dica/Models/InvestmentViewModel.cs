@@ -139,6 +139,11 @@ namespace dica.Models
         [Display(ResourceType = typeof(Resource), Name = "TotalNoofForeignEmployee")]
         public int TotalNoofForeignEmployee { get; set; }
 
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "EnvironmentandSocialImpactAssessment")]
+        public string[] EnvironmentandSocialImpactAssessment { get; set; }
+
+        public string EnvironmentandSocialImpactAssessmentSelected { get; set; }
 
         public List<CapitalDetail> CapitalDetails { get; set; }
     }
