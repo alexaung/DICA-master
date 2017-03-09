@@ -46,7 +46,7 @@
                                 }
                             </div>
             </nav>
-            <table id="myTable"class="table table-striped table-bordered table-list">
+            <table class="table table-striped table-bordered table-list">
                 <thead>
                     <tr>
                         <th><em class="fa fa-cog"></em></th>
@@ -110,18 +110,23 @@
                     }
                 </tbody>
             </table>
-
         </div>
         <div class="panel-footer">
             <div class="row">
-                @Html.PagedListPager(Model.SearchResults,
+                <div class="text-center">
+                    @Html.PagedListPager(Model.SearchResults,
            page => Url.Action("Index", new RouteValueDictionary()
            {
-                       { "Page", page },
-                       { "TypeOfInvestment", Model.TypeOfInvestment }
+                { "Page", page },
+                { "TypeOfInvestment", Model.TypeOfInvestment },
+                { "Sector", Model.Sector},
+               { "InvestingCountry", Model.InvestingCountry },
+               { "CompanyNameinMyanmar", Model.CompanyNameinMyanmar },
+               { "InvestorName", Model.InvestorName }
            }),
-         PagedListRenderOptions.TwitterBootstrapPager)
-            </div>
+         PagedListRenderOptions.ClassicPlusFirstAndLast)
+                </div>
+                </div>
         </div>
     </div>
 @*}*@
