@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
   <data name="AmountofForeignCapital" xml:space="preserve">
     <value>နိုင်ငံခြားမတည်ေငွရင်းပမာ</value>
   </data>
@@ -138,8 +141,20 @@
   <data name="ConstructionPeriod" xml:space="preserve">
     <value>တည်ေဆာက်မှုကာလ</value>
   </data>
+  <data name="ConstructionPeriodType" xml:space="preserve">
+    <value>ConstructionPeriodType</value>
+  </data>
+  <data name="CorporateSocialResponsibility" xml:space="preserve">
+    <value>Corporate Social Responsibility</value>
+  </data>
   <data name="Country" xml:space="preserve">
     <value>နိုင်ငံ</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="EnvironmentandSocialImpactAssessment" xml:space="preserve">
+    <value>Environment and Social Impact Assessment</value>
   </data>
   <data name="FormofInvestment" xml:space="preserve">
     <value>ရင်းနှီးမြှုတ်နှံမူပုံစံ</value>
@@ -177,6 +192,9 @@
   <data name="PeriodforForeignCapitalBroughtin" xml:space="preserve">
     <value>နိုင်ငံခြားမတည်ေငွရင်းယူေဆာင်လာရမည့်ကာလ</value>
   </data>
+  <data name="PeriodforForeignCapitalBroughtinType" xml:space="preserve">
+    <value>PeriodforForeignCapitalBroughtinType</value>
+  </data>
   <data name="PermitDate" xml:space="preserve">
     <value>ခွင့်ပြုနေ့ဆွဲ</value>
   </data>
@@ -192,10 +210,19 @@
   <data name="State" xml:space="preserve">
     <value>တိုင်းဒေသကြီး/ ပြည်နယ်</value>
   </data>
+  <data name="TaxName" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="TotalAmountofCapital" xml:space="preserve">
     <value>Total Amount of Capital </value>
   </data>
+  <data name="TypeOfInvestment" xml:space="preserve">
+    <value>Type Of Investment</value>
+  </data>
   <data name="ValidityofInvestmentPermit" xml:space="preserve">
     <value>ရင်းနှီးမြှုတ်နှံမှုခွင့်ပြုသည့်သက်တမ်း</value>
+  </data>
+  <data name="ValidityofInvestmentPermitPeriodType" xml:space="preserve">
+    <value>ValidityofInvestmentPermitPeriodType</value>
   </data>
 </root>

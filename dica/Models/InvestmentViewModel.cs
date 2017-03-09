@@ -11,6 +11,10 @@ namespace dica.Models
         public Guid UID { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Resource), Name = "TypeOfInvestment")]
+        public string TypeOfInvestment { get; set; }
+
+        [Required]
         [Display(ResourceType = typeof(Resource), Name = "InvestorName")]
         public string InvestorName { get; set; }
 
@@ -46,6 +50,10 @@ namespace dica.Models
         public int PeriodforForeignCapitalBroughtin { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Resource), Name = "PeriodforForeignCapitalBroughtinType")]
+        public string PeriodforForeignCapitalBroughtinType { get; set; }
+
+        [Required]
         [Display(ResourceType = typeof(Resource), Name = "TotalAmountofCapital")]
         public decimal TotalAmountofCapital { get; set; }
 
@@ -58,8 +66,16 @@ namespace dica.Models
         public int ConstructionPeriod { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Resource), Name = "ConstructionPeriodType")]
+        public string ConstructionPeriodType { get; set; }
+
+        [Required]
         [Display(ResourceType = typeof(Resource), Name = "ValidityofInvestmentPermit")]
         public int ValidityofInvestmentPermit { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "ValidityofInvestmentPermitPeriodType")]
+        public string ValidityofInvestmentPermitPeriodType { get; set; }
 
         [Required]
         [Display(ResourceType = typeof(Resource), Name = "FormofInvestment")]
@@ -123,7 +139,24 @@ namespace dica.Models
         [Display(ResourceType = typeof(Resource), Name = "TotalNoofForeignEmployee")]
         public int TotalNoofForeignEmployee { get; set; }
 
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "CorporateSocialResponsibility")]
+        public int CorporateSocialResponsibility { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "EnvironmentandSocialImpactAssessment")]
+        public string[] EnvironmentandSocialImpactAssessment { get; set; }
+        
+        public string EnvironmentandSocialImpactAssessmentSelected { get; set; }
+
+        public List<Tax> Taxes { get; set; }
 
         public List<CapitalDetail> CapitalDetails { get; set; }
+
+        public string TypeOfInvestmentValue { get; set; }
+
+        public string SectorValue { get; set; }
+
+        public string InvestingCountryValue { get; set; }
     }
 }

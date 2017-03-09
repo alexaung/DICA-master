@@ -10,6 +10,8 @@ namespace dica.Models
         [Key]
         public Guid UID { get; set; }
 
+        public string TypeOfInvestment { get; set; }
+
         public string InvestorName { get; set; }
 
         public string Citizenship { get; set; }
@@ -30,13 +32,19 @@ namespace dica.Models
 
         public int PeriodforForeignCapitalBroughtin { get; set; }
 
+        public string PeriodforForeignCapitalBroughtinType { get; set; }
+
         public decimal TotalAmountofCapital { get; set; }
 
         public string CapitalCurrency { get; set; }
 
         public int ConstructionPeriod { get; set; }
 
+        public string ConstructionPeriodType { get; set; }
+
         public int ValidityofInvestmentPermit { get; set; }
+
+        public string ValidityofInvestmentPermitPeriodType { get; set; }
 
         public string FormofInvestment { get; set; }
                 
@@ -67,6 +75,10 @@ namespace dica.Models
         public int TotalNoofLocalEmployee { get; set; }
 
         public int TotalNoofForeignEmployee { get; set; }
+
+        public int CorporateSocialResponsibility { get; set; }        
+
+        public string EnvironmentandSocialImpactAssessment { get; set; }
 
         public string CreatedBy { get; set; }
 

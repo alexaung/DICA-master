@@ -7,11 +7,11 @@ namespace dica.Models
     [Table("Statuses")]
     public class Status
     {
-        [Key]
+        [Key, Column(Order = 0)]
         public Guid UID { get; set; }
 
         public string Group { get; set; }
-
+        [Key, Column(Order = 1)]
         public string Value { get; set; }
 
         public string Name { get; set; }

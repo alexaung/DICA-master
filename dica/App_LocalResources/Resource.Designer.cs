@@ -61,6 +61,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        public static string Amount {
+            get {
+                return ResourceManager.GetString("Amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount of Foreign Capital.
         /// </summary>
         public static string AmountofForeignCapital {
@@ -142,11 +151,47 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Construction Period Type.
+        /// </summary>
+        public static string ConstructionPeriodType {
+            get {
+                return ResourceManager.GetString("ConstructionPeriodType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Corporate Social Responsibility.
+        /// </summary>
+        public static string CorporateSocialResponsibility {
+            get {
+                return ResourceManager.GetString("CorporateSocialResponsibility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string Country {
             get {
                 return ResourceManager.GetString("Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currency.
+        /// </summary>
+        public static string Currency {
+            get {
+                return ResourceManager.GetString("Currency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Environment and Social Impact Assessment.
+        /// </summary>
+        public static string EnvironmentandSocialImpactAssessment {
+            get {
+                return ResourceManager.GetString("EnvironmentandSocialImpactAssessment", resourceCulture);
             }
         }
         
@@ -313,6 +358,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Period for Foreign Capital Brought in Type.
+        /// </summary>
+        public static string PeriodforForeignCapitalBroughtinType {
+            get {
+                return ResourceManager.GetString("PeriodforForeignCapitalBroughtinType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permit Date.
         /// </summary>
         public static string PermitDate {
@@ -358,6 +412,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string TaxName {
+            get {
+                return ResourceManager.GetString("TaxName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Amount of Capital .
         /// </summary>
         public static string TotalAmountofCapital {
@@ -385,11 +448,29 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type Of Investment.
+        /// </summary>
+        public static string TypeOfInvestment {
+            get {
+                return ResourceManager.GetString("TypeOfInvestment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Validity of Investment Permit.
         /// </summary>
         public static string ValidityofInvestmentPermit {
             get {
                 return ResourceManager.GetString("ValidityofInvestmentPermit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validity of Investment Permit Period Type.
+        /// </summary>
+        public static string ValidityofInvestmentPermitPeriodType {
+            get {
+                return ResourceManager.GetString("ValidityofInvestmentPermitPeriodType", resourceCulture);
             }
         }
     }

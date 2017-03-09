@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
   <data name="AmountofForeignCapital" xml:space="preserve">
     <value>Amount of Foreign Capital</value>
   </data>
@@ -144,8 +147,20 @@
   <data name="ConstructionPeriod" xml:space="preserve">
     <value>Construction Period</value>
   </data>
+  <data name="ConstructionPeriodType" xml:space="preserve">
+    <value>Construction Period Type</value>
+  </data>
+  <data name="CorporateSocialResponsibility" xml:space="preserve">
+    <value>Corporate Social Responsibility</value>
+  </data>
   <data name="Country" xml:space="preserve">
     <value>Country</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="EnvironmentandSocialImpactAssessment" xml:space="preserve">
+    <value>Environment and Social Impact Assessment</value>
   </data>
   <data name="ExtendedLeaseTerm" xml:space="preserve">
     <value>Extended Lease Term</value>
@@ -201,6 +216,9 @@
   <data name="PeriodforForeignCapitalBroughtin" xml:space="preserve">
     <value>Period for Foreign Capital brought in</value>
   </data>
+  <data name="PeriodforForeignCapitalBroughtinType" xml:space="preserve">
+    <value>Period for Foreign Capital Brought in Type</value>
+  </data>
   <data name="PermitDate" xml:space="preserve">
     <value>Permit Date</value>
   </data>
@@ -216,6 +234,9 @@
   <data name="State" xml:space="preserve">
     <value>State / Region</value>
   </data>
+  <data name="TaxName" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="TotalAmountofCapital" xml:space="preserve">
     <value>Total Amount of Capital </value>
   </data>
@@ -225,7 +246,13 @@
   <data name="TotalNoofLocalEmployee" xml:space="preserve">
     <value>Total No. of Employee (Local)</value>
   </data>
+  <data name="TypeOfInvestment" xml:space="preserve">
+    <value>Type Of Investment</value>
+  </data>
   <data name="ValidityofInvestmentPermit" xml:space="preserve">
     <value>Validity of Investment Permit</value>
+  </data>
+  <data name="ValidityofInvestmentPermitPeriodType" xml:space="preserve">
+    <value>Validity of Investment Permit Period Type</value>
   </data>
 </root>

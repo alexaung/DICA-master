@@ -1,522 +1,627 @@
-﻿@model dica.Models.InvestmentViewModel
+﻿
 @using dica.Repositories;
-
+@model dica.Models.InvestmentViewModel
+@{
+    var selectedEnvironment = "";
+    if (Model.EnvironmentandSocialImpactAssessment != null && Model.EnvironmentandSocialImpactAssessment.Length > 0)
+    {
+        selectedEnvironment = "'" + string.Join("', '", Model.EnvironmentandSocialImpactAssessment) + "'"; 
+    }
+}
 @using (Html.BeginForm())
 {
     <p>
         @*@Html.ActionLink("Create New", "Create")*@
     </p>
     @Html.AntiForgeryToken()   
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.UID)
+
     
 
-    <div class="panel panel-default panel-table">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col col-xs-6">
-                    <h3 class="panel-title">Edit Investment</h3>
-                </div>                
+    <div class="form-horizontal">
+        <div id="main-panel" class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col col-xs-6">
+                        <h2 class="panel-title">Edit Investment</h2>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="panel-body">
-            <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.UID)
-                
-                <fieldset class="fsStyle">
-                    <legend>Investor/Promoter</legend>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.InvestorName, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.InvestorName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.InvestorName, "", new { @class = "text-danger" })
-                        </div>
+            <div class="panel-body">
+                <div id="investor-panel" class="panel panel-default panel-table">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Investor/Promoter</h3>
+                        <span class="pull-right clickable" data-toggle="collapse" data-target="#invetor-panel-body"><i class="glyphicon glyphicon-chevron-up"></i></span>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Citizenship, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.Citizenship, new SelectList(CountryRepository.GetCountries(), "ISO", "Nationality"), "Please select Citizenship", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
-                            @Html.ValidationMessageFor(model => model.Citizenship, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.HiddenFor(model => model.InvestorAddress.UID)
-                        @Html.LabelFor(model => model.InvestorAddress.Line1Address, new {@class = "control-label col-md-2"})
-                        <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.InvestorAddress.Line1Address, new {@class = "form-control", cols = 60, rows = 4})
-                            @Html.ValidationMessageFor(model => model.InvestorAddress.Line1Address, "", new {@class = "text-danger"})
-                        </div>
-                    </div>
-
-                    @*<div class="form-group">
-                @Html.LabelFor(model => model.InvestorAddress.Line2Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.InvestorAddress.Line2Address, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.InvestorAddress.Line2Address, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.InvestorAddress.City, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.InvestorAddress.City, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.InvestorAddress.City, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.InvestorAddress.State, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.InvestorAddress.State, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.InvestorAddress.State, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.InvestorAddress.Country, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.InvestorAddress.Country, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Please select Country", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
-                            @Html.ValidationMessageFor(model => model.InvestorAddress.Country, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </fieldset>
-
-                <fieldset class="fsStyle">
-                    <legend>Principal Organization</legend>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.OrganizationName, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.OrganizationName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.OrganizationName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.HiddenFor(model => model.OrganizationAddress.UID)
-                        @Html.LabelFor(model => model.OrganizationAddress.Line1Address, new {@class = "control-label col-md-2"})
-                        <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.OrganizationAddress.Line1Address, new {@class = "form-control", cols = 60, rows = 4})
-                            @Html.ValidationMessageFor(model => model.OrganizationAddress.Line1Address, "", new {@class = "text-danger"})
-                        </div>
-                    </div>
-
-                    @*<div class="form-group">
-                @Html.LabelFor(model => model.OrganizationAddress.Line2Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.OrganizationAddress.Line2Address, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.OrganizationAddress.Line2Address, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.OrganizationAddress.City, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.OrganizationAddress.City, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.OrganizationAddress.City, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.OrganizationAddress.State, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.OrganizationAddress.State, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.OrganizationAddress.State, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.OrganizationAddress.Country, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.OrganizationAddress.Country, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Please select Country", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
-                            @Html.ValidationMessageFor(model => model.OrganizationAddress.Country, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.IncorporationPlace, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.IncorporationPlace, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.IncorporationPlace, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                </fieldset>
-
-                <fieldset class="fsStyle">
-                    <legend>Investment Details</legend>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.CompanyNameinMyanmar, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.CompanyNameinMyanmar, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.CompanyNameinMyanmar, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.PermitNo, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.PermitNo, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.PermitNo, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.PermitDate, new { @class = "control-label col-md-2" })
-                        <div class="col-md-2">
-                            <div class='input-group date' id="datetimepicker">
-                                @Html.TextBoxFor(model => model.PermitDate, new { @class = "form-control" })
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                            @Html.ValidationMessageFor(model => model.PermitDate, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Sector, new {@class = "control-label col-md-2"})
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.Sector, new SelectList(StatusRepository.GetStatusByGroup("Sector"), "Value", "Name"), "Please select Sector", new {@class = "form-control"})
-                        @Html.ValidationMessageFor(model => model.Sector, "", new {@class = "text-danger"})
-                    </div>
-                </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.SectorCategory, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.SectorCategory, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.SectorCategory, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                <div class="form-group">
-                        @Html.LabelFor(model => model.BusinessType, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.BusinessType, new { @class = "form-control", cols = 60, rows = 4 })
-                            @Html.ValidationMessageFor(model => model.BusinessType, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.HiddenFor(model => model.InvestmentPermittedAddress.UID)
-                        @Html.LabelFor(model => model.InvestmentPermittedAddress.Line1Address, new {@class = "control-label col-md-2"})
-                        <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.InvestmentPermittedAddress.Line1Address, new {@class = "form-control", cols = 60, rows = 4})
-                            @Html.ValidationMessageFor(model => model.InvestmentPermittedAddress.Line1Address, "", new {@class = "text-danger"})
-                        </div>
-                    </div>
-
-                    @*<div class="form-group">
-                @Html.LabelFor(model => model.InvestmentPermittedAddress.Line2Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.InvestmentPermittedAddress.Line2Address, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.InvestmentPermittedAddress.Line2Address, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.InvestmentPermittedAddress.City, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.InvestmentPermittedAddress.City, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.InvestmentPermittedAddress.City, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.InvestmentPermittedAddress.State, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.InvestmentPermittedAddress.State, new SelectList(DropDownListRepository.GetRegions(), "Value", "Text", "MM"), "Please select state", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
-                            @Html.ValidationMessageFor(model => model.InvestmentPermittedAddress.State, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.InvestmentPermittedAddress.Country, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.InvestmentPermittedAddress.Country, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Please select Country", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
-                            @Html.ValidationMessageFor(model => model.InvestmentPermittedAddress.Country, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.AmountofForeignCapital, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.AmountofForeignCapital, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.AmountofForeignCapital, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.TotalAmountofCapital, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <div class="input-group">
-                                @Html.EditorFor(model => model.TotalAmountofCapital, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
-                                @Html.ValidationMessageFor(model => model.TotalAmountofCapital, "", new { @class = "text-danger" })
-                                @Html.DropDownListFor(model => model.CapitalCurrency, new SelectList(StatusRepository.GetStatusByGroup("Currency"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
-                                @Html.ValidationMessageFor(model => model.CapitalCurrency, "", new { @class = "text-danger" })
+                    <div id="invetor-panel-body" class="panel-body in">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TypeOfInvestment, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.TypeOfInvestment, new SelectList(StatusRepository.GetStatusByGroup("TypeOfInvestment"), "Value", "Name"), "Please select Sector", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.TypeOfInvestment, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
-                    </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InvestorName, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.InvestorName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.InvestorName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.PeriodforForeignCapitalBroughtin, new { @class = "control-label col-md-2" })
-                        <div class="input-group col-md-2">
-                            @Html.EditorFor(model => model.PeriodforForeignCapitalBroughtin, new { htmlAttributes = new { @class = "form-control" } })
-                            <span class="input-group-addon">Years&nbsp;</span>
-                            @Html.ValidationMessageFor(model => model.PeriodforForeignCapitalBroughtin, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Citizenship, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.Citizenship, new SelectList(CountryRepository.GetCountries(), "ISO", "Nationality"), "Please select Citizenship", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                                @Html.ValidationMessageFor(model => model.Citizenship, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.HiddenFor(model => model.InvestorAddress.UID)
+                            @Html.LabelFor(model => model.InvestorAddress.Line1Address, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.InvestorAddress.Line1Address, new { @class = "form-control", cols = 60, rows = 4 })
+                                @Html.ValidationMessageFor(model => model.InvestorAddress.Line1Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InvestorAddress.City, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.InvestorAddress.City, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.InvestorAddress.City, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InvestorAddress.State, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.InvestorAddress.State, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.InvestorAddress.State, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InvestorAddress.Country, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.InvestorAddress.Country, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Please select Country", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                                @Html.ValidationMessageFor(model => model.InvestorAddress.Country, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ValidityofInvestmentPermit, new { @class = "control-label col-md-2" })
-                        <div class="input-group col-md-2">
-                            @Html.EditorFor(model => model.ValidityofInvestmentPermit, new { htmlAttributes = new { @class = "form-control" } })
-                            <span class="input-group-addon">Years&nbsp;</span>
-                            @Html.ValidationMessageFor(model => model.ValidityofInvestmentPermit, "", new { @class = "text-danger" })
+                <div id="principal-organization-panel" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Principal Organization</h3>
+                        <span class="pull-right clickable" data-toggle="collapse" data-target="#principal-organization-panel-body"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div>
+                    <div id="principal-organization-panel-body" class="panel-body in">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrganizationName, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OrganizationName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OrganizationName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.HiddenFor(model => model.OrganizationAddress.UID)
+                            @Html.LabelFor(model => model.OrganizationAddress.Line1Address, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.OrganizationAddress.Line1Address, new { @class = "form-control", cols = 60, rows = 4 })
+                                @Html.ValidationMessageFor(model => model.OrganizationAddress.Line1Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrganizationAddress.City, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OrganizationAddress.City, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OrganizationAddress.City, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrganizationAddress.State, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OrganizationAddress.State, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OrganizationAddress.State, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrganizationAddress.Country, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.OrganizationAddress.Country, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Please select Country", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                                @Html.ValidationMessageFor(model => model.OrganizationAddress.Country, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IncorporationPlace, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.IncorporationPlace, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.IncorporationPlace, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ConstructionPeriod, new { @class = "control-label col-md-2" })
-                        <div class="input-group col-md-2">
-                            @Html.EditorFor(model => model.ConstructionPeriod, new { htmlAttributes = new { @class = "form-control" } })
-                            <span class="input-group-addon">Months</span>
-                            @Html.ValidationMessageFor(model => model.ConstructionPeriod, "", new { @class = "text-danger" })
-                        </div>
+                <div id="investment-details-panel" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Investment Details</h3>
+                        <span class="pull-right clickable" data-toggle="collapse" data-target="#investment-details-panel-body"><i class="glyphicon glyphicon-chevron-up"></i></span>
                     </div>
+                    <div id="investment-details-panel-body" class="panel-body in">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CompanyNameinMyanmar, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.CompanyNameinMyanmar, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CompanyNameinMyanmar, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.InvestingCountry, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.InvestingCountry, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Please select Investing Country", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
-                            @Html.ValidationMessageFor(model => model.InvestingCountry, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PermitNo, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.PermitNo, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PermitNo, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.FormofInvestment, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.FormofInvestment, new SelectList(StatusRepository.GetStatusByGroup("FormOfInvestment"), "Value", "Name"), "Please select Form of Investment", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.FormofInvestment, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-@if (Model.FormofInvestment == "JV")
-{
-                    <div id="JointVenturePercentage" style="width:60%" class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col col-xs-6">
-                                    <h3 class="panel-title">Joint Venture Percentage</h3>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PermitDate, new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                <div class='input-group date' id="datetimepicker">
+                                    @Html.TextBoxFor(model => model.PermitDate, new { @class = "form-control" })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
                                 </div>
-                                <div class="col col-xs-6 text-right">
-                                    <button id="btnAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                                @Html.ValidationMessageFor(model => model.PermitDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Sector, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.Sector, new SelectList(StatusRepository.GetStatusByGroup("Sector"), "Value", "Name"), "Please select Sector", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Sector, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SectorCategory, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SectorCategory, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SectorCategory, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BusinessType, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.BusinessType, new { @class = "form-control", cols = 60, rows = 4 })
+                                @Html.ValidationMessageFor(model => model.BusinessType, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.HiddenFor(model => model.InvestmentPermittedAddress.UID)
+                            @Html.LabelFor(model => model.InvestmentPermittedAddress.Line1Address, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.InvestmentPermittedAddress.Line1Address, new { @class = "form-control", cols = 60, rows = 4 })
+                                @Html.ValidationMessageFor(model => model.InvestmentPermittedAddress.Line1Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InvestmentPermittedAddress.City, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.InvestmentPermittedAddress.City, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.InvestmentPermittedAddress.City, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InvestmentPermittedAddress.State, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.InvestmentPermittedAddress.State, new SelectList(DropDownListRepository.GetRegions(), "Value", "Text", "MM"), "Please select state", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                                @Html.ValidationMessageFor(model => model.InvestmentPermittedAddress.State, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InvestmentPermittedAddress.Country, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.InvestmentPermittedAddress.Country, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Please select Country", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                                @Html.ValidationMessageFor(model => model.InvestmentPermittedAddress.Country, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AmountofForeignCapital, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.AmountofForeignCapital, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.AmountofForeignCapital, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TotalAmountofCapital, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.TotalAmountofCapital, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                    @Html.ValidationMessageFor(model => model.TotalAmountofCapital, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.CapitalCurrency, new SelectList(StatusRepository.GetStatusByGroup("Currency"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                    @Html.ValidationMessageFor(model => model.CapitalCurrency, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PeriodforForeignCapitalBroughtin, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.PeriodforForeignCapitalBroughtin, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                    @Html.ValidationMessageFor(model => model.PeriodforForeignCapitalBroughtin, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.PeriodforForeignCapitalBroughtinType, new SelectList(StatusRepository.GetStatusByGroup("DateType"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                    @Html.ValidationMessageFor(model => model.PeriodforForeignCapitalBroughtinType, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body">
-                            <table id="tblData" class="table table-striped table-bordered table-list">
-                                <thead>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ValidityofInvestmentPermit, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.ValidityofInvestmentPermit, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                    @Html.ValidationMessageFor(model => model.ValidityofInvestmentPermit, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.ValidityofInvestmentPermitPeriodType, new SelectList(StatusRepository.GetStatusByGroup("DateType"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                    @Html.ValidationMessageFor(model => model.ValidityofInvestmentPermitPeriodType, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ConstructionPeriod, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.ConstructionPeriod, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                    @Html.ValidationMessageFor(model => model.ConstructionPeriod, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.ConstructionPeriodType, new SelectList(StatusRepository.GetStatusByGroup("DateType"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                    @Html.ValidationMessageFor(model => model.ConstructionPeriodType, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InvestingCountry, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.InvestingCountry, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Please select Investing Country", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                                @Html.ValidationMessageFor(model => model.InvestingCountry, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FormofInvestment, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.FormofInvestment, new SelectList(StatusRepository.GetStatusByGroup("FormOfInvestment"), "Value", "Name"), "Please select Form of Investment", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.FormofInvestment, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @if (Model.FormofInvestment == "JV")
+                        {
+                            <div id="JointVenturePercentage" style="width:60%" class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col col-xs-6">
+                                            <h3 class="panel-title">Joint Venture Percentage</h3>
+                                        </div>
+                                        <div class="col col-xs-6 text-right">
+                                            <button id="btnAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <table id="tblData" class="table table-striped table-bordered table-list">
+                                        <thead>
+                                            <tr>
+                                                <td>Company</td>
+                                                <td>Country</td>
+                                                <td>%</td>
+                                                <th><em class="fa fa-cog"></em></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model.JointVenturePercentages != null)
+                                            {
+                                                int i = 0;
+                                                foreach (var item in Model.JointVenturePercentages)
+                                                {
+                                                    {
+                                                        <tr>
+                                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].CompanyName, new { @class = "form-control" })</td>
+                                                            <td>@Html.DropDownListFor(modelItem => Model.JointVenturePercentages[i].Country, new SelectList(CountryRepository.GetCountries(), "ISO", "Name", item.Country), "Please select Country", new { @class = "form-control" })</td>
+                                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].Percentage, new { @class = "form-control" })</td>
+                                                            <td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
+                                                        </tr>
+                                                        i++;
+                                                    }
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div id="JointVenturePercentage" style="display:none;width:60%" class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col col-xs-6">
+                                            <h3 class="panel-title">Joint Venture Percentage</h3>
+                                        </div>
+                                        <div class="col col-xs-6 text-right">
+                                            <button id="btnAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <table id="tblData" class="table table-striped table-bordered table-list">
+                                        <thead>
+                                            <tr>
+                                                <td>Company</td>
+                                                <td>Country</td>
+                                                <td>%</td>
+                                                <th><em class="fa fa-cog"></em></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div id="lease-terms-panel" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Lease Terms</h3>
+                        <span class="pull-right clickable" data-toggle="collapse" data-target="#lease-terms-panel-panel-body"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div>
+                    <div id="lease-terms-panel-panel-body" class="panel-body in">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Landowner, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Landowner, new { @class = "form-control", cols = 60, rows = 4 })
+                                @Html.ValidationMessageFor(model => model.Landowner, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LandArea, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.LandArea, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                    @Html.ValidationMessageFor(model => model.LandArea, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.LandAreaUnit, new SelectList(StatusRepository.GetStatusByGroup("LandAreaUnit"), "Value", "Name"), "", new { @class = "form-control", style = "width: 132px;" })
+                                    @Html.ValidationMessageFor(model => model.LandAreaUnit, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LeaseTerm, new { @class = "control-label col-md-2" })
+                            <div class="input-group col-md-2">
+                                @Html.EditorFor(model => model.LeaseTerm, new { htmlAttributes = new { @class = "form-control" } })
+                                <span class="input-group-addon">Years&nbsp;</span>
+                                @Html.ValidationMessageFor(model => model.LeaseTerm, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ExtendedLeaseTerm, new { @class = "control-label col-md-2" })
+                            <div class="input-group col-md-2">
+                                @Html.EditorFor(model => model.ExtendedLeaseTerm, new { htmlAttributes = new { @class = "form-control" } })
+                                <span class="input-group-addon">Years&nbsp;</span>
+                                @Html.ValidationMessageFor(model => model.ExtendedLeaseTerm, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AnnualLeaseFee, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.AnnualLeaseFee, new { @class = "form-control", cols = 60, rows = 4 })
+                                @Html.ValidationMessageFor(model => model.AnnualLeaseFee, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TotalNoofLocalEmployee, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TotalNoofLocalEmployee, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TotalNoofLocalEmployee, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TotalNoofForeignEmployee, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TotalNoofForeignEmployee, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TotalNoofForeignEmployee, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CorporateSocialResponsibility, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.CorporateSocialResponsibility, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CorporateSocialResponsibility, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EnvironmentandSocialImpactAssessment, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.EnvironmentandSocialImpactAssessmentSelected)
+                                @Html.ListBoxFor(model => model.EnvironmentandSocialImpactAssessment, new SelectList(StatusRepository.GetStatusByGroup("EnvironmentandSocialImpactAssessment"), "Value", "Name"), new { @class = "form-control", @multiple = "multiple" })
+                                @Html.ValidationMessageFor(model => model.EnvironmentandSocialImpactAssessment, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="taxes-panel" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Taxes</h3>
+                        <span class="pull-right clickable" data-toggle="collapse" data-target="#taxes-panel-body"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div>
+                    <div id="taxes-panel-body" class="panel-body in">
+                        <div id="Taxes" style="width:60%" class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col col-xs-6">
+                                        <h3 class="panel-title">Taxes</h3>
+                                    </div>
+                                    <div class="col col-xs-6 text-right">
+                                        <button id="btnTaxAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <table id="tblTaxData" class="table table-striped table-bordered table-list">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Amount</td>
+                                            <td>Currency</td>
+                                            <th><em class="fa fa-cog"></em></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.Taxes != null)
+                                        {
+                                            int i = 0;
+                                            foreach (var item in Model.Taxes)
+                                            {
+                                                {
+                                                    <tr>
+                                                        <td>@Html.TextBoxFor(modelItem => Model.Taxes[i].Name, new { @class = "form-control" })</td>
+                                                        <td>@Html.TextBoxFor(modelItem => Model.Taxes[i].Amount, new { @class = "form-control" })</td>
+                                                        <td>@Html.DropDownListFor(modelItem => Model.Taxes[i].Currency, new SelectList(StatusRepository.GetStatusByGroup("Currency"), "Value", "Name", item.Currency), "Please select Currency", new { @class = "form-control" })</td>
+                                                        <td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
+                                                    </tr>
+                                                    i++;
+                                                }
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="capital-panel" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Total Amt of Capital</h3>
+                        <span class="pull-right clickable" data-toggle="collapse" data-target="#capital-panel-body"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div>
+                    <div id="capital-panel-body" class="panel-body in">
+                        <div class="printer-type">
+                            <table id="tblCapital" class="table table-striped table-bordered table-list">
+                                <thead align="center">
                                     <tr>
-                                        <td>Company</td>
-                                        <td>Country</td>
-                                        <td>%</td>
-                                        <th><em class="fa fa-cog"></em></th>
+                                        <th rowspan="2" width="25%">Description</th>
+                                        <th colspan="2">Local</th>
+                                        <th colspan="2">Foregin</th>
+                                        <th rowspan="2" width="15%">Total</th>
+                                    </tr>
+                                    <tr>
+                                        @*<td>Description</td>*@
+                                        <th width="15%">Equity</th>
+                                        <th width="15%">Loan</th>
+                                        <th width="15%">Equity</th>
+                                        <th width="15%">Loan</th>
+                                        @*<td width="15%">Total</td>*@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @if (Model.JointVenturePercentages != null)
-                                {
-                                    int i = 0;
-                                    foreach (var item in Model.JointVenturePercentages)
+                                    @if (Model.CapitalDetails != null)
                                     {
+                                        int i = 0;
+                                        foreach (var item in Model.CapitalDetails)
                                         {
-                                        <tr>
-                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].CompanyName, new { @class = "form-control" })</td>
-                                            <td>@Html.DropDownListFor(modelItem => Model.JointVenturePercentages[i].Country, new SelectList(CountryRepository.GetCountries(), "ISO", "Name", item.Country), "Please select Country", new { @class = "form-control" })</td>
-                                            <td>@Html.TextBoxFor(modelItem => Model.JointVenturePercentages[i].Percentage, new { @class = "form-control" })</td>
-                                            <td><a class='btnDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
-                                        </tr>
+                                            {
+                                                <tr>
+                                                    <td>@Html.DisplayFor(model => Model.CapitalDetails[i].Description, new { htmlAttributes = new { @class = "form-control" } })@Html.HiddenFor(model => Model.CapitalDetails[i].Description)</td>
+                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
+                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
+                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
+                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
+                                                    <td style="font-weight:bold">&nbsp;</td>
+                                                </tr>
+                                            }
                                             i++;
                                         }
                                     }
-                                }
+
+                                    <tr style="font-weight:bold">
+                                        <td>Total</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-}
-else
-{
-    <div id="JointVenturePercentage" style="display:none;width:60%" class="panel panel-default">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col col-xs-6">
-                    <h3 class="panel-title">Joint Venture Percentage</h3>
-                </div>
-                <div class="col col-xs-6 text-right">
-                    <button id="btnAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
-                </div>
+                </div>                
             </div>
-        </div>
-        <div class="panel-body">
-            <table id="tblData" class="table table-striped table-bordered table-list">
-                <thead>
-                    <tr>
-                        <td>Company</td>
-                        <td>Country</td>
-                        <td>%</td>
-                        <th><em class="fa fa-cog"></em></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
-        </div>
-    </div>
-}
-
-                </fieldset>
-
-                <fieldset class="fsStyle">
-                    <legend>Lease Terms</legend>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Landowner, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.Landowner, new { @class = "form-control", cols = 60, rows = 4 })
-                            @Html.ValidationMessageFor(model => model.Landowner, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.LandArea, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <div class="input-group">
-                                @Html.EditorFor(model => model.LandArea, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
-                                @Html.ValidationMessageFor(model => model.LandArea, "", new { @class = "text-danger" })
-                                @Html.DropDownListFor(model => model.LandAreaUnit, new SelectList(StatusRepository.GetStatusByGroup("LandAreaUnit"), "Value", "Name"), "", new { @class = "form-control", style = "width: 132px;" })
-                                @Html.ValidationMessageFor(model => model.LandAreaUnit, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.LeaseTerm, new { @class = "control-label col-md-2" })
-                        <div class="input-group col-md-2">
-                            @Html.EditorFor(model => model.LeaseTerm, new { htmlAttributes = new { @class = "form-control" } })
-                            <span class="input-group-addon">Years&nbsp;</span>
-                            @Html.ValidationMessageFor(model => model.LeaseTerm, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ExtendedLeaseTerm, new { @class = "control-label col-md-2" })
-                        <div class="input-group col-md-2">
-                            @Html.EditorFor(model => model.ExtendedLeaseTerm, new { htmlAttributes = new { @class = "form-control" } })
-                            <span class="input-group-addon">Years&nbsp;</span>
-                            @Html.ValidationMessageFor(model => model.ExtendedLeaseTerm, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.AnnualLeaseFee, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.AnnualLeaseFee, new { @class = "form-control", cols = 60, rows = 4 })
-                            @Html.ValidationMessageFor(model => model.AnnualLeaseFee, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.TotalNoofLocalEmployee, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.TotalNoofLocalEmployee, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.TotalNoofLocalEmployee, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.TotalNoofForeignEmployee, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.TotalNoofForeignEmployee, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.TotalNoofForeignEmployee, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                </fieldset>
-
-                <fieldset class="fsStyle">
-                    <legend>Total Amt of Capital</legend>
-                    <div class="printer-type">
-                        <table id="tblCapital" class="table table-striped table-bordered table-list">
-                            <thead align="center">
-                                <tr>
-                                    <th rowspan="2" width="25%">Description</th>
-                                    <th colspan="2">Local</th>
-                                    <th colspan="2">Foregin</th>
-                                    <th rowspan="2" width="15%">Total</th>
-                                </tr>
-                                <tr>
-                                    @*<td>Description</td>*@
-                                    <th width="15%">Equity</th>
-                                    <th width="15%">Loan</th>
-                                    <th width="15%">Equity</th>
-                                    <th width="15%">Loan</th>
-                                    @*<td width="15%">Total</td>*@
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model.CapitalDetails != null)
-                                {
-                                    int i = 0;
-                                    foreach (var item in Model.CapitalDetails)
-                                    {
-                                        {
-                                            <tr>
-                                                <td>@Html.DisplayFor(model => Model.CapitalDetails[i].Description, new { htmlAttributes = new { @class = "form-control" } })@Html.HiddenFor(model => Model.CapitalDetails[i].Description)</td>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control" } })</td>
-                                                <td style="font-weight:bold">&nbsp;</td>
-                                            </tr>
-                                        }
-                                        i++;
-                                    }
-                                }
-                                
-                                <tr style="font-weight:bold">
-                                    <td>Total</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </fieldset>
-                
-            </div>
-
-        </div>
-        <div class="panel-footer">
+            <div class="panel-footer">
                 <div class="row">
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Index", "Investment")'">Back to List</button>
                             <input type="submit" value="Save" class="btn btn-primary" />
                         </div>
-                    </div> 
-                    
+                    </div>
                 </div>
             </div>
+        </div>
+
     </div>
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 <script type="text/javascript">
-            $(function () {
+
+    $(function () {
+        //$('#EnvironmentandSocialImpactAssessment').attr("multiple", "multiple");
+        $("#EnvironmentandSocialImpactAssessment option:selected").prop("selected", false);
+        var selectedEnvironment = [@Html.Raw(selectedEnvironment)];
+        
+        for (var i = 0; i < selectedEnvironment.length; i++)
+            $('#EnvironmentandSocialImpactAssessment option[value=' + selectedEnvironment[i] + ']').prop('selected', true);
+
+        $('#EnvironmentandSocialImpactAssessment').multiselect({
+                    nonSelectedText: 'Select',
+                    includeSelectAllOption: true,
+                    //buttonClass: 'btn-primary btn-lg',
+                    buttonWidth: 'auto',
+            numberDisplayed: 3
+                });
+
                 $('#datetimepicker').datetimepicker({
                     format: 'MM/DD/YYYY'
                 });
@@ -529,6 +634,9 @@ else
                 $(".btnDelete").bind("click", Delete);
                 $("#btnAdd").bind("click", Add);
 
+                $(".btnTaxDelete").bind("click", DeleteTax);
+                $("#btnTaxAdd").bind("click", AddTax);
+
                 $('#FormofInvestment').change(function () {
                     var value = $(this).val();
                     if (value == 'JV') {
@@ -538,7 +646,7 @@ else
                     }
                 });
 
-                $(".printer-type tr:not(:lt(2), last) td:last-child").text(function () 
+                $(".printer-type tr:not(:lt(2), last) td:last-child").text(function ()
                 {
                     var totalVal = 0;
                     $(this).prevAll().each(function () {
@@ -566,7 +674,7 @@ else
                     }
                     return parseFloat(count).toFixed(2);
                 });
-                
+
                 $('.txtfld').bind({
                     keyup: function () {
                         //total calculation
@@ -627,6 +735,37 @@ else
             };
 
             function Delete() {
+                var par = $(this).parent().parent(); //tr
+                par.remove();
+                return false;
+            };
+
+            function AddTax() {
+
+                var rowCount = parseInt($('#tblTaxData tr').length);
+                $("#tblTaxData tbody").append("<tr>" +
+                    "<td><input class = 'form-control' type='text' name='Taxes[" + parseInt(rowCount - 1) + "].Name'/></td>" +
+                    "<td><input class = 'form-control' type='text' name='Taxes[" + parseInt(rowCount - 1) + "].Amount'/></td>" +
+                    "<td><select class = 'form-control' name='Taxes[" + parseInt(rowCount - 1) + "].Currency' id='Taxes" + parseInt(rowCount - 1) + "__Currency'></select></td>" +
+                    "<td><a class='btnTaxDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>" +
+                    "</tr>");
+
+                $(".btnTaxDelete").bind("click", DeleteTax);
+
+                $.ajax({
+                    url: "/Investment/GetCurrencies",
+                    type: 'Post',
+                    success: function (data) {
+                        var items = "";
+                        $.each(data, function (i, val) {
+                            items += "<option value='" + val.Value + "'>" + val.Name + "</option>";
+                        });
+                        $("#Taxes" + parseInt(rowCount - 1) + "__Currency").empty().html(items);
+                    }
+                });
+            };
+
+            function DeleteTax() {
                 var par = $(this).parent().parent(); //tr
                 par.remove();
                 return false;

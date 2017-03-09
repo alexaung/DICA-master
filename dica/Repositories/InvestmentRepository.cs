@@ -19,7 +19,7 @@ namespace dica.Repositories
             );
         }
 
-        public static List<InvestmentViewModel> GetInvestments()
+        public static List<InvestmentViewModel> GetInvestments(InvestmentSearchViewModel criteria)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -28,10 +28,10 @@ namespace dica.Repositories
                              join investmentPermittedAddress in db.Addresses on investment.InvestmentPermittedAddressId equals investmentPermittedAddress.UID
                              join formofinvestment in db.Statuses on investment.FormofInvestment equals formofinvestment.Value
                              join investingCountry in db.Countries on investment.InvestingCountry equals investingCountry.ISO
-                             where sector.Group == "Sector"
                     select new InvestmentViewModel
                     {
                         UID = investment.UID,
+                        TypeOfInvestmentValue = investment.TypeOfInvestment,
                         InvestorName = investment.InvestorName,
                         Citizenship = investment.Citizenship,
                         OrganizationName = investment.OrganizationName,
@@ -40,21 +40,44 @@ namespace dica.Repositories
                         InvestmentPermittedAddress = investmentPermittedAddress,
                         AmountofForeignCapital = investment.AmountofForeignCapital,
                         PeriodforForeignCapitalBroughtin = investment.PeriodforForeignCapitalBroughtin,
+                        PeriodforForeignCapitalBroughtinType = investment.PeriodforForeignCapitalBroughtinType,
                         TotalAmountofCapital = investment.TotalAmountofCapital,
                         CapitalCurrency = investment.CapitalCurrency,
                         ConstructionPeriod = investment.ConstructionPeriod,
+                        ConstructionPeriodType = investment.ConstructionPeriodType,
                         ValidityofInvestmentPermit = investment.ValidityofInvestmentPermit,
+                        ValidityofInvestmentPermitPeriodType = investment.ValidityofInvestmentPermitPeriodType,
                         FormofInvestment = formofinvestment.Name,
                         CompanyNameinMyanmar = investment.CompanyNameinMyanmar,
                         PermitNo = investment.PermitNo,
                         PermitDate = investment.PermitDate,
                         Sector = sector.Name,
-                        InvestingCountry = investingCountry.Name
-                    });
+                        InvestingCountry = investingCountry.Name,
 
-                var investmentViewModels = query.ToList();
-                
-                return investmentViewModels;
+                        SectorValue = sector.Value,
+                        InvestingCountryValue = investingCountry.ISO,
+                    });
+                if (!string.IsNullOrEmpty(criteria.TypeOfInvestment))
+                {
+                    query = query.Where(i => i.TypeOfInvestment.Equals(criteria.TypeOfInvestment));
+                }
+                if (!string.IsNullOrEmpty(criteria.Sector))
+                {
+                    query = query.Where(i => i.SectorValue.Equals(criteria.Sector));
+                }
+                if (!string.IsNullOrEmpty(criteria.InvestingCountry))
+                {
+                    query = query.Where(i => i.InvestingCountryValue.Equals(criteria.InvestingCountry));
+                }
+                if (!string.IsNullOrEmpty(criteria.CompanyNameinMyanmar))
+                {
+                    query = query.Where(i => i.CompanyNameinMyanmar.Equals(criteria.CompanyNameinMyanmar));
+                }
+                if (!string.IsNullOrEmpty(criteria.InvestorName))
+                {
+                    query = query.Where(i => i.InvestorName.Equals(criteria.InvestorName));
+                }
+                return query.ToList();
             }
         }
 
@@ -69,6 +92,7 @@ namespace dica.Repositories
                                      where investment.UID == uid
                             select new InvestmentViewModel {
                                 UID = investment.UID,
+                                TypeOfInvestment = investment.TypeOfInvestment,
                                 InvestorName = investment.InvestorName,
                                 Citizenship = investment.Citizenship,
                                 InvestorAddress = investorAddress,
@@ -79,10 +103,13 @@ namespace dica.Repositories
                                 InvestmentPermittedAddress = investmentPermittedAddress,
                                 AmountofForeignCapital = investment.AmountofForeignCapital,
                                 PeriodforForeignCapitalBroughtin = investment.PeriodforForeignCapitalBroughtin,
+                                PeriodforForeignCapitalBroughtinType = investment.PeriodforForeignCapitalBroughtinType,
                                 TotalAmountofCapital = investment.TotalAmountofCapital,
                                 CapitalCurrency = investment.CapitalCurrency,
                                 ConstructionPeriod = investment.ConstructionPeriod,
+                                ConstructionPeriodType = investment.ConstructionPeriodType,
                                 ValidityofInvestmentPermit = investment.ValidityofInvestmentPermit,
+                                ValidityofInvestmentPermitPeriodType = investment.ValidityofInvestmentPermitPeriodType,
                                 FormofInvestment = investment.FormofInvestment,
                                 CompanyNameinMyanmar = investment.CompanyNameinMyanmar,
                                 PermitNo = investment.PermitNo,
@@ -97,9 +124,14 @@ namespace dica.Repositories
                                 ExtendedLeaseTerm = investment.ExtendedLeaseTerm,
                                 AnnualLeaseFee = investment.AnnualLeaseFee,
                                 TotalNoofForeignEmployee = investment.TotalNoofForeignEmployee,
-                                TotalNoofLocalEmployee = investment.TotalNoofLocalEmployee        
+                                TotalNoofLocalEmployee = investment.TotalNoofLocalEmployee,
+                                CorporateSocialResponsibility = investment.CorporateSocialResponsibility,
+                                EnvironmentandSocialImpactAssessmentSelected = investment.EnvironmentandSocialImpactAssessment       
 
                             }).FirstOrDefault();
+
+                if(!string.IsNullOrEmpty(investmentDto.EnvironmentandSocialImpactAssessmentSelected))
+                    investmentDto.EnvironmentandSocialImpactAssessment = investmentDto.EnvironmentandSocialImpactAssessmentSelected.Split(',');
 
                 var jointVenturePercentages = db.JointVenturePercentages.Where(jv => jv.InvestmentId == investmentDto.UID).OrderBy(jv=>jv.Percentage).ToList();
                 if (jointVenturePercentages != null && jointVenturePercentages.Count > 0)
@@ -107,6 +139,14 @@ namespace dica.Repositories
                     investmentDto.JointVenturePercentages = new List<JointVenturePercentage>();
                     investmentDto.JointVenturePercentages.AddRange(jointVenturePercentages);
                 }
+
+                var taxes = db.Taxes.Where(tax=> tax.InvestmentId == investmentDto.UID).OrderBy(tax=>tax.Amount).ToList();
+                if(taxes != null && taxes.Count > 0)
+                {
+                    investmentDto.Taxes = new List<Tax>();
+                    investmentDto.Taxes.AddRange(taxes);
+                }
+
                 var capitalDetails = db.CapitalDetails.Where(jv => jv.InvestmentId == investmentDto.UID).ToList();
                 if (capitalDetails != null && capitalDetails.Count > 0)
                 {
@@ -138,6 +178,7 @@ namespace dica.Repositories
                 investment.InvestorAddressId = investorAddress.UID;
                 investment.OrganizationAddressId = organizationAddress.UID;
                 investment.InvestmentPermittedAddressId = investmentPermittedAddress.UID;
+                investment.EnvironmentandSocialImpactAssessment = string.Join(",", investmentViewModel.EnvironmentandSocialImpactAssessment); 
 
                 db.Addresses.Add(investorAddress);
                 db.Addresses.Add(organizationAddress);
@@ -160,6 +201,16 @@ namespace dica.Repositories
                     }
                 }
 
+                if (investmentViewModel.Taxes != null && investmentViewModel.Taxes.Count > 0)
+                {
+                    foreach (Tax tax in investmentViewModel.Taxes)
+                    {
+                        tax.UID = Guid.NewGuid();
+                        tax.InvestmentId = investment.UID;
+                        db.Taxes.Add(tax);
+                    }
+                }
+
                 if (investmentViewModel.CapitalDetails != null && investmentViewModel.CapitalDetails.Count > 0)
                 {
                     foreach (CapitalDetail cd in investmentViewModel.CapitalDetails)
@@ -179,6 +230,7 @@ namespace dica.Repositories
             {
                 var investment = db.Investments.FirstOrDefault(i => i.UID == investmentViewModel.UID);
 
+                investment.TypeOfInvestment = investmentViewModel.TypeOfInvestment;
                 investment.InvestorName = investmentViewModel.InvestorName;
                 investment.Citizenship = investmentViewModel.Citizenship;
                 investment.InvestorAddressId = investmentViewModel.InvestorAddress.UID;
@@ -189,25 +241,30 @@ namespace dica.Repositories
                 investment.InvestmentPermittedAddressId = investmentViewModel.InvestmentPermittedAddress.UID;
                 investment.AmountofForeignCapital = investmentViewModel.AmountofForeignCapital;
                 investment.PeriodforForeignCapitalBroughtin = investmentViewModel.PeriodforForeignCapitalBroughtin;
+                investment.PeriodforForeignCapitalBroughtinType = investmentViewModel.PeriodforForeignCapitalBroughtinType;
                 investment.TotalAmountofCapital = investmentViewModel.TotalAmountofCapital;
-                investment.CapitalCurrency = investment.CapitalCurrency;
+                investment.CapitalCurrency = investmentViewModel.CapitalCurrency;
                 investment.ConstructionPeriod = investmentViewModel.ConstructionPeriod;
+                investment.ConstructionPeriodType = investmentViewModel.ConstructionPeriodType;
                 investment.ValidityofInvestmentPermit = investmentViewModel.ValidityofInvestmentPermit;
+                investment.ValidityofInvestmentPermitPeriodType = investmentViewModel.ValidityofInvestmentPermitPeriodType;
                 investment.FormofInvestment = investmentViewModel.FormofInvestment;
                 investment.CompanyNameinMyanmar = investmentViewModel.CompanyNameinMyanmar;
                 investment.PermitNo = investmentViewModel.PermitNo;
                 investment.PermitDate = investmentViewModel.PermitDate;
                 investment.Sector = investmentViewModel.Sector;
                 investment.SectorCategory = investmentViewModel.SectorCategory;
-                investment.InvestingCountry = investment.InvestingCountry;
-                investment.Landowner = investment.Landowner;
-                investment.LandArea = investment.LandArea;
-                investment.LandAreaUnit = investment.LandAreaUnit;
-                investment.LeaseTerm = investment.LeaseTerm;
-                investment.ExtendedLeaseTerm = investment.ExtendedLeaseTerm;
-                investment.AnnualLeaseFee = investment.AnnualLeaseFee;
-                investment.TotalNoofForeignEmployee = investment.TotalNoofForeignEmployee;
-                investment.TotalNoofLocalEmployee = investment.TotalNoofLocalEmployee;
+                investment.InvestingCountry = investmentViewModel.InvestingCountry;
+                investment.Landowner = investmentViewModel.Landowner;
+                investment.LandArea = investmentViewModel.LandArea;
+                investment.LandAreaUnit = investmentViewModel.LandAreaUnit;
+                investment.LeaseTerm = investmentViewModel.LeaseTerm;
+                investment.ExtendedLeaseTerm = investmentViewModel.ExtendedLeaseTerm;
+                investment.AnnualLeaseFee = investmentViewModel.AnnualLeaseFee;
+                investment.TotalNoofForeignEmployee = investmentViewModel.TotalNoofForeignEmployee;
+                investment.TotalNoofLocalEmployee = investmentViewModel.TotalNoofLocalEmployee;
+                investment.CorporateSocialResponsibility = investmentViewModel.CorporateSocialResponsibility;
+                investment.EnvironmentandSocialImpactAssessment = string.Join(",", investmentViewModel.EnvironmentandSocialImpactAssessment); 
                 investment.ModifiedBy = userName;
                 investment.ModifiedOn = DateTime.Now;
 
@@ -237,6 +294,17 @@ namespace dica.Repositories
                                 db.JointVenturePercentages.Add(jv);
                             }
                         }
+                    }
+                }
+
+                db.Taxes.RemoveRange(db.Taxes.Where(x => x.InvestmentId == investment.UID));
+                if (investmentViewModel.Taxes != null && investmentViewModel.Taxes.Count > 0)
+                {
+                    foreach (Tax tax in investmentViewModel.Taxes)
+                    {
+                        tax.UID = Guid.NewGuid();
+                        tax.InvestmentId = investment.UID;
+                        db.Taxes.Add(tax);
                     }
                 }
 

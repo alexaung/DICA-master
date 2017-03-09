@@ -5,75 +5,75 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1px;
+    padding-right: 10px;
 }
-
-.navbar-default {
+.navbar-dica {
   background-color: #27ae61;
   border-color: #24a15a;
 }
-.navbar-default .navbar-brand {
+.navbar-dica .navbar-brand {
   color: #ecf0f1;
 }
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
+.navbar-dica .navbar-brand:hover,
+.navbar-dica .navbar-brand:focus {
   color: #ecdbff;
 }
-.navbar-default .navbar-text {
+.navbar-dica .navbar-text {
   color: #ecf0f1;
 }
-.navbar-default .navbar-nav > li > a {
+.navbar-dica .navbar-nav > li > a {
   color: #ecf0f1;
 }
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  color: #ecdbff;
-}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
+.navbar-dica .navbar-nav > li > a:hover,
+.navbar-dica .navbar-nav > li > a:focus {
   color: #ecdbff;
   background-color: #24a15a;
 }
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
+.navbar-dica .navbar-nav > .active > a,
+.navbar-dica .navbar-nav > .active > a:hover,
+.navbar-dica .navbar-nav > .active > a:focus {
   color: #ecdbff;
   background-color: #24a15a;
 }
-.navbar-default .navbar-toggle {
+.navbar-dica .navbar-nav > .open > a,
+.navbar-dica .navbar-nav > .open > a:hover,
+.navbar-dica .navbar-nav > .open > a:focus {
+  color: #ecdbff;
+  background-color: #24a15a;
+}
+.navbar-dica .navbar-toggle {
   border-color: #24a15a;
 }
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
+.navbar-dica .navbar-toggle:hover,
+.navbar-dica .navbar-toggle:focus {
   background-color: #24a15a;
 }
-.navbar-default .navbar-toggle .icon-bar {
+.navbar-dica .navbar-toggle .icon-bar {
   background-color: #ecf0f1;
 }
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
+.navbar-dica .navbar-collapse,
+.navbar-dica .navbar-form {
   border-color: #ecf0f1;
 }
-.navbar-default .navbar-link {
+.navbar-dica .navbar-link {
   color: #ecf0f1;
 }
-.navbar-default .navbar-link:hover {
+.navbar-dica .navbar-link:hover {
   color: #ecdbff;
 }
 
 @media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  .navbar-dica .navbar-nav .open .dropdown-menu > li > a {
     color: #ecf0f1;
   }
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+  .navbar-dica .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-dica .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #ecdbff;
   }
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+  .navbar-dica .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-dica .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-dica .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #ecdbff;
     background-color: #24a15a;
   }
@@ -97,63 +97,47 @@ textarea {
     max-width: 280px;
 }
 
-fieldset 
-	{
-		border: 1px solid #ddd !important;
-		margin: 0;
-		padding: 10px;       
-		position: relative;
-		border-radius:4px;
-		background-color:#f5f5f5;
-		padding-left:10px!important;
-	}	
-	
-legend
-{
-	font-size:14px;
-	font-weight:bold;
-	margin-bottom: 0px; 
-	width:inherit; /* Or auto */
-    padding:0 10px; /* To give a bit of padding on the left and right */
-    border-bottom:none;
-	border: 1px solid #ddd;
-	border-radius: 4px; 			
-	background-color: #ffffff;
-    color: #24a15a;
+.multiselect dropdown-toggle {
+        max-width: 280px !important;
+    }
+.multiselect-container {
+        width: 280px !important;
+    }
+
+div.panel-heading span.pull-right.clickable {
+	margin-top: -20px;
+	font-size: 15px;
 }
 
-
-legend a {
-  color: inherit;
-}
-legend.legendStyle {
-padding-left: 5px;
-padding-right: 5px;
-}
-fieldset.fsStyle {
-font-family: Verdana, Arial, sans-serif;
-font-size: small;
-font-weight: normal;
-border: 1px solid #999999;
-padding: 4px;
-margin: 5px;
-}
-legend.legendStyle {
-font-size: 90%;
-color: #888888;
-background-color: transparent;
-font-weight: bold;
+.clickable{
+    cursor: pointer;   
 }
 
-legend {
-width: auto;
-border-bottom: 0px;
+.currency-group .form-control{
+    width:10%;
 }
 
-legend.panel{
-    margin-left:100px;
+/*.txtfld{ width:100%;}*/
+
+th {
+  font-weight: bold;
+  text-align: center;
 }
-///////
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+  margin-bottom: 10px;
+}
+
+.panel-default > .panel-heading {
+    font-weight:bold;
+  color: #000000;
+  background-color: #FFFFFF;
+  border-color: #24a15a;
+}
+
+/* Search Table*/
 .panel-table .panel-body{
   padding:0;
 }
@@ -161,7 +145,6 @@ legend.panel{
 .panel-table .panel-body .table-bordered{
   border-style: none;
   margin:0;
-  border: 1px solid #dddddd;
 }
 
 .panel-table .panel-body .table-bordered > thead > tr > th:first-of-type {
@@ -208,17 +191,3 @@ used to vertically center elements, may need modification if you're not using de
   line-height: 34px;
 }
 
-.panel-title {
-  color: #24a15a;
-}
-
-.currency-group .form-control{
-    width:10%;
-}
-
-/*.txtfld{ width:100%;}*/
-
-th {
-  font-weight: bold;
-  text-align: center;
-}
