@@ -28,6 +28,7 @@ namespace dica.Repositories
                              join investmentPermittedAddress in db.Addresses on investment.InvestmentPermittedAddressId equals investmentPermittedAddress.UID
                              join formofinvestment in db.Statuses on investment.FormofInvestment equals formofinvestment.Value
                              join investingCountry in db.Countries on investment.InvestingCountry equals investingCountry.ISO
+                             where sector.Group == "Sector"
                     select new InvestmentViewModel
                     {
                         UID = investment.UID,
@@ -50,8 +51,10 @@ namespace dica.Repositories
                         Sector = sector.Name,
                         InvestingCountry = investingCountry.Name
                     });
+
+                var investmentViewModels = query.ToList();
                 
-                return query.ToList();
+                return investmentViewModels;
             }
         }
 
