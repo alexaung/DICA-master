@@ -81,6 +81,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -264,6 +272,7 @@
     <Compile Include="Models\AttachmentViewModel.cs" />
     <Compile Include="Models\CapitalDetail.cs" />
     <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\InvestmentSearchViewModel.cs" />
     <Compile Include="Models\InvestmentViewModel.cs" />
     <Compile Include="Models\JointVenturePercentage.cs" />
     <Compile Include="Models\Status.cs" />
@@ -812,6 +821,7 @@
     <Content Include="Content\img\bootstrap-formhelpers-countries.flags.png" />
     <Content Include="Content\img\bootstrap-formhelpers-currencies.flags.png" />
     <Content Include="Content\img\bootstrap-formhelpers-googlefonts.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="flags\1x1\ad.svg" />
     <Content Include="flags\1x1\ae.svg" />
     <Content Include="flags\1x1\af.svg" />

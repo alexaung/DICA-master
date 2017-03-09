@@ -152,5 +152,11 @@ namespace dica.Models
         public List<Tax> Taxes { get; set; }
 
         public List<CapitalDetail> CapitalDetails { get; set; }
+
+        public string TypeOfInvestmentValue { get; set; }
+
+        public string SectorValue { get; set; }
+
+        public string InvestingCountryValue { get; set; }
     }
 }

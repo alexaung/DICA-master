@@ -19,7 +19,7 @@ namespace dica.Repositories
             );
         }
 
-        public static List<InvestmentViewModel> GetInvestments()
+        public static List<InvestmentViewModel> GetInvestments(InvestmentSearchViewModel criteria)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -31,6 +31,7 @@ namespace dica.Repositories
                     select new InvestmentViewModel
                     {
                         UID = investment.UID,
+                        TypeOfInvestmentValue = investment.TypeOfInvestment,
                         InvestorName = investment.InvestorName,
                         Citizenship = investment.Citizenship,
                         OrganizationName = investment.OrganizationName,
@@ -51,9 +52,31 @@ namespace dica.Repositories
                         PermitNo = investment.PermitNo,
                         PermitDate = investment.PermitDate,
                         Sector = sector.Name,
-                        InvestingCountry = investingCountry.Name
+                        InvestingCountry = investingCountry.Name,
+
+                        SectorValue = sector.Value,
+                        InvestingCountryValue = investingCountry.ISO,
                     });
-                
+                if (!string.IsNullOrEmpty(criteria.TypeOfInvestment))
+                {
+                    query = query.Where(i => i.TypeOfInvestment.Equals(criteria.TypeOfInvestment));
+                }
+                if (!string.IsNullOrEmpty(criteria.Sector))
+                {
+                    query = query.Where(i => i.SectorValue.Equals(criteria.Sector));
+                }
+                if (!string.IsNullOrEmpty(criteria.InvestingCountry))
+                {
+                    query = query.Where(i => i.InvestingCountryValue.Equals(criteria.InvestingCountry));
+                }
+                if (!string.IsNullOrEmpty(criteria.CompanyNameinMyanmar))
+                {
+                    query = query.Where(i => i.CompanyNameinMyanmar.Equals(criteria.CompanyNameinMyanmar));
+                }
+                if (!string.IsNullOrEmpty(criteria.InvestorName))
+                {
+                    query = query.Where(i => i.InvestorName.Equals(criteria.InvestorName));
+                }
                 return query.ToList();
             }
         }

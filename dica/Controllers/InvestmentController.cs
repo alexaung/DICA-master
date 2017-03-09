@@ -4,16 +4,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using PagedList;
 
 namespace dica.Controllers
 {
     public class InvestmentController : BaseController
     {
+        const int RecordsPerPage = 10;
         // GET: Investment
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    InvestmentSearchViewModel model = new InvestmentSearchViewModel();
+        //    List<InvestmentViewModel> investments = InvestmentRepository.GetInvestments();
+        //    var pageIndex = model.Page ?? 1;
+        //    model.SearchResults = investments.ToPagedList(pageIndex, RecordsPerPage);
+        //    return View(model);
+        //}
+
+        public ActionResult Index(InvestmentSearchViewModel model)
         {
-            List<InvestmentViewModel> investments = InvestmentRepository.GetInvestments();
-            return View(investments);
+            List<InvestmentViewModel> investments = InvestmentRepository.GetInvestments(model);
+            var pageIndex = model.Page ?? 1;
+            model.SearchResults = investments.ToPagedList(pageIndex, RecordsPerPage);
+            return View(model);
         }
 
         // GET: Investment/Details/5

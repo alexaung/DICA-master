@@ -277,3 +277,7 @@ C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddCorporateSocialResponsib
 C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddTaxes.resources
 C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddCombineKeyIntoStatus.resources
 C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.ModifiedTaxTable.resources
+C:\My App\DICA-master\dica\bin\PagedList.dll
+C:\My App\DICA-master\dica\bin\PagedList.Mvc.dll
+C:\My App\DICA-master\dica\bin\PagedList.xml
+C:\My App\DICA-master\dica\bin\PagedList.Mvc.xml
