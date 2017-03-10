@@ -45,7 +45,8 @@
                             <a class="btn btn-danger" title="Delete Investment" href="#" onclick="location.href='@Url.Action("Delete", "Attachment", new { id=item.UID })'"><em class="fa fa-trash"></em></a>
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @*@Html.DisplayFor(modelItem => item.Name)*@
+                            @Html.ActionLink(item.Name, "DownloadFile", "Attachment", new { id = item.UID }, null)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ContentLength)

@@ -81,6 +81,12 @@ namespace dica.Controllers
             return Json("File uploaded successfully");
         }
 
+        public FileResult DownloadFile(string id)
+        {
+            var attach = AttachmentRepository.GetAttachment(new Guid(id));
+            return File(attach.Data, attach.ContentType, attach.Name);
+        }
+
         // GET: Attachment/Edit/5
         public ActionResult Edit(int id)
         {
