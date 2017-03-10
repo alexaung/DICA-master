@@ -10,7 +10,7 @@ namespace dica.Controllers
 {
     public class InvestmentController : BaseController
     {
-        const int RecordsPerPage = 10;
+        //const int RecordsPerPage = 10;
         // GET: Investment
         //public ActionResult Index()
         //{
@@ -23,9 +23,9 @@ namespace dica.Controllers
 
         public ActionResult Index(InvestmentSearchViewModel model)
         {
-            List<InvestmentViewModel> investments = InvestmentRepository.GetInvestments(model);
-            var pageIndex = model.Page ?? 1;
-            model.SearchResults = investments.ToPagedList(pageIndex, RecordsPerPage);
+            //List<InvestmentViewModel> investments = InvestmentRepository.GetInvestments(model);
+            //var pageIndex = model.Page ?? 1;
+            model.SearchResults = InvestmentRepository.GetInvestments(model);
             return View(model);
         }
 

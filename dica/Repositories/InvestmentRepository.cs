@@ -4,11 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using PagedList;
 
 namespace dica.Repositories
 {
     public class InvestmentRepository
     {
+        const int RecordsPerPage = 10;
         static InvestmentRepository()
         {
 
@@ -19,7 +21,7 @@ namespace dica.Repositories
             );
         }
 
-        public static List<InvestmentViewModel> GetInvestments(InvestmentSearchViewModel criteria)
+        public static IPagedList<InvestmentViewModel> GetInvestments(InvestmentSearchViewModel criteria)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -77,7 +79,9 @@ namespace dica.Repositories
                 {
                     query = query.Where(i => i.InvestorName.Equals(criteria.InvestorName));
                 }
-                return query.ToList();
+
+                var pageIndex = criteria.Page ?? 1;
+                return query.OrderBy(i=> i.CompanyNameinMyanmar).ToPagedList(pageIndex, RecordsPerPage);
             }
         }
 
