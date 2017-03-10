@@ -61,7 +61,7 @@ namespace dica.Repositories
                     });
                 if (!string.IsNullOrEmpty(criteria.TypeOfInvestment))
                 {
-                    query = query.Where(i => i.TypeOfInvestment.Equals(criteria.TypeOfInvestment));
+                    query = query.Where(i => i.TypeOfInvestmentValue.Equals(criteria.TypeOfInvestment));
                 }
                 if (!string.IsNullOrEmpty(criteria.Sector))
                 {
