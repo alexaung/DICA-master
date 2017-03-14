@@ -14,7 +14,7 @@ namespace dica.Migrations
                         UID = c.Guid(nullable: false),
                         InvestmentId = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
-                        Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Amount = c.Decimal(nullable: false, precision: 18, scale: 3),
                         Currenty = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.UID);
