@@ -412,7 +412,7 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Names.
         /// </summary>
         public static string TaxName {
             get {
