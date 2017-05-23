@@ -280,3 +280,4 @@ C:\My App\DICA-master\dica\obj\Debug\dica.csproj.GenerateResource.Cache
 C:\My App\DICA-master\dica\obj\Debug\my\dica.resources.dll
 C:\My App\DICA-master\dica\obj\Debug\dica.dll
 C:\My App\DICA-master\dica\obj\Debug\dica.pdb
+C:\My App\DICA-master\dica\obj\Debug\dica.csprojResolveAssemblyReference.cache
