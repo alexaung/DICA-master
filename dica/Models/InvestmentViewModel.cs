@@ -43,6 +43,7 @@ namespace dica.Models
 
         [Required]
         [Display(ResourceType = typeof(Resource), Name = "AmountofForeignCapital")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:0.000}")]
         public decimal AmountofForeignCapital { get; set; }
 
         [Required]
@@ -55,6 +56,7 @@ namespace dica.Models
 
         [Required]
         [Display(ResourceType = typeof(Resource), Name = "TotalAmountofCapital")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:0.000}")]
         public decimal TotalAmountofCapital { get; set; }
 
         [Required]
@@ -86,6 +88,14 @@ namespace dica.Models
         public string CompanyNameinMyanmar { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Resource), Name = "FinancialYear")]
+        public int FinancialYearFrom { get; set; }
+
+        [Required]
+        //[Display(ResourceType = typeof(Resource), Name = "CompanyNameinMyanmar")]
+        public int FinancialYearTo { get; set; }
+
+        [Required]
         [Display(ResourceType = typeof(Resource), Name = "PermitNo")]
         public string PermitNo { get; set; }
 
@@ -113,6 +123,7 @@ namespace dica.Models
 
         [Required]
         [Display(ResourceType = typeof(Resource), Name = "LandArea")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:0.000}")]
         public decimal LandArea { get; set; }
 
         [Required]

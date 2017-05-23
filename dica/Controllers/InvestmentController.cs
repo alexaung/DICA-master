@@ -40,6 +40,9 @@ namespace dica.Controllers
         public ActionResult Create()
         {
             var investment = new InvestmentViewModel();
+            //investment.FinancialYearFrom = DateTime.Now.Year;
+            //investment.FinancialYearTo = DateTime.Now.Year;
+            investment.PermitDate = DateTime.Now;
             investment.CapitalDetails = new List<CapitalDetail>();
             investment.CapitalDetails.Add(new CapitalDetail { Description = "Cash" });
             investment.CapitalDetails.Add(new CapitalDetail { Description = "Machinery" });

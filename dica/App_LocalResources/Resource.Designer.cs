@@ -205,6 +205,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Financial Year.
+        /// </summary>
+        public static string FinancialYear {
+            get {
+                return ResourceManager.GetString("FinancialYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Form of Investment.
         /// </summary>
         public static string FormofInvestment {

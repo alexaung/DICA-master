@@ -264,6 +264,10 @@
     <Compile Include="Migrations\201703081733304_ModifiedTaxTable.Designer.cs">
       <DependentUpon>201703081733304_ModifiedTaxTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705231006357_AddedFinicialYear.cs" />
+    <Compile Include="Migrations\201705231006357_AddedFinicialYear.Designer.cs">
+      <DependentUpon>201705231006357_AddedFinicialYear.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -1567,6 +1571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703081733304_ModifiedTaxTable.resx">
       <DependentUpon>201703081733304_ModifiedTaxTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705231006357_AddedFinicialYear.resx">
+      <DependentUpon>201705231006357_AddedFinicialYear.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -50,6 +50,10 @@ namespace dica.Models
                 
         public string CompanyNameinMyanmar { get; set; }
 
+        public int FinancialYearFrom { get; set; }
+
+        public int FinancialYearTo { get; set; }
+
         public string PermitNo { get; set; }
 
         public DateTime PermitDate { get; set; }        
