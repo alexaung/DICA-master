@@ -2,22 +2,36 @@
 @using dica.Helper
 @if (Request.IsAuthenticated)
 {
+    var routeLang = this.Request.RequestContext.RouteData.Values["lang"] as string;
+    var optionLang = (routeLang == "en") ? "en_US" : "my_MM";
+
+    <form class="navbar-form navbar-right">
+        <div class="bfh-selectbox bfh-languages"
+             data-en-route="@Url.LangRoute(ViewContext.RouteData, "en")"
+             data-mm-route="@Url.LangRoute(ViewContext.RouteData, "my")"
+             data-language="@optionLang" data-available="en_US,my_MM" data-flags="true" data-blank="false">
+        </div>
+    </form>
+
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
-
+        
         <ul class="nav navbar-nav navbar-right">
-            @Url.LangSwitcher(Resource.LangEnglish, ViewContext.RouteData, "en")
-            @Url.LangSwitcher(Resource.LangMyanmar, ViewContext.RouteData, "my")
+            
             <li>
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
+            @if (User.IsInRole("Administrator"))
+            {
+                <li><a href="@Url.Action("Register", "Account")"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register</a></li>
+            }
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
 
     }
 }
-else
+@*else
 {
     var routeLang = this.Request.RequestContext.RouteData.Values["lang"] as string;
     var optionLang = (routeLang == "en") ? "en_US" : "my_MM";
@@ -30,11 +44,11 @@ else
         </div>
     </form>
     <ul class="nav navbar-nav navbar-right">
-        @*@Url.LangSwitcher(Resource.LangEnglish, ViewContext.RouteData, "en")
-            @Url.LangSwitcher(Resource.LangMyanmar, ViewContext.RouteData, "my")*@
+        
+        @if (User.IsInRole("Administrator")) {
         <li><a href="@Url.Action("Register", "Account")"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register</a></li>
+        }
         <li><a href="@Url.Action("Login", "Account")"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a></li>
-        @*<li>@Html.ActionLink(" Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "glyphicon glyphicon-user" })</li>
-            <li>@Html.ActionLink(" Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class="glyphicon glyphicon-log-in" })</li>*@
+        
     </ul>
-}
+}*@

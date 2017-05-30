@@ -8,6 +8,7 @@ using PagedList;
 
 namespace dica.Controllers
 {
+    [Authorize]
     public class InvestmentController : BaseController
     {
         //const int RecordsPerPage = 10;

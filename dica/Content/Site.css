@@ -88,13 +88,13 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 
-.bootstrap-select.form-control {
+/*.bootstrap-select.form-control {
     max-width: 280px;
 }
 
@@ -103,7 +103,7 @@ textarea {
     }
 .multiselect-container {
         width: 280px !important;
-    }
+    }*/
 
 div.panel-heading span.pull-right.clickable {
 	margin-top: -20px;
