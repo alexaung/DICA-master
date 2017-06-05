@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using dica.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace dica.Controllers
 {
@@ -139,6 +140,10 @@ namespace dica.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            // Swap ApplicationRole for IdentityRole:
+            RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(
+                new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            ViewBag.Roles = new SelectList(roleManager.Roles.ToList(), "Name", "Name");
             return View();
         }
 
@@ -155,13 +160,16 @@ namespace dica.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    UserManager.AddToRoles(user.Id, model.Role);
+                    //await UserManager.AddClaimAsync(user.Id, new Claim("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", model.Role));
 
                     return RedirectToAction("Index", "Investment");
                 }
