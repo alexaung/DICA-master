@@ -449,7 +449,7 @@ namespace dica.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Investment");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
