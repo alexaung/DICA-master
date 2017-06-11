@@ -22,19 +22,20 @@
                 </button>
                 @Html.ActionLink("DICA", "Index", "Investment", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-@if (User.IsInRole("Administrator") || User.IsInRole("User"))
-{
+
             <div class="navbar-collapse collapse">
+                @if (User.IsInRole("Administrator") || User.IsInRole("User"))
+                {
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Investment", "Index", "Investment")</li>
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
-
+                }
                 @Html.Partial("_LoginPartial")
 
             </div>
-}
+
         </div>
     </div>
 
