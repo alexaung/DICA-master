@@ -558,61 +558,75 @@
 
                 <div id="capital-panel" class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Total Amt of Capital</h3>
+                        <h3 class="panel-title">Capital</h3>
                         <span class="pull-right clickable" data-toggle="collapse" data-target="#capital-panel-body"><i class="glyphicon glyphicon-chevron-up"></i></span>
                     </div>
                     <div id="capital-panel-body" class="panel-body in">
-                        <div class="printer-type">
-                            <table id="tblCapital" class="table table-striped table-bordered table-list">
-                                <thead align="center">
-                                    <tr>
-                                        <th rowspan="2" width="25%">Description</th>
-                                        <th colspan="2">Local</th>
-                                        <th colspan="2">Foregin</th>
-                                        <th rowspan="2" width="15%">Total</th>
-                                    </tr>
-                                    <tr>
-                                        @*<td>Description</td>*@
-                                        <th width="15%">Equity</th>
-                                        <th width="15%">Loan</th>
-                                        <th width="15%">Equity</th>
-                                        <th width="15%">Loan</th>
-                                        @*<td width="15%">Total</td>*@
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if (Model.CapitalDetails != null)
-                                    {
-                                        int i = 0;
-                                        foreach (var item in Model.CapitalDetails)
-                                        {
+                        <div id="Capital" class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col col-xs-6">
+                                        <h3 class="panel-title">Total Amt of Capital</h3>
+                                    </div>
+                                    <div class="col col-xs-6 text-right">
+                                        <button id="btnCapitalAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="capital-panel-body" class="panel-body in">
+                                <div class="printer-type">
+                                    <table id="tblCapital" class="table table-striped table-bordered table-list">
+                                        <thead align="center">
+                                            <tr>
+                                                <th rowspan="2" width="25%">Description</th>
+                                                <th colspan="2">Local</th>
+                                                <th colspan="2">Foregin</th>
+                                                <th rowspan="2" width="15%">Total</th>
+                                                <th rowspan="2"><em class="fa fa-cog"></em></th>
+                                            </tr>
+                                            <tr>
+                                                <th width="15%">Equity</th>
+                                                <th width="15%">Loan</th>
+                                                <th width="15%">Equity</th>
+                                                <th width="15%">Loan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model.CapitalDetails != null)
                                             {
-                                                <tr>
-                                                    <td>@Html.DisplayFor(model => Model.CapitalDetails[i].Description, new { htmlAttributes = new { @class = "form-control" } })@Html.HiddenFor(model => Model.CapitalDetails[i].Description)</td>
-                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
-                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
-                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
-                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
-                                                    <td style="font-weight:bold; text-align:right">&nbsp;</td>
-                                                </tr>
+                                                int i = 0;
+                                                foreach (var item in Model.CapitalDetails)
+                                                {
+                                                    {
+                                                        <tr>
+                                                            <td>@Html.EditorFor(model => Model.CapitalDetails[i].Description, new { htmlAttributes = new { @class = "form-control" } })@Html.HiddenFor(model => Model.CapitalDetails[i].Description)</td>
+                                                            <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
+                                                            <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
+                                                            <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
+                                                            <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
+                                                            <td class="totalCol" style="font-weight:bold; text-align:right">0.000</td>
+                                                            <td><a class='btnCapitalDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
+                                                        </tr>
+                                                    }
+                                                    i++;
+                                                }
                                             }
-                                            i++;
-                                        }
-                                    }
 
-                                    <tr style="font-weight:bold; text-align:right">
-                                        <td>Total</td>
-                                        <td>&nbsp;</td>
-                                        <td>&nbsp;</td>
-                                        <td>&nbsp;</td>
-                                        <td>&nbsp;</td>
-                                        <td>&nbsp;</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                            <tr style="font-weight:bold; text-align:right">
+                                                <td>Total</td>
+                                                <td>0.000</td>
+                                                <td>0.000</td>
+                                                <td>0.000</td>
+                                                <td>0.000</td>
+                                                <td>0.000</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>                
+                </div>             
             </div>
             <div class="panel-footer">
                 <div class="row">
@@ -694,46 +708,48 @@
                         $('#JointVenturePercentage').hide();
                     }
                 });
-
-                $(".printer-type tr:not(:lt(2), last) td:last-child").text(function ()
+                
+                // Columnn
+                $(".printer-type tr:not(:lt(2), last) td:last-child").prev().text(function ()
                 {
                     var totalVal = 0;
                     $(this).prevAll().each(function () {
                         totalVal += parseFloat($(this).children('.txtfld').val()) || 0;
-                        //totalVal += parseInt( );
                     });
                     return parseFloat(totalVal).toFixed(3);
                 });
 
+                //row
                 $(".printer-type tr:last td").text(function (i) {
                     var totalVal = 0;
                     $(this).parent().prevAll().find("td:nth-child(" + (++i) + ")").each(function () {
                         totalVal += parseFloat($(this).children('.txtfld').val()) || 0;
                         $(".printer-type tr:last td:first").text('Total');
                     });
-                    return parseFloat(totalVal).toFixed(3)
-
+                    return parseFloat(totalVal).toFixed(3);
                 });
 
                 $(".printer-type tr:last td:last").text(function (i) {
-                    var count = 0
-                    for (i = 3; i < $('tr').length; i++) {
-                        var trs = parseFloat($('tr:eq(' + i + ')').find('td:last').text())
-                        count += trs
-                    }
-                    return parseFloat(count).toFixed(3);
+                    var totalVal = 0
+                    $('.printer-type td.totalCol').each(function () {
+                        totalVal += parseFloat(this.innerText);
+                    });
+                    return parseFloat(totalVal).toFixed(3);
                 });
+
+                $(".btnCapitalDelete").bind("click", DeleteCapital);
+
+                $("#btnCapitalAdd").bind("click", AddCapital);
 
                 $('.txtfld').bind({
                     keyup: function () {
                         //total calculation
-                        $(".printer-type tr:not(:lt(2), last) td:last-child").text(function () {
+                        $(".printer-type tr:not(:lt(2), last) td:last-child").prev().text(function () {
                             var totalVal = 0;
                             $(this).prevAll().each(function () {
                                 totalVal += parseFloat($(this).children('.txtfld').val()) || 0;
-                                //totalVal += parseInt( );
                             });
-                            return parseFloat(totalVal).toFixed(2);
+                            return parseFloat(totalVal).toFixed(3);
                         });
 
                         $(".printer-type tr:last td").text(function (i) {
@@ -742,17 +758,17 @@
                                 totalVal += parseFloat($(this).children('.txtfld').val()) || 0;
                                 $(".printer-type tr:last td:first").text('Total');
                             });
-                            return parseFloat(totalVal).toFixed(3)
+                            return parseFloat(totalVal).toFixed(3);
 
                         });
 
-                        var count = 0
-                        for (i = 4; i < $('tr').length; i++) {
-                            var trs = parseFloat($('tr:eq(' + i + ')').find('td:last').text())
-                            count += trs
-                        }
-                        $(".printer-type tr:last td:last").text(parseFloat(count).toFixed(3));
-
+                        $(".printer-type tr:last td:last").text(function (i) {
+                            var totalVal = 0
+                            $('.printer-type td.totalCol').each(function () {
+                                totalVal += parseFloat(this.innerText);
+                            });
+                            return parseFloat(totalVal).toFixed(3);   
+                        });
                     }
                 });
 
@@ -817,6 +833,73 @@
             function DeleteTax() {
                 var par = $(this).parent().parent(); //tr
                 par.remove();
+                return false;
+            };
+
+            function AddCapital() {
+
+                var rowCount = parseInt($('#tblCapital tr').length);
+
+                $(".printer-type").find('tr:last').prev().after(
+                    "<tr>" +
+                    "<td><input class = 'form-control' type='text' name='CapitalDetails[" + parseInt(rowCount - 3) + "].Description'/></td>" +
+                    "<td><input class = 'txtfld form-control text-box single-line valid' data-val='true' data-val-number='The field LocalEquity must be a number.' data-val-required='The LocalEquity field is required.' id='CapitalDetails_" + parseInt(rowCount - 3) + "__LocalEquity' name='CapitalDetails[" + parseInt(rowCount - 3) + "].LocalEquity' style = 'text-align:right' type='number' value='0.000' /></td>" +
+                    "<td><input class = 'txtfld form-control text-box single-line valid' data-val='true' data-val-number='The field LocalLone must be a number.' data-val-required='The LocalLone field is required.' id='CapitalDetails_" + parseInt(rowCount - 3) + "__LocalLone' name='CapitalDetails[" + parseInt(rowCount - 3) + "].LocalLone' style = 'text-align:right' type='number' value='0.000' /></td>" +
+                    "<td><input class = 'txtfld form-control text-box single-line valid' data-val='true' data-val-number='The field ForeginEquity must be a number.' data-val-required='The ForeginEquity field is required.' id='CapitalDetails_" + parseInt(rowCount - 3) + "__ForeginEquity' name='CapitalDetails[" + parseInt(rowCount - 3) + "].ForeginEquity' style = 'text-align:right' type='number' value='0.000' /></td>" +
+                    "<td><input class = 'txtfld form-control text-box single-line valid' data-val='true' data-val-number='The field ForeginLone must be a number.' data-val-required='The ForeginLone field is required.' id='CapitalDetails_" + parseInt(rowCount - 3) + "__ForeginLone' name='CapitalDetails[" + parseInt(rowCount - 3) + "].ForeginLone' style = 'text-align:right' type='number' value='0.000' /></td>" +
+                    "<td class='totalCol' style='font-weight:bold; text-align:right'>0.000</td>" +
+                    "<td><a class='btnCapitalDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>" +
+                    "</tr>"
+                    );
+
+                $('.txtfld').bind({
+                    keyup: function () {
+                        //total calculation
+                        $(".printer-type tr:not(:lt(2), last) td:last-child").prev().text(function () {
+                            var totalVal = 0;
+                            $(this).prevAll().each(function () {
+                                totalVal += parseFloat($(this).children('.txtfld').val()) || 0;
+                            });
+                            return parseFloat(totalVal).toFixed(3);
+                        });
+
+                        $(".printer-type tr:last td").text(function (i) {
+                            var totalVal = 0;
+                            $(this).parent().prevAll().find("td:nth-child(" + (++i) + ")").each(function () {
+                                totalVal += parseFloat($(this).children('.txtfld').val()) || 0;
+                                $(".printer-type tr:last td:first").text('Total');
+                            });
+                            return parseFloat(totalVal).toFixed(3)
+
+                        });
+
+                        $(".printer-type tr:last td:last").text(function (i) {
+                            var totalVal = 0;
+                            $('.printer-type td.totalCol').each(function () {
+                                totalVal += parseFloat(this.innerText);
+
+                            });
+                            return parseFloat(totalVal).toFixed(3);
+                        });
+                    }
+                });
+
+                $(".btnCapitalDelete").bind("click", DeleteCapital);
+            };
+
+            function DeleteCapital() {
+                var par = $(this).parent().parent(); //tr
+                par.remove();
+                var itemIndex = 0;
+                $('.printer-type tr:not(:lt(2), last)').each(function () {
+                    var this_row = $(this);
+                    this_row.find('input[name$=".Description"]').attr('name', 'CapitalDetails[' + itemIndex + '].Description');//replace name of input that ends the name BRANCH
+                    this_row.find('input[name$=".LocalEquity"]').attr('name', 'CapitalDetails[' + itemIndex + '].LocalEquity');
+                    this_row.find('input[name$=".LocalLone"]').attr('name', 'CapitalDetails[' + itemIndex + '].LocalLone');
+                    this_row.find('input[name$=".ForeginEquity"]').attr('name', 'CapitalDetails[' + itemIndex + '].ForeginEquity');
+                    this_row.find('input[name$=".ForeginLone"]').attr('name', 'CapitalDetails[' + itemIndex + '].ForeginLone');
+                    itemIndex++;
+                });
                 return false;
             };
 </script>
