@@ -96,8 +96,37 @@ namespace dica.Helper
             
             CreateTitle(sheet, styles, data);
             CreateHeader(sheet, styles, data);
-            CreateRow(sheet, styles, data);
-            
+            //CreateRow(sheet, styles, data);
+            var rowNo = 5;
+            var recordNo = 1;
+            foreach (var country in data.Countries)
+            {
+                var row = sheet.CreateRow(rowNo++);
+
+                var cell = row.CreateCell(0);
+                cell.CellStyle = styles["General"];
+                cell.SetCellValue(recordNo++);
+
+                cell = row.CreateCell(1);
+                cell.CellStyle = styles["General"];
+                cell.SetCellValue(country.Name);
+
+                var columNo = 2;
+                data.Sectors.ForEach(sector => {
+                    var investment = data.InvestmentByCountries.Where(i => i.Country == country.Name && i.Sector == sector.Name).FirstOrDefault();
+                    cell = row.CreateCell(columNo++);
+                    cell.CellStyle = styles["2Decimal"];
+                    if (investment != null)
+                        cell.SetCellValue(Convert.ToDouble(investment.Amount));
+
+                    cell = row.CreateCell(columNo++);
+                    cell.CellStyle = styles["General"];
+                    if (investment != null)
+                        cell.SetCellValue(investment.Quantity);
+                });
+
+            }
+
             sheet.AutoSizeColumn(0, true);
             sheet.AutoSizeColumn(1, true);
         }

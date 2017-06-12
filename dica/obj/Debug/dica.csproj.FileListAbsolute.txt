@@ -287,5 +287,4 @@ C:\My App\DICA-master\dica\bin\NPOI.OOXML.dll
 C:\My App\DICA-master\dica\bin\NPOI.OpenXml4Net.dll
 C:\My App\DICA-master\dica\bin\NPOI.OpenXmlFormats.dll
 C:\My App\DICA-master\dica\bin\NPOI.xml
-C:\My App\DICA-master\dica\bin\dica.dll.CodeAnalysisLog.xml
-C:\My App\DICA-master\dica\bin\dica.dll.lastcodeanalysissucceeded
+C:\My App\DICA-master\dica\obj\Debug\dica.csprojResolveAssemblyReference.cache
