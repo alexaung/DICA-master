@@ -64,6 +64,7 @@ namespace dica.Helper
             var styleHeader = wb.CreateCellStyle();
             styleHeader.SetFont(font);
             styleHeader.Alignment = HorizontalAlignment.Center;
+            styleHeader.WrapText = true;
             styles.Add("Header", styleHeader);
 
             var styleDateTime = wb.CreateCellStyle();
@@ -174,6 +175,7 @@ namespace dica.Helper
                     (data.Sectors.Count * 2) + 1  //last column  (0-based)
             ));
         }
+
         private static void CreateHeader(ISheet sheet, Dictionary<string, ICellStyle> styles, InvestmentByCountryViewModel data)
         {          
             var row = sheet.CreateRow(3);
