@@ -13,7 +13,11 @@
                     <h3 class="panel-title">Investment List</h3>
                 </div>
                 <div class="col col-xs-6 text-right">
-                    <button type="button" class="btn btn-sm btn-primary btn-create" onclick="location.href='@Url.Action("Create", "Investment")'">Create New</button>
+                    
+                    <button type="button" class="btn btn-primary btn-create" onclick="location.href='@Url.Action("Create", "Investment")'">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                        <span class="label-icon">Create New</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -49,8 +53,8 @@
             <table class="table table-striped table-bordered table-list">
                 <thead>
                     <tr>
-                        <th><em class="fa fa-cog"></em></th>
-                        <th>
+                        
+                        <th width="25%">
                             @Html.DisplayNameFor(model => model.SearchResults[0].CompanyNameinMyanmar)
                         </th>
                         <th>
@@ -71,21 +75,15 @@
                         <th>
                             @Html.DisplayNameFor(model => model.SearchResults[0].TotalAmountofCapital)
                         </th>
+                        <th><em class="fa fa-cog"></em></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model.SearchResults)
                     {
                         <tr>
-                            <td align="center" style="width: 170px;">
-                                <div class='btn-group pull-right'>
-                                    <a class="btn btn-primary" title="Add Attachment" href="#" onclick="location.href='@Url.Action("Index", "Attachment", new { id = item.UID })'"><em class="fa fa-paperclip"></em></a>
-                                    <a class="btn btn-info" title="Investment Details" href="#" onclick="location.href='@Url.Action("Details", "Investment", new { id = item.UID })'"><em class="fa fa-list"></em></a>
-                                    <a class="btn btn-default" title="Edit Investment" href="#" onclick="location.href='@Url.Action("Edit", "Investment", new { id = item.UID })'"><em class="fa fa-pencil"></em></a>
-                                    <a class="btn btn-danger" title="Delete Investment" href="#" onclick="location.href='@Url.Action("Delete", "Investment", new { id = item.UID })'"><em class="fa fa-trash"></em></a>
-                                </div>
-                            </td>
-                            <td>
+                            
+                            <td width="25%">
                                 @Html.DisplayFor(modelItem => item.CompanyNameinMyanmar)
                             </td>
                             <td>
@@ -103,8 +101,16 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.FormofInvestment)
                             </td>
-                            <td>
+                            <td style="text-align:right">
                                 @Html.DisplayFor(modelItem => item.TotalAmountofCapital) (@Html.DisplayFor(modelItem => item.CapitalCurrency))
+                            </td>
+                            <td align="center" style="width: 170px;">
+                                <div class='btn-group pull-right'>
+                                    <a class="btn btn-primary" title="Add Attachment" href="#" onclick="location.href='@Url.Action("Index", "Attachment", new { id = item.UID })'"><em class="fa fa-paperclip"></em></a>
+                                    <a class="btn btn-info" title="Investment Details" href="#" onclick="location.href='@Url.Action("Details", "Investment", new { id = item.UID })'"><em class="fa fa-list"></em></a>
+                                    <a class="btn btn-default" title="Edit Investment" href="#" onclick="location.href='@Url.Action("Edit", "Investment", new { id = item.UID })'"><em class="fa fa-pencil"></em></a>
+                                    <a class="btn btn-danger" title="Delete Investment" href="#" onclick="location.href='@Url.Action("Delete", "Investment", new { id = item.UID })'"><em class="fa fa-trash"></em></a>
+                                </div>
                             </td>
                         </tr>
                     }

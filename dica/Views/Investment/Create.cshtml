@@ -12,11 +12,7 @@
         
         <div id="main-panel" class="panel panel-default">
             <div class="panel-heading">
-                <div class="row">
-                    <div class="col col-xs-6">
-                        <h2 class="panel-title">Create Investment</h2>
-                    </div>
-                </div>
+                <h3 class="panel-title">Create Investment</h3>
             </div>
             <div class="panel-body">
                 <div id="investor-panel" class="panel panel-default">
@@ -555,8 +551,16 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-9">
-                            <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Index", "Investment")'">Back to List</button>
-                            <input type="submit" value="Create" class="btn btn-primary" />
+                            @*<button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Index", "Investment")'">Back to List</button>*@
+                            <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Index", "Investment")'">
+                                <span class="glyphicon glyphicon-arrow-left"></span>
+                                <span class="label-icon">Back to List</span>
+                            </button>
+                            @*<input type="submit" value="Create" class="btn btn-primary" />*@
+                            <button type="submit" class="btn btn-primary btn-create">
+                                <span class="glyphicon glyphicon-floppy-save"></span>
+                                <span class="label-icon">Save</span>
+                            </button>
                         </div>
                     </div>
                 </div>

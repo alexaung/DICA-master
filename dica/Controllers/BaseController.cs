@@ -20,8 +20,6 @@ namespace dica.Controllers
                     try
                     {
                         Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = new CultureInfo(CurrentLanguageCode);
-                        //NumberFormatInfo nfi = new NumberFormatInfo { CurrencySymbol = "£" };
-                        //Thread.CurrentThread.CurrentUICulture.NumberFormat = Thread.CurrentThread.CurrentCulture.NumberFormat = nfi;
                     }
                     catch (Exception)
                     {
