@@ -331,8 +331,11 @@ namespace dica.Repositories
         {
             using (var db = new ApplicationDbContext())
             {
-                Investment investment = db.Investments.Find(uid);
-                db.Investments.Remove(investment);
+                db.Attachments.RemoveRange(db.Attachments.Where(a=> a.InvestmentId == uid));
+                db.CapitalDetails.RemoveRange(db.CapitalDetails.Where(c => c.InvestmentId == uid));
+                db.JointVenturePercentages.RemoveRange(db.JointVenturePercentages.Where(x => x.InvestmentId == uid));
+                db.Taxes.RemoveRange(db.Taxes.Where(t => t.InvestmentId == uid));
+                db.Investments.Remove(db.Investments.Where(i => i.UID == uid).FirstOrDefault());
                 db.SaveChanges();
             }
         }
