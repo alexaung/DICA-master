@@ -1,0 +1,170 @@
+﻿
+@model dica.Models.InvestmentByCountryViewModel
+@using dica.Repositories
+@using PagedList.Mvc;
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+@*@using (Html.BeginForm("Index", "Investment", FormMethod.Get, new { @class= "navbar-form navbar-search" }))*@
+@*{*@
+<div class="panel panel-default panel-table">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col col-xs-6">
+                <h3 class="panel-title">Investment Report By Country</h3>
+            </div>
+            @*<div class="col col-xs-6 text-right">
+                <button type="button" class="btn btn-sm btn-primary btn-create" onclick="location.href='@Url.Action("Create", "Investment")'">Create New</button>
+            </div>*@
+        </div>
+    </div>
+    <div class="panel-body" style='overflow-y:auto'>
+        <nav class="navbar navbar-default">
+            <div class="nav nav-justified navbar-nav">
+                @using (Html.BeginForm("InvestmentByCountry", "Report", FormMethod.Get, new { @class = "form-inline navbar-form navbar-search" }))
+                {
+                    
+                        <div class="form-group">
+                            @Html.DropDownListFor(model => model.TypeOfInvestment, new SelectList(StatusRepository.GetStatusByGroup("TypeOfInvestment"), "Value", "Name"), "Type of Investment", new { @class = "form-control" })
+                        </div>
+                    
+                    
+                        <div class="form-group">
+                            @Html.DropDownListFor(model => model.Sector, new SelectList(StatusRepository.GetStatusByGroup("Sector"), "Value", "Name"), "Sector", new { @class = "form-control" })
+                        </div>
+                    
+                    
+                        <div class="form-group">
+                            @Html.DropDownListFor(model => model.InvestingCountry, new SelectList(CountryRepository.GetCountries(), "ISO", "Name"), "Investing Country", new { @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                        </div>
+                    
+                        <div class="form-group">
+                            <div class='input-group date' id="datetimepickerFromDate" style = "width:150px">
+                                @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control" })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class='input-group date' id="datetimepickerToDate" style = "width:150px">
+                                @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control" })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-search btn-info" formaction="InvestmentByCountry">
+                                <span class="glyphicon glyphicon-search"></span>
+                                <span class="label-icon">Search</span>
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-search btn-info" formaction="InvestmentByCountryExport">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <span class="label-icon">Export</span>
+                            </button>
+                        </div>
+                }
+                    </div>
+        </nav>
+        <table class="table table-striped table-bordered table-list">
+            <thead>
+                <tr>
+
+                    <th rowspan="2">
+                        No.
+                    </th>
+                    <th rowspan="2">
+                        Country
+                    </th>
+                    
+                    @foreach (var sector in Model.Sectors)
+                    {
+                        <th colspan="2">
+                            @Html.DisplayFor(model => sector.Name)
+                        </th>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var sector in Model.Sectors)
+                    {
+                        <th>
+                            Amount
+                        </th>
+                        <th>
+                            Qty
+                        </th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                
+                    var rowNo = 1;
+                    foreach (var country in Model.Countries)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => rowNo)
+                            </td>
+                            <td style="width:25%">
+                                @Html.DisplayFor(model => country.Name)
+                            </td>
+                            @foreach (var sector in Model.Sectors)
+                            {
+                                var investment = Model.InvestmentByCountries.Where(i => i.Country == country.Name && i.Sector == sector.Name).FirstOrDefault();
+                                <td style="text-align:right">
+                                    @Html.DisplayFor(model => investment.Amount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => investment.Quantity)
+                                </td>
+                            }
+                        </tr>
+                        rowNo++;
+                    }
+                 }
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+@*}*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepickerFromDate').datetimepicker({
+                showTodayButton: true,
+                format: 'MM/DD/YYYY',
+                showClose: true,
+                showClear: true,
+                toolbarPlacement: 'top',
+                stepping: 15
+            });
+            $('#datetimepickerToDate').datetimepicker({
+                showTodayButton: true,
+                format: 'MM/DD/YYYY',
+                showClose: true,
+                showClear: true,
+                toolbarPlacement: 'top',
+                stepping: 15,
+                useCurrent: false //Important! See issue #1075
+            });
+            $("#datetimepickerFromDate").on("dp.change", function (e) {
+                $('#datetimepickerToDate').data("DateTimePicker").minDate(e.date);
+            });
+            $("#datetimepickerToDate").on("dp.change", function (e) {
+                $('#datetimepickerFromDate').data("DateTimePicker").maxDate(e.date);
+            });
+        });
+    </script>
+}
+
