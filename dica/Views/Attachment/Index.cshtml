@@ -11,10 +11,15 @@
                 <h3 class="panel-title">Attachment List</h3>
             </div>
             <div class="col col-xs-6 text-right">
-                @*<button type="button" class="btn btn-sm btn-primary btn-create" onclick="location.href='@Url.Action("Create", "Investment")'">Create New</button>*@
-                @*<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Attachment", new { id = Model.UID })'">Attach File</button>*@
-                <button type="button" name="btn_Attach" value="Attach" class="btn btn-primary"  id="btn_Attach" onclick="JavaScript: return addAttach('@Html.Raw(Model.UID)');">Attach File</button>
-                    
+                <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Index", "Investment")'">
+                    <span class="glyphicon glyphicon-arrow-left"></span>
+                    <span class="label-icon">Back to List</span>
+                </button>
+                <button type="button" name="btn_Attach" value="Attach" class="btn btn-primary"  id="btn_Attach" onclick="JavaScript: return addAttach('@Html.Raw(Model.UID)');">
+                    <span class="glyphicon glyphicon-paperclip"></span>
+                    <span class="label-icon">Attach File</span>
+                </button>
+                  
             </div>
         </div>
     </div>
