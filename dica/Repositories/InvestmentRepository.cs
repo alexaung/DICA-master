@@ -73,11 +73,11 @@ namespace dica.Repositories
                 }
                 if (!string.IsNullOrEmpty(criteria.CompanyNameinMyanmar))
                 {
-                    query = query.Where(i => i.CompanyNameinMyanmar.Equals(criteria.CompanyNameinMyanmar));
+                    query = query.Where(i => i.CompanyNameinMyanmar.Contains(criteria.CompanyNameinMyanmar));
                 }
                 if (!string.IsNullOrEmpty(criteria.InvestorName))
                 {
-                    query = query.Where(i => i.InvestorName.Equals(criteria.InvestorName));
+                    query = query.Where(i => i.InvestorName.Contains(criteria.InvestorName));
                 }
 
                 var pageIndex = criteria.Page ?? 1;
