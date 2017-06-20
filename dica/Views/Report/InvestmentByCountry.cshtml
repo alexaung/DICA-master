@@ -2,12 +2,15 @@
 @model dica.Models.InvestmentByCountryViewModel
 @using dica.Repositories
 @using PagedList.Mvc;
+@{
+    ViewBag.Title = "Investment Report By Country";
+}
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
 </p>
 @*@using (Html.BeginForm("Index", "Investment", FormMethod.Get, new { @class= "navbar-form navbar-search" }))*@
 @*{*@
-<div class="panel panel-default panel-table">
+<div class="panel panel-default panel-table animated fadeInDown">
     <div class="panel-heading">
         <div class="row">
             <div class="col col-xs-6">

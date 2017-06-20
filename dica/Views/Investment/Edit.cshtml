@@ -2,12 +2,14 @@
 @using dica.Repositories;
 @model dica.Models.InvestmentViewModel
 @{
+    ViewBag.Title = "Investment Edit";
     var selectedEnvironment = "";
     if (Model.EnvironmentandSocialImpactAssessment != null && Model.EnvironmentandSocialImpactAssessment.Length > 0)
     {
-        selectedEnvironment = "'" + string.Join("', '", Model.EnvironmentandSocialImpactAssessment) + "'"; 
+        selectedEnvironment = "'" + string.Join("', '", Model.EnvironmentandSocialImpactAssessment) + "'";
     }
 }
+
 @using (Html.BeginForm())
 {
     <p>
@@ -20,7 +22,7 @@
     
 
     <div class="form-horizontal">
-        <div id="main-panel" class="panel panel-default">
+        <div id="main-panel" class="panel panel-default animated fadeInDown">
             <div class="panel-heading">
                 <h3 class="panel-title">Edit Investment</h3>
             </div>

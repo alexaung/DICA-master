@@ -1,6 +1,8 @@
 ﻿@using dica.Repositories
 @model dica.Models.InvestmentViewModel
-
+@{
+    ViewBag.Title = "Investment Create";
+}
 @using (Html.BeginForm())
 {
     <p>
@@ -10,7 +12,7 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-horizontal">
         
-        <div id="main-panel" class="panel panel-default">
+        <div id="main-panel" class="panel panel-default animated fadeInDown">
             <div class="panel-heading">
                 <h3 class="panel-title">Create Investment</h3>
             </div>

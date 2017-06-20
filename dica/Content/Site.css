@@ -7,7 +7,7 @@
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 1px;
-    padding-right: 10px;
+    padding-right: 1px;
 }
 .navbar-dica {
   background-color: #27ae61;
@@ -192,3 +192,12 @@ used to vertically center elements, may need modification if you're not using de
   line-height: 34px;
 }
 
+.nav .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.nav a:hover .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
