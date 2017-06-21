@@ -4,6 +4,15 @@
     background-color: #F5F5F5;
 }
 
+.loginbody { 
+  background: url(../img//bagan.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 120px;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 1px;
@@ -87,24 +96,6 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-/*input,
-select,
-textarea {
-    max-width: 280px;
-}*/
-
-/*.bootstrap-select.form-control {
-    max-width: 280px;
-}
-
-.multiselect dropdown-toggle {
-        max-width: 280px !important;
-    }
-.multiselect-container {
-        width: 280px !important;
-    }*/
-
 div.panel-heading span.pull-right.clickable {
 	margin-top: -20px;
 	font-size: 15px;
@@ -118,8 +109,6 @@ div.panel-heading span.pull-right.clickable {
     width:10%;
 }
 
-/*.txtfld{ width:100%;}*/
-
 th {
   font-weight: bold;
   text-align: center;
@@ -132,7 +121,14 @@ th {
 }
 
 .panel-default > .panel-heading {
-    font-weight:bold;
+  font-weight:bold;
+  color: #000000;
+  background-color: #FFFFFF;
+  border-color: #24a15a;
+}
+
+.panel-default > .panel-footer {
+  font-weight:bold;
   color: #000000;
   background-color: #FFFFFF;
   border-color: #24a15a;
