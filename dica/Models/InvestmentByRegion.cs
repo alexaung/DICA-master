@@ -1,8 +1,8 @@
 ﻿namespace dica.Models
 {
-    public class InvestmentByCountry
+    public class InvestmentByRegion
     {
-        public string Country { get; set; }
+        public string Region { get; set; }
 
         public string Sector { get; set; }
 

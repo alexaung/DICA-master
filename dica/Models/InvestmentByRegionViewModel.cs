@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace dica.Models
 {
-    public class InvestmentByCountryViewModel
+    public class InvestmentByRegionViewModel
     {
         public string TypeOfInvestment { get; set; }
 
@@ -15,10 +15,10 @@ namespace dica.Models
 
         public DateTime? ToDate { get; set; }
 
-        public List<Country> Countries { get; set; }
+        public List<string> Regions { get; set; }
 
         public List<Status> Sectors { get; set; }
 
-        public List<InvestmentByCountry> InvestmentByCountries { get; set; }
+        public List<InvestmentByRegion> InvestmentByRegions { get; set; }
     }
 }

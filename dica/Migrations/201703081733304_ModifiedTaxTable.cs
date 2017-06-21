@@ -1,8 +1,7 @@
 namespace dica.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class ModifiedTaxTable : DbMigration
     {
         public override void Up()

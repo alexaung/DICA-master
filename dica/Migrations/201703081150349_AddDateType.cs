@@ -1,8 +1,7 @@
 namespace dica.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class AddDateType : DbMigration
     {
         public override void Up()
