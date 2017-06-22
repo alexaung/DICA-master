@@ -190,8 +190,11 @@ namespace dica.Helper
                 cell.CellStyle = styles["SubTitle"];
                 if (i == 0)
                 {
-                    var title = string.Format("Foreign Investment of Existing Enterprises from {0} to {1}", data.FromDate.Value.ToString("dd/MMM/yyyy"), data.ToDate.Value.ToString("dd/MMM/yyyy"));
-                    cell.SetCellValue(title);
+                    var title = string.Empty;
+                    if (data.FromDate != null && data.ToDate != null)
+                        title = string.Format("Foreign Investment of Existing Enterprises from ({0}) to ({1})", data.FromDate.Value.ToString("dd/MMM/yyyy"), data.ToDate.Value.ToString("dd/MMM/yyyy"));
+                    else
+                        title = string.Format("Foreign Investment of Existing Enterprises");
                 }
             }
 
@@ -363,7 +366,11 @@ namespace dica.Helper
                 cell.CellStyle = styles["SubTitle"];
                 if (i == 0)
                 {
-                    var title = string.Format("Foreign Investment of Existing Enterprises from ({0}) to ({1})", data.FromDate.Value.ToString("dd/MMM/yyyy"), data.ToDate.Value.ToString("dd/MMM/yyyy"));
+                    var title = string.Empty;
+                    if (data.FromDate != null && data.ToDate != null)
+                        title = string.Format("Foreign Investment of Existing Enterprises from ({0}) to ({1})", data.FromDate.Value.ToString("dd/MMM/yyyy"), data.ToDate.Value.ToString("dd/MMM/yyyy"));
+                    else
+                        title = string.Format("Foreign Investment of Existing Enterprises");
                     cell.SetCellValue(title);
                 }
             }
