@@ -305,6 +305,7 @@
     <Compile Include="Models\InvestmentByCountryViewModel.cs" />
     <Compile Include="Models\InvestmentByRegion.cs" />
     <Compile Include="Models\InvestmentByRegionViewModel.cs" />
+    <Compile Include="Models\InvestmentByUser.cs" />
     <Compile Include="Models\InvestmentSearchViewModel.cs" />
     <Compile Include="Models\InvestmentViewModel.cs" />
     <Compile Include="Models\JointVenturePercentage.cs" />
@@ -1564,6 +1565,7 @@
     <Content Include="Sql\iso_country_list.sql" />
     <Content Include="Sql\statuses.sql" />
     <Content Include="Views\Attachment\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
     <None Include="Views\Report\InvestmentByRegion.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

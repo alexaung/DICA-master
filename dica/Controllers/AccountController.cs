@@ -7,6 +7,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using dica.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
+using System;
+using dica.Repositories;
 
 namespace dica.Controllers
 {
@@ -151,6 +154,10 @@ namespace dica.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            // Swap ApplicationRole for IdentityRole:
+            RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(
+                new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            ViewBag.Roles = new SelectList(roleManager.Roles.ToList(), "Name", "Name");
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -408,6 +415,29 @@ namespace dica.Controllers
             return View();
         }
 
+        public ActionResult Index()
+        {
+            RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(
+                new RoleStore<IdentityRole>(new ApplicationDbContext()));
+
+            var users = UserManager.Users.ToList();
+            List<RegisterViewModel> userlist = new List<RegisterViewModel>();
+
+            var investmentByUsers = ReportRepository.GetInvestmentByUser();
+            users.ForEach(u=> {
+                var user = new RegisterViewModel();
+                var investmentByUser = investmentByUsers.Where(i => i.CreatedBy == u.Email).FirstOrDefault();
+                
+                user.Id = new Guid(u.Id);
+                user.Email = u.Email;
+                user.Role = roleManager.Roles.ToList().Where(r => r.Id == u.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name;
+                user.Post = investmentByUser != null ? investmentByUser.Post : 0;
+
+                userlist.Add(user);
+
+            });
+            return View(userlist);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -1,0 +1,109 @@
+﻿@model List<dica.Models.RegisterViewModel>
+@using dica.Repositories
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "User List";
+}
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+@*@using (Html.BeginForm("Index", "Investment", FormMethod.Get, new { @class= "navbar-form navbar-search" }))*@
+@*{*@
+<div class="panel panel-default panel-table animated fadeInDown">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col col-xs-6">
+                <h3 class="panel-title">User List</h3>
+            </div>
+            <div class="col col-xs-6 text-right">
+
+                <button type="button" class="btn btn-primary btn-create" onclick="location.href='@Url.Action("Create", "Investment")'">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                    <span class="label-icon">Create New</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        
+        <table class="table table-striped table-bordered table-list">
+            <thead>
+                <tr>
+                    <th width="1%">
+                        #
+                    </th>
+                    <th width="25%">
+                        Email
+                    </th>
+                    <th>
+                        Role
+                    </th>
+                    <th>
+                        Post
+                    </th>
+                    
+                    @*<th><em class="fa fa-cog"></em></th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var rowNo = 1;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td width="1%">
+                                @Html.DisplayFor(model => rowNo)
+                            </td>
+                            <td width="25%">
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Post)
+                            </td>
+                            
+                            @*<td align="center" style="width: 170px;">
+                                <div class='btn-group pull-right'>
+                                    <a class="btn btn-primary" title="Add Attachment" href="#" onclick="location.href='@Url.Action("Index", "Attachment", new { id = item.Id })'"><em class="fa fa-paperclip"></em></a>
+                                    <a class="btn btn-info" title="Investment Details" href="#" onclick="location.href='@Url.Action("Details", "Investment", new { id = item.Id })'"><em class="fa fa-list"></em></a>
+                                    <a class="btn btn-default" title="Edit Investment" href="#" onclick="location.href='@Url.Action("Edit", "Investment", new { id = item.Id })'"><em class="fa fa-pencil"></em></a>
+                                    <a class="btn btn-danger" title="Delete Investment" href="#" onclick="location.href='@Url.Action("Delete", "Investment", new { id = item.Id })'"><em class="fa fa-trash"></em></a>
+                                </div>
+                            </td>*@
+                        </tr>
+                        rowNo++;
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+    @*<div class="panel-footer">
+        <div class="row">
+            <div class="text-center">
+                @Html.PagedListPager(Model,
+           page => Url.Action("Index", new RouteValueDictionary()
+           {
+                { "Page", page },
+                { "TypeOfInvestment", Model.TypeOfInvestment },
+                { "Sector", Model.Sector},
+               { "InvestingCountry", Model.InvestingCountry },
+               { "CompanyNameinMyanmar", Model.CompanyNameinMyanmar },
+               { "InvestorName", Model.InvestorName }
+           }),
+         PagedListRenderOptions.ClassicPlusFirstAndLast)
+            </div>
+        </div>
+    </div>*@
+</div>
+@*}*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        //$(document).ready(function () {
+        //    $('#myTable').dataTable();
+        //});
+    </script>
+}
