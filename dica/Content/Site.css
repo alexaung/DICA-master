@@ -197,3 +197,7 @@ used to vertically center elements, may need modification if you're not using de
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }
+
+.input-validation-error {
+        border: 1px solid #ff0000 !important;
+}
