@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace dica.Models
@@ -64,6 +65,9 @@ namespace dica.Models
 
     public class RegisterViewModel
     {
+        [Display(Name = "Id")]
+        public Guid Id { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -83,6 +87,9 @@ namespace dica.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Post")]
+        public int Post { get; set; }
     }
 
     public class ResetPasswordViewModel

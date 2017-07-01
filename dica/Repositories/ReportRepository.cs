@@ -159,5 +159,21 @@ namespace dica.Repositories
                 return investmentRegionDto;
             }
         }
+
+        public static List<InvestmentByUser> GetInvestmentByUser()
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var query = from i in db.Investments
+                            group i by new { i.CreatedBy } into grouping
+                            select new InvestmentByUser
+                            {
+                                CreatedBy = grouping.Key.CreatedBy,
+                                Post = grouping.Count()
+                            };
+                var investmentByUsers = query.ToList();
+                return investmentByUsers;
+            }
+        }
     }
 }
