@@ -169,5 +169,9 @@ namespace dica.Models
         public string SectorValue { get; set; }
 
         public string InvestingCountryValue { get; set; }
+
+        [Required]
+        [Display(ResourceType = typeof(Resource), Name = "CreatedBy")]
+        public string CreatedBy { get; set; }
     }
 }

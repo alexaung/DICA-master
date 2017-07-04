@@ -55,7 +55,7 @@ namespace dica.Repositories
                         PermitDate = investment.PermitDate,
                         Sector = sector.Name,
                         InvestingCountry = investingCountry.Name,
-
+                        CreatedBy = investment.CreatedBy,
                         SectorValue = sector.Value,
                         InvestingCountryValue = investingCountry.ISO,
                     });
@@ -78,6 +78,10 @@ namespace dica.Repositories
                 if (!string.IsNullOrEmpty(criteria.InvestorName))
                 {
                     query = query.Where(i => i.InvestorName.Contains(criteria.InvestorName));
+                }
+                if (!string.IsNullOrEmpty(criteria.CreatedBy))
+                {
+                    query = query.Where(i => i.CreatedBy.Contains(criteria.CreatedBy));
                 }
 
                 var pageIndex = criteria.Page ?? 1;
@@ -130,7 +134,9 @@ namespace dica.Repositories
                                 TotalNoofForeignEmployee = investment.TotalNoofForeignEmployee,
                                 TotalNoofLocalEmployee = investment.TotalNoofLocalEmployee,
                                 CorporateSocialResponsibility = investment.CorporateSocialResponsibility,
-                                EnvironmentandSocialImpactAssessmentSelected = investment.EnvironmentandSocialImpactAssessment       
+                                EnvironmentandSocialImpactAssessmentSelected = investment.EnvironmentandSocialImpactAssessment  ,
+                                FinancialYearFrom  = investment.FinancialYearFrom,
+                                FinancialYearTo = investment.FinancialYearTo
 
                             }).FirstOrDefault();
 

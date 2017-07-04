@@ -16,6 +16,8 @@ namespace dica.Models
 
         public string InvestorName { get; set; }
 
+        public  string CreatedBy { get; set; }
+
         public IPagedList<InvestmentViewModel> SearchResults { get; set; }
     }
 }

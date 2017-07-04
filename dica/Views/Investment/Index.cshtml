@@ -42,10 +42,14 @@ ViewBag.Title = "Investment List";
                                 @Html.EditorFor(model => model.CompanyNameinMyanmar, new { htmlAttributes = new { @class = "form-control", placeholder = "Company Name" } })
                                 
                             </div>
-                            <div class="form-group">
-                                @Html.EditorFor(model => model.InvestorName, new { htmlAttributes = new { @class = "form-control", placeholder = "Investor Name" } })
-                                
-                            </div>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.InvestorName, new {htmlAttributes = new {@class = "form-control", placeholder = "Investor Name"}})
+
+                        </div>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control", placeholder = "Created By" } })
+
+                        </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-search btn-info">
                                     <span class="glyphicon glyphicon-search"></span>
@@ -82,12 +86,16 @@ ViewBag.Title = "Investment List";
                         <th>
                             @Html.DisplayNameFor(model => model.SearchResults[0].TotalAmountofCapital)
                         </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SearchResults[0].CreatedBy)
+                        </th>
                         <th><em class="fa fa-cog"></em></th>
                     </tr>
                 </thead>
                 <tbody>
                     @{
-                        var rowNo = 1;
+                        var rowNo = Model.SearchResults.PageNumber == 1 ? 1 : 1 + (Model.SearchResults.PageNumber*10) - 10;
+
                         foreach (var item in Model.SearchResults)
                         {
                             <tr>
@@ -112,10 +120,14 @@ ViewBag.Title = "Investment List";
                                 <td>
                                     @Html.DisplayFor(modelItem => item.FormofInvestment)
                                 </td>
-                                <td style="text-align:right" width="8%">
+                                <td style="text-align: right" width="8%">
                                     @Html.DisplayFor(modelItem => item.TotalAmountofCapital) (@Html.DisplayFor(modelItem => item.CapitalCurrency))
                                 </td>
-                                <td align="center" style="width: 170px;">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                                </td>
+                              
+                                <td align="center"  width="22%">
                                     <div class='btn-group pull-right'>
                                         <a class="btn btn-primary" title="Add Attachment" href="#" onclick="location.href='@Url.Action("Index", "Attachment", new { id = item.UID })'"><em class="fa fa-paperclip"></em></a>
                                         <a class="btn btn-info" title="Investment Details" href="#" onclick="location.href='@Url.Action("Details", "Investment", new { id = item.UID })'"><em class="fa fa-list"></em></a>
