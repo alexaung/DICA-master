@@ -56,6 +56,9 @@ namespace dica.Repositories
                         Sector = sector.Name,
                         InvestingCountry = investingCountry.Name,
                         CreatedBy = investment.CreatedBy,
+                        CreatedOn = (DateTime) investment.CreatedOn,
+                        ModifiedBy = investment.ModifiedBy,
+                        ModifiedOn = (DateTime) investment.ModifiedOn,
                         SectorValue = sector.Value,
                         InvestingCountryValue = investingCountry.ISO,
                     });
@@ -136,7 +139,11 @@ namespace dica.Repositories
                                 CorporateSocialResponsibility = investment.CorporateSocialResponsibility,
                                 EnvironmentandSocialImpactAssessmentSelected = investment.EnvironmentandSocialImpactAssessment  ,
                                 FinancialYearFrom  = investment.FinancialYearFrom,
-                                FinancialYearTo = investment.FinancialYearTo
+                                FinancialYearTo = investment.FinancialYearTo,
+                                CreatedBy = investment.CreatedBy,
+                                CreatedOn = (DateTime) investment.CreatedOn,
+                                ModifiedOn = investment.ModifiedOn,
+                                ModifiedBy =  investment.ModifiedBy
 
                             }).FirstOrDefault();
 

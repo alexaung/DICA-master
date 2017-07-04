@@ -187,6 +187,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CreatedOn.
+        /// </summary>
+        public static string CreatedOn {
+            get {
+                return ResourceManager.GetString("CreatedOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Currency.
         /// </summary>
         public static string Currency {
@@ -345,6 +354,24 @@ namespace dica.App_LocalResources {
         public static string Line2Address {
             get {
                 return ResourceManager.GetString("Line2Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ModifiedBy.
+        /// </summary>
+        public static string ModifiedBy {
+            get {
+                return ResourceManager.GetString("ModifiedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ModifiedOn.
+        /// </summary>
+        public static string ModifiedOn {
+            get {
+                return ResourceManager.GetString("ModifiedOn", resourceCulture);
             }
         }
         

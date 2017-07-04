@@ -170,8 +170,22 @@ namespace dica.Models
 
         public string InvestingCountryValue { get; set; }
 
-        [Required]
+      
         [Display(ResourceType = typeof(Resource), Name = "CreatedBy")]
         public string CreatedBy { get; set; }
+
+        
+        [DataType(DataType.DateTime)]
+        [Display(ResourceType = typeof(Resource), Name = "CreatedOn")]
+        public DateTime CreatedOn { get; set; }
+
+    
+        [Display(ResourceType = typeof(Resource), Name = "ModifiedBy")]
+        public string ModifiedBy { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [Display(ResourceType = typeof(Resource), Name = "ModifiedOn")]
+        public DateTime? ModifiedOn { get; set; }
     }
 }
+

@@ -159,6 +159,9 @@
   <data name="CreatedBy" xml:space="preserve">
     <value>Created By</value>
   </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>CreatedOn</value>
+  </data>
   <data name="Currency" xml:space="preserve">
     <value>Currency</value>
   </data>
@@ -212,6 +215,12 @@
   </data>
   <data name="Line2Address" xml:space="preserve">
     <value>Line 2 Address</value>
+  </data>
+  <data name="ModifiedBy" xml:space="preserve">
+    <value>ModifiedBy</value>
+  </data>
+  <data name="ModifiedOn" xml:space="preserve">
+    <value>ModifiedOn</value>
   </data>
   <data name="OrganizationName" xml:space="preserve">
     <value>Name of Principal Organization</value>
