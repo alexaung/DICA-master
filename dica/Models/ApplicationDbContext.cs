@@ -15,6 +15,16 @@ namespace dica.Models
             return new ApplicationDbContext();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+            
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions
+                .Remove<System.Data.Entity.ModelConfiguration.Conventions.OneToManyCascadeDeleteConvention>();
+            modelBuilder.Entity<Investment>().Property(p => p.TotalAmountofCapital).HasPrecision(18, 3);
+        }
+
         public DbSet<Investment> Investments { get; set; }
 
         public DbSet<Country> Countries { get; set; }
