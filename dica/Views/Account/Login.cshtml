@@ -86,6 +86,7 @@
                                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                             {
                             @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                             <div class="modal-header" align="center">
                                 <img class="img-circle" id="img_logo" src="~/img/logo-dica.png">
@@ -94,7 +95,7 @@
 
                             <div style="margin-bottom: 30px" class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "user name or email" })
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "email" })
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                 @*<input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">*@
                             </div>

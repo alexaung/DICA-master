@@ -73,10 +73,16 @@ namespace dica.Controllers
             {
                 return View(model);
             }
-
+            var user = UserManager.FindByEmail(model.Email);
+            if(user == null)
+            {
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
+            }
+            
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -160,7 +166,7 @@ namespace dica.Controllers
             ViewBag.Roles = new SelectList(roleManager.Roles.ToList(), "Name", "Name");
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -430,6 +436,7 @@ namespace dica.Controllers
                 
                 user.Id = new Guid(u.Id);
                 user.Email = u.Email;
+                user.UserName = u.UserName;
                 user.Role = roleManager.Roles.ToList().Where(r => r.Id == u.Roles.FirstOrDefault().RoleId).FirstOrDefault().Name;
                 user.Post = investmentByUser != null ? investmentByUser.Post : 0;
 
