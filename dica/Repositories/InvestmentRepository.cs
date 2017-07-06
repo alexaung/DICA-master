@@ -30,6 +30,7 @@ namespace dica.Repositories
                              join investmentPermittedAddress in db.Addresses on investment.InvestmentPermittedAddressId equals investmentPermittedAddress.UID
                              join formofinvestment in db.Statuses on investment.FormofInvestment equals formofinvestment.Value
                              join investingCountry in db.Countries on investment.InvestingCountry equals investingCountry.ISO
+                             
                     select new InvestmentViewModel
                     {
                         UID = investment.UID,

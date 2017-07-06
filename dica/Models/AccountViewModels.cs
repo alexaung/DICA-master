@@ -74,6 +74,10 @@ namespace dica.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
+        [Required]
         [Display(Name = "Role")]
         public string Role { get; set; }
 
