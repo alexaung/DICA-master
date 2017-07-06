@@ -650,7 +650,7 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <table id="tblTaxData" class="table table-striped table-bordered table-list">
+                                <table id="tblUser" class="table table-striped table-bordered table-list">
                                     <thead>
                                         <tr>
                                             <td>Created On</td>
@@ -659,15 +659,13 @@
                                             <td>Modified By</td>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                
-                                                    <tr>
-                                                        <td>@Html.TextBoxFor(modelItem => Model.CreatedOn, new { @class = "form-control" })</td>
-                                                        <td>@Html.TextBoxFor(modelItem => Model.CreatedBy, new {@class = "form-control" })</td>
-                                                        <td>@Html.TextBoxFor(modelItem => Model.ModifiedOn, new {@class = "form-control" })</td>
-                                                        <td>@Html.TextBoxFor(modelItem => Model.ModifiedBy, new { @class = "form-control" })</td>
-                                                    </tr>
-                                     
+                                    <tbody>                                
+                                        <tr>
+                                            <td>@Html.TextBoxFor(modelItem => Model.CreatedOn, new { @class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => Model.CreatedBy, new {@class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => Model.ModifiedOn, new {@class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(modelItem => Model.ModifiedBy, new { @class = "form-control" })</td>
+                                        </tr>                                     
                                     </tbody>
                                 </table>
                             </div>
@@ -854,8 +852,18 @@
             };
 
             function Delete() {
+                
                 var par = $(this).parent().parent(); //tr
                 par.remove();
+                var itemIndex = 0;
+                $('#tblData tr:not(:lt(1), last)').each(function () {
+                    var this_row = $(this);
+                    this_row.find('input[name$=".CompanyName"]').attr('name', 'JointVenturePercentages[' + itemIndex + '].CompanyName');//replace name of input that ends the name BRANCH
+                    this_row.find('input[name$=".Percentage"]').attr('name', 'JointVenturePercentages[' + itemIndex + '].Percentage');
+                    this_row.find('select[name$=".Country"]').attr('name', 'JointVenturePercentages[' + itemIndex + '].Country');
+
+                    itemIndex++;
+                });
                 return false;
             };
 
@@ -889,15 +897,12 @@
                 var par = $(this).parent().parent(); //tr
                 par.remove();
                 var itemIndex = 0;
-                $('.printer-type tr:not(:lt(2), last)').each(function () {
+                $('#tblTaxData tr:not(:lt(1), last)').each(function () {
                     var this_row = $(this);
-                    this_row.find('input[name$=".Name"]').attr('name', 'CapitalDetails[' + itemIndex + '].Description');//replace name of input that ends the name BRANCH
-                    this_row.find('input[name$=".Amount"]').attr('name', 'CapitalDetails[' + itemIndex + '].LocalEquity');
-                    this_row.find('input[name$=".LocalLone"]').attr('name', 'CapitalDetails[' + itemIndex + '].LocalLone');
-                    this_row.find('input[name$=".ForeginEquity"]').attr('name', 'CapitalDetails[' + itemIndex + '].ForeginEquity');
-                    this_row.find('input[name$=".ForeginLone"]').attr('name', 'CapitalDetails[' + itemIndex + '].ForeginLone');
-                    this_row.find('input[name$=".JvEquity"]').attr('name', 'CapitalDetails[' + itemIndex + '].JvEquity');
-                    this_row.find('input[name$=".JvLone"]').attr('name', 'CapitalDetails[' + itemIndex + '].JvLone');
+                    this_row.find('input[name$=".Name"]').attr('name', 'Taxes[' + itemIndex + '].Name');//replace name of input that ends the name BRANCH
+                    this_row.find('input[name$=".Amount"]').attr('name', 'Taxes[' + itemIndex + '].Amount');
+                    this_row.find('select[name$=".Currency"]').attr('name', 'Taxes[' + itemIndex + '].Currency');
+                    
                     itemIndex++;
                 });
                 return false;
