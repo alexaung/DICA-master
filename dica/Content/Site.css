@@ -201,3 +201,10 @@ used to vertically center elements, may need modification if you're not using de
 .input-validation-error {
         border: 1px solid #ff0000 !important;
 }
+
+.table tfoot > tr > td {
+  padding: 1px !important;
+  line-height: 1.428571429;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}

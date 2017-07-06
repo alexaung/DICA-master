@@ -25,5 +25,11 @@ namespace dica.Models
 
         [DisplayFormat(DataFormatString = "{0:0.000}", ApplyFormatInEditMode = true)]
         public decimal ForeginLone { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:0.000}", ApplyFormatInEditMode = true)]
+        public decimal JvEquity { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:0.000}", ApplyFormatInEditMode = true)]
+        public decimal JvLone { get; set; }
     }
 }

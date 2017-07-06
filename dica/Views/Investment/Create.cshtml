@@ -495,20 +495,23 @@
                             </div>
                             <div id="capital-panel-body" class="panel-body in">
                                 <div class="printer-type">
-                                    <table id="tblCapital" class="table table-striped table-bordered table-list">
+                                    <table id="tblCapital" class="tblCapital table table-striped table-bordered table-list">
                                         <thead align="center">
                                             <tr>
-                                                <th rowspan="2" width="25%">Description</th>
+                                                <th rowspan="2" width="20%">Description</th>
                                                 <th colspan="2">Local</th>
                                                 <th colspan="2">Foregin</th>
-                                                <th rowspan="2" width="15%">Total</th>
+                                                <th colspan="2">Joint Venture</th>
+                                                <th rowspan="2" width="8%">Total</th>
                                                 <th rowspan="2"><em class="fa fa-cog"></em></th>
                                             </tr>
                                             <tr>
-                                                <th width="15%">Equity</th>
-                                                <th width="15%">Loan</th>
-                                                <th width="15%">Equity</th>
-                                                <th width="15%">Loan</th>
+                                                <th width="11%">Equity</th>
+                                                <th width="11%">Loan</th>
+                                                <th width="11%">Equity</th>
+                                                <th width="11%">Loan</th>
+                                                <th width="11%">Loan</th>
+                                                <th width="11%">Equity</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -523,7 +526,9 @@
                                                 <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
                                                 <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
                                                 <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
+                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginLone, new {htmlAttributes = new {type = "number", @class = "txtfld form-control", style = "text-align:right"}})</td>
+                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].JvEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
+                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].JvLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
                                                 <td class="totalCol" style="font-weight:bold; text-align:right">0.000</td>
                                                 <td><a class='btnCapitalDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
                                             </tr>
@@ -534,6 +539,8 @@
 
                                             <tr style="font-weight:bold; text-align:right">
                                                 <td>Total</td>
+                                                <td>0.000</td>
+                                                <td>0.000</td>
                                                 <td>0.000</td>
                                                 <td>0.000</td>
                                                 <td>0.000</td>
@@ -750,6 +757,8 @@
                         "<td><input class = 'txtfld form-control text-box single-line valid' data-val='true' data-val-number='The field LocalLone must be a number.' data-val-required='The LocalLone field is required.' id='CapitalDetails_" + parseInt(rowCount - 3) + "__LocalLone' name='CapitalDetails[" + parseInt(rowCount - 3) + "].LocalLone' style = 'text-align:right' type='number' value='0.000' /></td>" +
                         "<td><input class = 'txtfld form-control text-box single-line valid' data-val='true' data-val-number='The field ForeginEquity must be a number.' data-val-required='The ForeginEquity field is required.' id='CapitalDetails_" + parseInt(rowCount - 3) + "__ForeginEquity' name='CapitalDetails[" + parseInt(rowCount - 3) + "].ForeginEquity' style = 'text-align:right' type='number' value='0.000' /></td>" +
                         "<td><input class = 'txtfld form-control text-box single-line valid' data-val='true' data-val-number='The field ForeginLone must be a number.' data-val-required='The ForeginLone field is required.' id='CapitalDetails_" + parseInt(rowCount - 3) + "__ForeginLone' name='CapitalDetails[" + parseInt(rowCount - 3) + "].ForeginLone' style = 'text-align:right' type='number' value='0.000' /></td>" +
+                        "<td><input class = 'txtfld form-control text-box single-line valid' data-val='true' data-val-number='The field JVEquity must be a number.' data-val-required='The JVEquity field is required.' id='CapitalDetails_" + parseInt(rowCount - 3) + "__JvEquity' name='CapitalDetails[" + parseInt(rowCount - 3) + "].JvEquity' style = 'text-align:right' type='number' value='0.000' /></td>" +
+                        "<td><input class = 'txtfld form-control text-box single-line valid' data-val='true' data-val-number='The field JVLone must be a number.' data-val-required='The JVLone field is required.' id='CapitalDetails_" + parseInt(rowCount - 3) + "__JvLone' name='CapitalDetails[" + parseInt(rowCount - 3) + "].JvLone' style = 'text-align:right' type='number' value='0.000' /></td>" +
                         "<td class='totalCol' style='font-weight:bold; text-align:right'>0.000</td>" +
                         "<td><a class='btnCapitalDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>" +
                         "</tr>"
@@ -801,6 +810,8 @@
                         this_row.find('input[name$=".LocalLone"]').attr('name', 'CapitalDetails[' + itemIndex + '].LocalLone');
                         this_row.find('input[name$=".ForeginEquity"]').attr('name', 'CapitalDetails[' + itemIndex + '].ForeginEquity');
                         this_row.find('input[name$=".ForeginLone"]').attr('name', 'CapitalDetails[' + itemIndex + '].ForeginLone');
+                        this_row.find('input[name$=".JvEquity"]').attr('name', 'CapitalDetails[' + itemIndex + '].JvEquity');
+                        this_row.find('input[name$=".JvLone"]').attr('name', 'CapitalDetails[' + itemIndex + '].JvLone');
                         itemIndex++;
                     });
                     return false;

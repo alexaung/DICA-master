@@ -17,12 +17,21 @@ namespace dica.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
-            
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions
                 .Remove<System.Data.Entity.ModelConfiguration.Conventions.OneToManyCascadeDeleteConvention>();
             modelBuilder.Entity<Investment>().Property(p => p.TotalAmountofCapital).HasPrecision(18, 3);
+            modelBuilder.Entity<Investment>().Property(p => p.AmountofForeignCapital).HasPrecision(18, 3);
+            modelBuilder.Entity<Investment>().Property(p => p.LandArea).HasPrecision(18, 3);
+
+            modelBuilder.Entity<CapitalDetail>().Property(p => p.LocalEquity).HasPrecision(18, 3);
+            modelBuilder.Entity<CapitalDetail>().Property(p => p.LocalLone).HasPrecision(18, 3);
+            modelBuilder.Entity<CapitalDetail>().Property(p => p.ForeginEquity).HasPrecision(18, 3);
+            modelBuilder.Entity<CapitalDetail>().Property(p => p.ForeginLone).HasPrecision(18, 3);
+            modelBuilder.Entity<CapitalDetail>().Property(p => p.JvEquity).HasPrecision(18, 3);
+            modelBuilder.Entity<CapitalDetail>().Property(p => p.JvLone).HasPrecision(18, 3);
+
+            modelBuilder.Entity<Tax>().Property(p => p.Amount).HasPrecision(18, 3);
         }
 
         public DbSet<Investment> Investments { get; set; }
