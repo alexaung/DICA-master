@@ -42,14 +42,14 @@ ViewBag.Title = "Investment List";
                                 @Html.EditorFor(model => model.CompanyNameinMyanmar, new { htmlAttributes = new { @class = "form-control", placeholder = "Company Name" } })
                                 
                             </div>
-                        <div class="form-group">
-                            @Html.EditorFor(model => model.InvestorName, new {htmlAttributes = new {@class = "form-control", placeholder = "Investor Name"}})
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.InvestorName, new {htmlAttributes = new {@class = "form-control", placeholder = "Investor Name"}})
 
-                        </div>
-                        <div class="form-group">
-                            @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control", placeholder = "Created By" } })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control", placeholder = "Created By" } })
 
-                        </div>
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-search btn-info">
                                     <span class="glyphicon glyphicon-search"></span>
