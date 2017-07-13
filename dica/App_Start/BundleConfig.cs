@@ -55,7 +55,8 @@ namespace dica
                       "~/Content/bootstrap-formhelpers.css",
                       "~/Content/bootstrap-select.css",
                        "~/Content/bootstrap-multiselect.css",
-                      "~/Content/flag-icon.css"
+                      "~/Content/flag-icon.css",
+                      "~/fonts/myanmar3/myanmar3.css"
                       ));
             // Font Awesome icons
             bundles.Add(new StyleBundle("~/font-awesome/css").Include(

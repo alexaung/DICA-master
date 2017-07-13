@@ -1399,6 +1399,8 @@
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
     <Content Include="fonts\font-awesome\css\font-awesome.min.css" />
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\myanmar3\Myanmar3.svg" />
+    <Content Include="fonts\myanmar3\myanmar3.css" />
     <Content Include="img\bagan.jpg" />
     <Content Include="img\bootstrap-formhelpers-countries.flags-LICENSE.txt" />
     <Content Include="img\bootstrap-formhelpers-countries.flags.png" />
@@ -1469,6 +1471,10 @@
     <Content Include="fonts\font-awesome\scss\_screen-reader.scss" />
     <Content Include="fonts\font-awesome\scss\_stacked.scss" />
     <Content Include="fonts\font-awesome\scss\_variables.scss" />
+    <Content Include="fonts\myanmar3\Myanmar3.eot" />
+    <Content Include="fonts\myanmar3\Myanmar3.ttf" />
+    <Content Include="fonts\myanmar3\Myanmar3.woff" />
+    <Content Include="fonts\myanmar3\Myanmar3.woff2" />
     <None Include="Properties\PublishProfiles\CustomBuild.pubxml" />
     <None Include="Properties\PublishProfiles\dicadata - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\dicadata - Web Deploy.pubxml" />
