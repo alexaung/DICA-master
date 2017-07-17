@@ -121,10 +121,10 @@
     <value>Amount</value>
   </data>
   <data name="AmountofForeignCapital" xml:space="preserve">
-    <value>Amount of Foreign Capital</value>
+    <value>Amount of Foreign Capital (USD)</value>
   </data>
   <data name="AnnualLeaseFee" xml:space="preserve">
-    <value>Annual Lease Fee</value>
+    <value>Annual Lease Fee (million)</value>
   </data>
   <data name="BusinessType" xml:space="preserve">
     <value>Type of Investment Business</value>
@@ -247,13 +247,13 @@
     <value>Sector Category</value>
   </data>
   <data name="State" xml:space="preserve">
-    <value>State / Region</value>
+    <value>State / Region / Province</value>
   </data>
   <data name="TaxName" xml:space="preserve">
     <value>Names</value>
   </data>
   <data name="TotalAmountofCapital" xml:space="preserve">
-    <value>Total Amount of Capital </value>
+    <value>Total Amount of Capital (million)</value>
   </data>
   <data name="TotalNoofForeignEmployee" xml:space="preserve">
     <value>Total No. of Employee (Foreign)</value>

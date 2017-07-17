@@ -464,7 +464,7 @@
                                     <thead>
                                         <tr>
                                             <td>Name</td>
-                                            <td>Amount</td>
+                                            <td>Amount (million)</td>
                                             <td>Currency</td>
                                             <th><em class="fa fa-cog"></em></th>
                                         </tr>
@@ -639,7 +639,7 @@
 
                     $('#FormofInvestment').change(function () {
                         var value = $(this).val();
-                        if (value == 'JV') {
+                        if (value == 'JV' || value == 'FDII') {
                             $('#JointVenturePercentage').show();
                         } else {
                             $('#JointVenturePercentage').hide();

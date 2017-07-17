@@ -397,3 +397,7 @@ C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.csproj.GenerateResou
 C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\my\dica.resources.dll
 C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.dll
 C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.pdb
+C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.Migrations.AddOnModelCreate.resources
+C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.Migrations.AddJv.resources
+C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.Migrations.AddDecimalPrecision.resources
+C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.csprojResolveAssemblyReference.cache
