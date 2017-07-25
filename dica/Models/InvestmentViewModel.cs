@@ -142,6 +142,8 @@ namespace dica.Models
         [Display(ResourceType = typeof(Resource), Name = "AnnualLeaseFee")]
         public string AnnualLeaseFee { get; set; }
 
+        public string AnnualLeaseFeeCurrency { get; set; }
+
         [Required]
         [Display(ResourceType = typeof(Resource), Name = "TotalNoofLocalEmployee")]
         public int TotalNoofLocalEmployee { get; set; }

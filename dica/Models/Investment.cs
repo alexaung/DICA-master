@@ -77,6 +77,8 @@ namespace dica.Models
 
         public string AnnualLeaseFee { get; set; }
 
+        public string AnnualLeaseFeeCurrency { get; set; }
+
         public int TotalNoofLocalEmployee { get; set; }
 
         public int TotalNoofForeignEmployee { get; set; }

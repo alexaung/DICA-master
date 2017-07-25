@@ -70,7 +70,7 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Amount of Foreign Capital (USD).
+        ///   Looks up a localized string similar to Amount of Foreign Capital USD (in million).
         /// </summary>
         public static string AmountofForeignCapital {
             get {
@@ -79,7 +79,7 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Annual Lease Fee (million).
+        ///   Looks up a localized string similar to Annual Lease Fee (in million).
         /// </summary>
         public static string AnnualLeaseFee {
             get {
@@ -412,7 +412,7 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permit Date.
+        ///   Looks up a localized string similar to Permit Date (M/D/Y).
         /// </summary>
         public static string PermitDate {
             get {
@@ -466,7 +466,7 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Amount of Capital (million).
+        ///   Looks up a localized string similar to Total Amount of Capital (in million).
         /// </summary>
         public static string TotalAmountofCapital {
             get {

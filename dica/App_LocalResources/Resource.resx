@@ -121,10 +121,10 @@
     <value>Amount</value>
   </data>
   <data name="AmountofForeignCapital" xml:space="preserve">
-    <value>Amount of Foreign Capital (USD)</value>
+    <value>Amount of Foreign Capital USD (in million)</value>
   </data>
   <data name="AnnualLeaseFee" xml:space="preserve">
-    <value>Annual Lease Fee (million)</value>
+    <value>Annual Lease Fee (in million)</value>
   </data>
   <data name="BusinessType" xml:space="preserve">
     <value>Type of Investment Business</value>
@@ -235,7 +235,7 @@
     <value>Period for Foreign Capital Brought in Type</value>
   </data>
   <data name="PermitDate" xml:space="preserve">
-    <value>Permit Date</value>
+    <value>Permit Date (M/D/Y)</value>
   </data>
   <data name="PermitNo" xml:space="preserve">
     <value>Permit No</value>
@@ -253,7 +253,7 @@
     <value>Names</value>
   </data>
   <data name="TotalAmountofCapital" xml:space="preserve">
-    <value>Total Amount of Capital (million)</value>
+    <value>Total Amount of Capital (in million)</value>
   </data>
   <data name="TotalNoofForeignEmployee" xml:space="preserve">
     <value>Total No. of Employee (Foreign)</value>

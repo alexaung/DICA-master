@@ -139,6 +139,7 @@ namespace dica.Repositories
                                 LeaseTerm = investment.LeaseTerm,
                                 ExtendedLeaseTerm = investment.ExtendedLeaseTerm,
                                 AnnualLeaseFee = investment.AnnualLeaseFee,
+                                AnnualLeaseFeeCurrency = investment.AnnualLeaseFeeCurrency,
                                 TotalNoofForeignEmployee = investment.TotalNoofForeignEmployee,
                                 TotalNoofLocalEmployee = investment.TotalNoofLocalEmployee,
                                 CorporateSocialResponsibility = investment.CorporateSocialResponsibility,
@@ -297,6 +298,7 @@ namespace dica.Repositories
                 investment.LeaseTerm = investmentViewModel.LeaseTerm;
                 investment.ExtendedLeaseTerm = investmentViewModel.ExtendedLeaseTerm;
                 investment.AnnualLeaseFee = investmentViewModel.AnnualLeaseFee;
+                investment.AnnualLeaseFeeCurrency = investmentViewModel.AnnualLeaseFeeCurrency;
                 investment.TotalNoofForeignEmployee = investmentViewModel.TotalNoofForeignEmployee;
                 investment.TotalNoofLocalEmployee = investmentViewModel.TotalNoofLocalEmployee;
                 investment.CorporateSocialResponsibility = investmentViewModel.CorporateSocialResponsibility;
