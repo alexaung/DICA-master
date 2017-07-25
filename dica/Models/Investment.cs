@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using NPOI.OpenXmlFormats.Spreadsheet;
 
 namespace dica.Models
 {
@@ -86,13 +87,17 @@ namespace dica.Models
 
         public string CreatedBy { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public DateTimeOffset CreatedOn { get; set; }
 
         public string ModifiedBy { get; set; }
 
-        public DateTime? ModifiedOn { get; set; }
+        public DateTimeOffset? ModifiedOn { get; set; }
 
-        
+        public decimal? LandUsePremium { get; set; }
+
+        public string LandUsePreminumCurrency { get; set; }
+
+        public string Note { get; set; }
 
     }
 }

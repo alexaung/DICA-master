@@ -177,7 +177,7 @@ namespace dica.Models
         
         [DataType(DataType.DateTime)]
         [Display(ResourceType = typeof(Resource), Name = "CreatedOn")]
-        public DateTime CreatedOn { get; set; }
+        public DateTimeOffset CreatedOn { get; set; }
 
     
         [Display(ResourceType = typeof(Resource), Name = "ModifiedBy")]
@@ -185,7 +185,14 @@ namespace dica.Models
 
         [DataType(DataType.DateTime)]
         [Display(ResourceType = typeof(Resource), Name = "ModifiedOn")]
-        public DateTime? ModifiedOn { get; set; }
+        public DateTimeOffset? ModifiedOn { get; set; }
+
+        public string Note { get; set; }
+
+        public string LandUsePreminumCurrency { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:0.000}")]
+        public decimal? LandUsePremium { get; set; }
     }
 }
 

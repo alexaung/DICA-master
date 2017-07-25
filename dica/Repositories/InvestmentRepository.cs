@@ -57,11 +57,15 @@ namespace dica.Repositories
                         Sector = sector.Name,
                         InvestingCountry = investingCountry.Name,
                         CreatedBy = investment.CreatedBy,
-                        CreatedOn = (DateTime) investment.CreatedOn,
+                        CreatedOn = (DateTimeOffset) investment.CreatedOn,
                         ModifiedBy = investment.ModifiedBy,
-                        ModifiedOn = (DateTime) investment.ModifiedOn,
+                        ModifiedOn = (DateTimeOffset) investment.ModifiedOn,
                         SectorValue = sector.Value,
                         InvestingCountryValue = investingCountry.ISO,
+                        Note = investment.Note,
+                        LandUsePremium = investment.LandUsePremium,
+                        LandUsePreminumCurrency = investment.LandUsePreminumCurrency
+
                     });
                 if (!string.IsNullOrEmpty(criteria.TypeOfInvestment))
                 {
@@ -89,7 +93,7 @@ namespace dica.Repositories
                 }
 
                 var pageIndex = criteria.Page ?? 1;
-                return query.OrderBy(i=> i.CompanyNameinMyanmar).ToPagedList(pageIndex, RecordsPerPage);
+                return query.OrderBy(i=> i.CreatedOn).ToPagedList(pageIndex, RecordsPerPage);
             }
         }
 
@@ -142,9 +146,12 @@ namespace dica.Repositories
                                 FinancialYearFrom  = investment.FinancialYearFrom,
                                 FinancialYearTo = investment.FinancialYearTo,
                                 CreatedBy = investment.CreatedBy,
-                                CreatedOn = (DateTime) investment.CreatedOn,
+                                CreatedOn = (DateTimeOffset) investment.CreatedOn,
                                 ModifiedOn = investment.ModifiedOn,
-                                ModifiedBy =  investment.ModifiedBy
+                                ModifiedBy =  investment.ModifiedBy,
+                                Note = investment.Note,
+                                LandUsePremium = investment.LandUsePremium,
+                                LandUsePreminumCurrency = investment.LandUsePreminumCurrency
 
                             }).FirstOrDefault();
 
@@ -189,10 +196,15 @@ namespace dica.Repositories
                 var investmentPermittedAddress = investmentViewModel.InvestmentPermittedAddress;
                 investmentPermittedAddress.UID = Guid.NewGuid();
 
+                TimeZone time2 = TimeZone.CurrentTimeZone;
+                DateTime test = time2.ToUniversalTime(DateTime.Now);
+                var yangone = TimeZoneInfo.FindSystemTimeZoneById("Myanmar Standard Time");
+                var yangoneTime = TimeZoneInfo.ConvertTimeFromUtc(test, yangone);
+
                 var investment = Mapper.Map<InvestmentViewModel, Investment>(investmentViewModel);
                 investment.UID = Guid.NewGuid();
                 investment.CreatedBy = userName;
-                investment.CreatedOn = DateTime.Now;
+                investment.CreatedOn = yangoneTime;
                 investment.InvestorAddressId = investorAddress.UID;
                 investment.OrganizationAddressId = organizationAddress.UID;
                 investment.InvestmentPermittedAddressId = investmentPermittedAddress.UID;
@@ -244,6 +256,12 @@ namespace dica.Repositories
 
         public static void UpdateInvestment(InvestmentViewModel investmentViewModel, string userName)
         {
+
+            TimeZone time2 = TimeZone.CurrentTimeZone;
+            DateTime test = time2.ToUniversalTime(DateTime.Now);
+            var yangone = TimeZoneInfo.FindSystemTimeZoneById("Myanmar Standard Time");
+            var yangoneTime = TimeZoneInfo.ConvertTimeFromUtc(test, yangone);
+
             using (var db = new ApplicationDbContext())
             {
                 var investment = db.Investments.FirstOrDefault(i => i.UID == investmentViewModel.UID);
@@ -284,8 +302,10 @@ namespace dica.Repositories
                 investment.CorporateSocialResponsibility = investmentViewModel.CorporateSocialResponsibility;
                 investment.EnvironmentandSocialImpactAssessment = string.Join(",", investmentViewModel.EnvironmentandSocialImpactAssessment); 
                 investment.ModifiedBy = userName;
-                investment.ModifiedOn = DateTime.Now;
-
+                investment.ModifiedOn = yangoneTime;
+                investment.Note = investmentViewModel.Note;
+                investment.LandUsePremium = investmentViewModel.LandUsePremium;
+                investment.LandUsePreminumCurrency = investmentViewModel.LandUsePreminumCurrency;
                 db.Addresses.Attach(investmentViewModel.InvestorAddress);
                 db.Entry(investmentViewModel.InvestorAddress).State = EntityState.Modified;
 
