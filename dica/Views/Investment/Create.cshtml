@@ -400,10 +400,26 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.AnnualLeaseFee, new { @class = "control-label col-md-3" })
+                            @Html.LabelFor(model => model.AnnualLeaseFee, new {@class = "control-label col-md-3"})
                             <div class="col-md-4">
-                                @Html.TextAreaFor(model => model.AnnualLeaseFee, new { @class = "form-control", cols = 60, rows = 4 })
-                                @Html.ValidationMessageFor(model => model.AnnualLeaseFee, "", new { @class = "text-danger" })
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.AnnualLeaseFee, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                    @Html.ValidationMessageFor(model => model.AnnualLeaseFee, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.AnnualLeaseFeeCurrency, new SelectList(StatusRepository.GetStatusByGroup("Currency"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                    @Html.ValidationMessageFor(model => model.AnnualLeaseFeeCurrency, "", new { @class = "text-danger" })
+                                </div>
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TotalAmountofCapital, new { @class = "control-label col-md-3" })
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.LandUsePremium, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
+                                    @Html.ValidationMessageFor(model => model.LandUsePremium, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.LandUsePreminumCurrency, new SelectList(StatusRepository.GetStatusByGroup("Currency"), "Value", "Value"), "", new { @class = "form-control", style = "width: 132px;" })
+                                    @Html.ValidationMessageFor(model => model.LandUsePreminumCurrency, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
 
@@ -464,7 +480,7 @@
                                     <thead>
                                         <tr>
                                             <td>Name</td>
-                                            <td>Amount</td>
+                                            <td>Amount (million)</td>
                                             <td>Currency</td>
                                             <th><em class="fa fa-cog"></em></th>
                                         </tr>
@@ -476,85 +492,114 @@
                     </div>
                 </div>
 
-                <div id="capital-panel" class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Capital</h3>
-                        <span class="pull-right clickable" data-toggle="collapse" data-target="#capital-panel-body"><i class="glyphicon glyphicon-chevron-up"></i></span>
-                    </div>
-                    <div id="capital-panel-body" class="panel-body in">
-                        <div id="Capital" class="panel panel-default">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col col-xs-6">
-                                        <h3 class="panel-title">Total Amt of Capital</h3>
-                                    </div>
-                                    <div class="col col-xs-6 text-right">
-                                        <button id="btnCapitalAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
-                                    </div>
+            <div id="capital-panel" class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Capital</h3>
+                    <span class="pull-right clickable" data-toggle="collapse" data-target="#capital-panel-body"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                </div>
+                <div id="capital-panel-body" class="panel-body in">
+                    <div id="Capital" class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col col-xs-6">
+                                    <h3 class="panel-title">Total Amt of Capital</h3>
+                                </div>
+                                <div class="col col-xs-6 text-right">
+                                    <button id="btnCapitalAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
                                 </div>
                             </div>
-                            <div id="capital-panel-body" class="panel-body in">
-                                <div class="printer-type">
-                                    <table id="tblCapital" class="tblCapital table table-striped table-bordered table-list">
-                                        <thead align="center">
-                                            <tr>
-                                                <th rowspan="2" width="20%">Description</th>
-                                                <th colspan="2">Local</th>
-                                                <th colspan="2">Foregin</th>
-                                                <th colspan="2">Joint Venture</th>
-                                                <th rowspan="2" width="8%">Total</th>
-                                                <th rowspan="2"><em class="fa fa-cog"></em></th>
-                                            </tr>
-                                            <tr>
-                                                <th width="11%">Equity</th>
-                                                <th width="11%">Loan</th>
-                                                <th width="11%">Equity</th>
-                                                <th width="11%">Loan</th>
-                                                <th width="11%">Loan</th>
-                                                <th width="11%">Equity</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if (Model.CapitalDetails != null)
+                        </div>
+                        <div id="capital-panel-body" class="panel-body in">
+                            <div class="printer-type">
+                                <table id="tblCapital" class="tblCapital table table-striped table-bordered table-list">
+                                    <thead align="center">
+                                    <tr>
+                                        <th rowspan="2" width="20%">Description</th>
+                                        <th colspan="2">Local</th>
+                                        <th colspan="2">Foregin</th>
+                                        <th colspan="2">Joint Venture</th>
+                                        <th rowspan="2" width="8%">Total</th>
+                                        <th rowspan="2"><em class="fa fa-cog"></em></th>
+                                    </tr>
+                                    <tr>
+                                        <th width="11%">Equity</th>
+                                        <th width="11%">Loan</th>
+                                        <th width="11%">Equity</th>
+                                        <th width="11%">Loan</th>
+                                        <th width="11%">Loan</th>
+                                        <th width="11%">Equity</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @if (Model.CapitalDetails != null)
+                                    {
+                                        int i = 0;
+                                        foreach (var item in Model.CapitalDetails)
+                                        {
                                             {
-                                                int i = 0;
-                                                foreach (var item in Model.CapitalDetails)
-                                                {
-                                                    {
-                                            <tr>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].Description, new { htmlAttributes = new { @class = "form-control" } })@Html.HiddenFor(model => Model.CapitalDetails[i].Description)</td>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginLone, new {htmlAttributes = new {type = "number", @class = "txtfld form-control", style = "text-align:right"}})</td>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].JvEquity, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
-                                                <td>@Html.EditorFor(model => Model.CapitalDetails[i].JvLone, new { htmlAttributes = new { type = "number", @class = "txtfld form-control", style = "text-align:right" } })</td>
-                                                <td class="totalCol" style="font-weight:bold; text-align:right">0.000</td>
-                                                <td><a class='btnCapitalDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
-                                            </tr>
-                                                    }
-                                                    i++;
-                                                }
+                                                <tr>
+                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].Description, new {htmlAttributes = new {@class = "form-control"}})@Html.HiddenFor(model => Model.CapitalDetails[i].Description)</td>
+                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalEquity, new {htmlAttributes = new {type = "number", @class = "txtfld form-control", style = "text-align:right"}})</td>
+                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].LocalLone, new {htmlAttributes = new {type = "number", @class = "txtfld form-control", style = "text-align:right"}})</td>
+                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginEquity, new {htmlAttributes = new {type = "number", @class = "txtfld form-control", style = "text-align:right"}})</td>
+                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].ForeginLone, new {htmlAttributes = new {type = "number", @class = "txtfld form-control", style = "text-align:right"}})</td>
+                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].JvEquity, new {htmlAttributes = new {type = "number", @class = "txtfld form-control", style = "text-align:right"}})</td>
+                                                    <td>@Html.EditorFor(model => Model.CapitalDetails[i].JvLone, new {htmlAttributes = new {type = "number", @class = "txtfld form-control", style = "text-align:right"}})</td>
+                                                    <td class="totalCol" style="font-weight: bold; text-align: right">0.000</td>
+                                                    <td><a class='btnCapitalDelete btn btn-danger' title='Delete' href='#'><em class='fa fa-trash'></em></a></td>
+                                                </tr>
                                             }
+                                            i++;
+                                        }
+                                    }
 
-                                            <tr style="font-weight:bold; text-align:right">
-                                                <td>Total</td>
-                                                <td>0.000</td>
-                                                <td>0.000</td>
-                                                <td>0.000</td>
-                                                <td>0.000</td>
-                                                <td>0.000</td>
-                                                <td>0.000</td>
-                                                <td>0.000</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    <tr style="font-weight: bold; text-align: right">
+                                        <td>Total</td>
+                                        <td>0.000</td>
+                                        <td>0.000</td>
+                                        <td>0.000</td>
+                                        <td>0.000</td>
+                                        <td>0.000</td>
+                                        <td>0.000</td>
+                                        <td>0.000</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                            
+            </div>
+
+                <div id="note-panel" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Note</h3>
+                        <span class="pull-right clickable" data-toggle="collapse" data-target="#note-panel-body"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div>
+                    <div id="note-panel-body" class="panel-body in">
+                        <div id="note">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col col-xs-6">
+                                        <h3 class="panel-title">Note</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <table id="tblnote" class="table table-striped table-bordered table-list">
+
+                                    <tbody>
+                                        <tr>
+                                            <td>@Html.TextAreaFor(model => model.Note, new { @class = "form-control" })</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="panel-footer">
                 <div class="row">
@@ -582,6 +627,7 @@
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
             <script type="text/javascript">
+              
 
                 $(function () {
 
@@ -593,6 +639,8 @@
                         numberDisplayed: 3
                     });
 
+                   
+                   
                     $('#datetimepickerPermitDate').datetimepicker({
                         showTodayButton: true,
                         format: 'MM/DD/YYYY',
@@ -601,6 +649,7 @@
                         toolbarPlacement: 'top',
                         stepping: 15
                     });
+                   // $('#datetimepickerPermitDate').removeAttr("data-val-date");
 
                     $('#datetimepickerFinancialYearFrom').datetimepicker({
                         format: "YYYY", // Notice the Extra space at the beginning
@@ -639,7 +688,7 @@
 
                     $('#FormofInvestment').change(function () {
                         var value = $(this).val();
-                        if (value == 'JV') {
+                        if (value == 'JV' || value == 'FDII') {
                             $('#JointVenturePercentage').show();
                         } else {
                             $('#JointVenturePercentage').hide();
