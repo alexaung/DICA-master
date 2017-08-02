@@ -402,4 +402,5 @@ C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.csproj.GenerateResou
 C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\my\dica.resources.dll
 C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.dll
 C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.pdb
+C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.Migrations.AddAnnualFieldsCurrency.resources
 C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.csprojResolveAssemblyReference.cache

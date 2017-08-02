@@ -93,7 +93,7 @@ namespace dica.Repositories
                 }
 
                 var pageIndex = criteria.Page ?? 1;
-                return query.OrderBy(i=> i.CreatedOn).ToPagedList(pageIndex, RecordsPerPage);
+                return query.OrderBy(i => i.CompanyNameinMyanmar).ToPagedList(pageIndex, RecordsPerPage);
             }
         }
 

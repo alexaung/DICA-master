@@ -412,7 +412,7 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.TotalAmountofCapital, new { @class = "control-label col-md-3" })
+                            @Html.LabelFor(model => model.LandUsePremium, new { @class = "control-label col-md-3" })
                             <div class="col-md-4">
                                 <div class="input-group">
                                     @Html.EditorFor(model => model.LandUsePremium, new { htmlAttributes = new { @class = "form-control", style = "width: 150px;" } })
@@ -502,7 +502,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col col-xs-6">
-                                    <h3 class="panel-title">Total Amt of Capital</h3>
+                                    <h3 class="panel-title" id="TotalAmtOfCapital">Total Amt of Capital</h3>
                                 </div>
                                 <div class="col col-xs-6 text-right">
                                     <button id="btnCapitalAdd" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
@@ -627,7 +627,7 @@
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
             <script type="text/javascript">
-              
+
 
                 $(function () {
 
@@ -639,8 +639,8 @@
                         numberDisplayed: 3
                     });
 
-                   
-                   
+
+
                     $('#datetimepickerPermitDate').datetimepicker({
                         showTodayButton: true,
                         format: 'MM/DD/YYYY',
@@ -695,8 +695,18 @@
                         }
                     });
 
-                    $(".btnCapitalDelete").bind("click", DeleteCapital);
 
+                    $('#TypeOfInvestment').change(function () {
+                        var value = $(this).val();
+                        if (value == 'MCIL' ) {
+                            document.getElementById("TotalAmtOfCapital").innerHTML = "Total Amount Of Capital Kyat in Million";
+                        } else {
+                            document.getElementById("TotalAmtOfCapital").innerHTML = "Total Amount Of Capital USD in Million";
+                        }
+                    });
+
+                    $(".btnCapitalDelete").bind("click", DeleteCapital);
+                     
                     $("#btnCapitalAdd").bind("click", AddCapital);
 
                     $('.txtfld').bind({
@@ -798,7 +808,7 @@
                 function AddCapital() {
 
                     var rowCount = parseInt($('#tblCapital tr').length);
-                                        
+
                     $(".printer-type").find('tr:last').prev().after(
                         "<tr>" +
                         "<td><input class = 'form-control' type='text' name='CapitalDetails[" + parseInt(rowCount - 3) + "].Description'/></td>" +
