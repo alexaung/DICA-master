@@ -404,3 +404,9 @@ C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.dll
 C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.pdb
 C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.Migrations.AddAnnualFieldsCurrency.resources
 C:\Users\zayar\Source\Repos\DICA-master\dica\obj\Debug\dica.csprojResolveAssemblyReference.cache
+C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddOnModelCreate.resources
+C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddJv.resources
+C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddDecimalPrecision.resources
+C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.ChnageCreatedDatetoDateTimeOffset.resources
+C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddLUPandNoteControl.resources
+C:\My App\DICA-master\dica\obj\Debug\dica.Migrations.AddAnnualFieldsCurrency.resources
