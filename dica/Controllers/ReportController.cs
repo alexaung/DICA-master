@@ -14,7 +14,7 @@ namespace dica.Controllers
         public ActionResult InvestmentByCountry(InvestmentByCountryViewModel model)
         {
             model.InvestmentByCountries = ReportRepository.GetInvestmentByCountry(model);
-            model.Countries = model.InvestmentByCountries.Select(s => new Country { Name = s.Country }).Distinct().OrderBy(c => c.Name).ToList();
+            model.Countries = model.InvestmentByCountries.Select(s => s.Country).Distinct().OrderBy(c => c).Select(c => new Country { Name = c }).ToList();
             model.Sectors = StatusRepository.GetStatusByGroup("Sector");
 
             //model.FromDate = DateTime.Now;
@@ -31,7 +31,7 @@ namespace dica.Controllers
                     using (var ms = new MemoryStream())
                     {
                         model.InvestmentByCountries = ReportRepository.GetInvestmentByCountry(model);
-                        model.Countries = model.InvestmentByCountries.Select(s => new Country { Name = s.Country }).Distinct().OrderBy(c => c.Name).ToList();
+                        model.Countries = model.InvestmentByCountries.Select(s => s.Country).Distinct().OrderBy(c => c).Select(c=> new Country { Name = c }).ToList();
                         model.Sectors = StatusRepository.GetStatusByGroup("Sector");
 
                         var exporterService = new ExcelExportService();
