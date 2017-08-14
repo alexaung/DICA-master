@@ -91,6 +91,14 @@ namespace dica.Repositories
                 {
                     query = query.Where(i => i.CreatedBy.Contains(criteria.CreatedBy));
                 }
+                if (criteria.FinancialYearFrom > 0)
+                {
+                    query = query.Where(i => i.FinancialYearFrom == criteria.FinancialYearFrom);
+                }
+                if (criteria.FinancialYearTo > 0)
+                {
+                    query = query.Where(i => i.FinancialYearTo == criteria.FinancialYearTo);
+                }
 
                 var pageIndex = criteria.Page ?? 1;
                 return query.OrderBy(i => i.CompanyNameinMyanmar).ToPagedList(pageIndex, RecordsPerPage);

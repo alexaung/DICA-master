@@ -18,6 +18,10 @@ namespace dica.Models
 
         public  string CreatedBy { get; set; }
 
+        public int? FinancialYearFrom { get; set; }
+
+        public int? FinancialYearTo { get; set; }
+
         public IPagedList<InvestmentViewModel> SearchResults { get; set; }
     }
 }
