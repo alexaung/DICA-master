@@ -176,12 +176,15 @@ ViewBag.Title = "Investment List";
                     @Html.PagedListPager(Model.SearchResults,
            page => Url.Action("Index", new RouteValueDictionary()
            {
-                { "Page", page },
-                { "TypeOfInvestment", Model.TypeOfInvestment },
-                { "Sector", Model.Sector},
+               { "Page", page },
+               { "TypeOfInvestment", Model.TypeOfInvestment },
+               { "Sector", Model.Sector},
                { "InvestingCountry", Model.InvestingCountry },
                { "CompanyNameinMyanmar", Model.CompanyNameinMyanmar },
-               { "InvestorName", Model.InvestorName }
+               { "InvestorName", Model.InvestorName },
+               { "CreatedBy", Model.CreatedBy },
+               { "FinancialYearFrom", Model.FinancialYearFrom },
+               { "FinancialYearTo", Model.FinancialYearTo }
            }),
          PagedListRenderOptions.ClassicPlusFirstAndLast)
                 </div>
