@@ -64,7 +64,9 @@ namespace dica.Repositories
                         InvestingCountryValue = investingCountry.ISO,
                         Note = investment.Note,
                         LandUsePremium = investment.LandUsePremium,
-                        LandUsePreminumCurrency = investment.LandUsePreminumCurrency
+                        LandUsePreminumCurrency = investment.LandUsePreminumCurrency,
+                        FinancialYearFrom = investment.FinancialYearFrom,
+                        FinancialYearTo = investment.FinancialYearTo
 
                     });
                 if (!string.IsNullOrEmpty(criteria.TypeOfInvestment))
