@@ -201,6 +201,9 @@
   <data name="Landowner" xml:space="preserve">
     <value>Landowner</value>
   </data>
+  <data name="LandUsePremium" xml:space="preserve">
+    <value>Land Use Premium</value>
+  </data>
   <data name="LangEnglish" xml:space="preserve">
     <value>English</value>
   </data>

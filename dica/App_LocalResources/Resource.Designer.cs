@@ -313,6 +313,15 @@ namespace dica.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Land Use Premium.
+        /// </summary>
+        public static string LandUsePremium {
+            get {
+                return ResourceManager.GetString("LandUsePremium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         public static string LangEnglish {
